@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Foreign Vite project quarantined here on 2026-09-16 — not part of
+    // this Next.js app, see the folder for context.
+    "_quarantined-vite-project-2026-09-16/**",
+    "_backup-previous-2026-09-16/**",
   ]),
 ]);
 

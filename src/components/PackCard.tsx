@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Pack } from "@/lib/content";
-import { PRIMARY_CTA } from "@/lib/content";
+import { AUTOMATIONS, PRIMARY_CTA } from "@/lib/content";
 
 export function PackCard({ pack }: { pack: Pack }) {
+  const automationCount = pack.automationSlots ?? 0;
+
   return (
     <article
       className={`flex flex-col rounded-3xl border p-7 transition-colors md:p-8 ${
@@ -15,6 +17,7 @@ export function PackCard({ pack }: { pack: Pack }) {
         </span>
       )}
       <h3 className="font-display text-xl tracking-tight md:text-2xl">{pack.name}</h3>
+      {pack.note && <p className="mt-1.5 text-xs text-muted-foreground">{pack.note}</p>}
 
       <div className="mt-6 space-y-5 border-t border-border pt-6">
         <div>
@@ -36,6 +39,24 @@ export function PackCard({ pack }: { pack: Pack }) {
             ))}
           </ul>
         </div>
+
+        {automationCount > 0 && (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-lime">
+              Automazioni AI {automationCount >= AUTOMATIONS.length ? "incluse" : `— scegli ${automationCount}`}
+            </p>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {AUTOMATIONS.map((a) => (
+                <span
+                  key={a.slug}
+                  className="rounded-full border border-border bg-secondary px-2.5 py-1 text-xs text-foreground/80"
+                >
+                  {a.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       <Link href={`/contatti?pacchetto=${pack.slug}`} className="btn-lime mt-8 w-full">

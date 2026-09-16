@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ristoranti",
     "/hotel",
     "/immobiliare",
+    "/automazioni",
     "/lavori",
     "/pacchetti",
     "/chi-siamo",

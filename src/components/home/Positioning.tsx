@@ -5,8 +5,8 @@ export function Positioning() {
     <section className="border-b border-border px-5 py-14 md:px-8 md:py-16">
       <Reveal className="mx-auto max-w-3xl text-center">
         <p className="font-display text-xl leading-snug tracking-[-0.01em] text-foreground/90 sm:text-2xl">
-          Costruiamo una presenza digitale coerente: sito, video, contenuti e conversione
-          progettati insieme.
+          Costruiamo una presenza digitale coerente: sito, video, contenuti, conversione e
+          automazioni progettati insieme — e continuiamo a seguirti, non solo al lancio.
         </p>
       </Reveal>
     </section>

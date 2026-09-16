@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# a separate Vite project was found mixed into this folder on 2026-09-16
+# (conflicting with this Next.js app's build) and quarantined here rather
+# than deleted — not part of this repo, kept out of version control
+/_quarantined-vite-project-2026-09-16/
+/_backup-previous-2026-09-16/

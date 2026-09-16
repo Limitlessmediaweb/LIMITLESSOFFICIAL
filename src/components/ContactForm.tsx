@@ -8,12 +8,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { BUSINESS, PACKS } from "@/lib/content";
+import { AUTOMATIONS, BUSINESS, PACKS } from "@/lib/content";
 
 export function ContactForm() {
   const searchParams = useSearchParams();
-  const packSlug = searchParams.get("pacchetto");
+  const packSlug = searchParams?.get("pacchetto");
   const preselectedPack = PACKS.find((p) => p.slug === packSlug);
+  const automationSlug = searchParams?.get("automazione");
+  const preselectedAutomation = AUTOMATIONS.find((a) => a.slug === automationSlug);
 
   const [form, setForm] = useState({ nome: "", email: "", messaggio: "" });
   const [consent, setConsent] = useState(false);
@@ -28,12 +30,17 @@ export function ContactForm() {
     }
     setError(false);
 
-    const subjectPack = preselectedPack ? ` — ${preselectedPack.name}` : "";
-    const subject = `Richiesta consulenza${subjectPack} — ${form.nome || "Nuovo contatto"}`;
+    const subjectDetail = preselectedPack
+      ? ` — ${preselectedPack.name}`
+      : preselectedAutomation
+        ? ` — ${preselectedAutomation.name}`
+        : "";
+    const subject = `Richiesta consulenza${subjectDetail} — ${form.nome || "Nuovo contatto"}`;
     const bodyLines = [
       `Nome: ${form.nome}`,
       `Email: ${form.email}`,
       preselectedPack ? `Pacchetto di interesse: ${preselectedPack.name}` : null,
+      preselectedAutomation ? `Automazione di interesse: ${preselectedAutomation.name}` : null,
       "",
       form.messaggio,
     ].filter((l) => l !== null);
@@ -52,6 +59,11 @@ export function ContactForm() {
       {preselectedPack && (
         <p className="rounded-xl border border-lime/30 bg-lime-soft px-4 py-3 text-sm text-foreground/90">
           Richiesta per <strong>{preselectedPack.name}</strong>
+        </p>
+      )}
+      {preselectedAutomation && (
+        <p className="rounded-xl border border-lime/30 bg-lime-soft px-4 py-3 text-sm text-foreground/90">
+          Richiesta per <strong>{preselectedAutomation.name}</strong>
         </p>
       )}
 

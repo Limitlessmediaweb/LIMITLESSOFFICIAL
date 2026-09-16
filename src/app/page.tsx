@@ -3,6 +3,7 @@ import { Hero } from "@/components/home/Hero";
 import { Positioning } from "@/components/home/Positioning";
 import { CaseStudiesPreview } from "@/components/home/CaseStudiesPreview";
 import { ServicesSection } from "@/components/home/ServicesSection";
+import { AutomationsSection } from "@/components/home/AutomationsSection";
 import { SocialProofSection } from "@/components/home/SocialProofSection";
 import { VerticalsSection } from "@/components/home/VerticalsSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
@@ -22,6 +23,7 @@ export default function Home() {
       <Positioning />
       <CaseStudiesPreview />
       <ServicesSection />
+      <AutomationsSection />
       <SocialProofSection />
       <VerticalsSection />
       <ProcessSection />

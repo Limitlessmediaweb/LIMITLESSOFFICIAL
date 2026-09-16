@@ -25,6 +25,7 @@ export const NAV_LINKS = [
   { href: "/ristoranti", label: "Ristoranti" },
   { href: "/hotel", label: "Hotel" },
   { href: "/immobiliare", label: "Immobiliare" },
+  { href: "/automazioni", label: "Automazioni" },
   { href: "/lavori", label: "Lavori" },
   { href: "/pacchetti", label: "Pacchetti" },
   { href: "/chi-siamo", label: "Chi siamo" },
@@ -90,84 +91,140 @@ export const PROCESS_STEPS: ProcessStep[] = [
   },
 ];
 
+export type Automation = {
+  slug: string;
+  name: string;
+  perChi: string;
+  percheConviene: string;
+  items: string[];
+};
+
+export const AUTOMATIONS: Automation[] = [
+  {
+    slug: "recensioni",
+    name: "Recensioni Automatiche",
+    perChi: "Attività che fanno un buon lavoro ma non ricevono abbastanza recensioni Google.",
+    percheConviene:
+      "Ogni cliente soddisfatto riceve in automatico un invito a lasciare una recensione, senza che tu debba ricordartelo: più recensioni, più fiducia, più clienti nuovi.",
+    items: [
+      "Messaggio automatico personalizzato dopo il servizio",
+      "Invio via email o WhatsApp",
+      "Link diretto alla recensione Google",
+    ],
+  },
+  {
+    slug: "chat-ai",
+    name: "Chat AI nel sito",
+    perChi: "Attività il cui sito riceve visite fuori orario, quando nessuno può rispondere.",
+    percheConviene:
+      "Un assistente virtuale risponde subito alle domande base — orari, prezzi, disponibilità — 24 ore su 24, raccogliendo i contatti di chi è davvero interessato.",
+    items: [
+      "Widget di chat integrato nel sito",
+      "Risposte personalizzate sulla tua attività",
+      "Raccolta contatti automatica",
+    ],
+  },
+  {
+    slug: "chiamate-perse",
+    name: "Risposta Automatica a Chiamate Perse",
+    perChi: "Attività che ricevono molte chiamate durante il lavoro e non riescono sempre a rispondere.",
+    percheConviene:
+      "Chi chiama e non trova risposta riceve subito un messaggio invece di restare nel silenzio: meno clienti persi verso la concorrenza.",
+    items: [
+      "SMS o WhatsApp automatico su chiamata persa",
+      "Gestione base della richiesta",
+      "Possibilità di prenotare direttamente",
+    ],
+  },
+  {
+    slug: "follow-up",
+    name: "Follow-up Automatico Preventivi/Lead",
+    perChi: "Attività che mandano preventivi o informazioni e spesso non ricevono risposta.",
+    percheConviene:
+      "Un richiamo automatico e gentile dopo qualche giorno aumenta le probabilità che il cliente risponda, invece di sparire nel silenzio.",
+    items: [
+      "Sequenza di follow-up automatici",
+      "Messaggi personalizzati sul contesto del preventivo",
+      "Nessun lead dimenticato",
+    ],
+  },
+];
+
 export type Pack = {
   slug: string;
   name: string;
   perChi: string;
   percheConviene: string;
   items: string[];
+  /** How many AUTOMATIONS modules are included (undefined/0 = none, 4 = all). */
+  automationSlots?: number;
+  note?: string;
   featured?: boolean;
 };
 
 export const PACKS: Pack[] = [
   {
-    slug: "start",
-    name: "LIMITLESS START",
+    slug: "presenza-base",
+    name: "LIMITLESS PRESENZA BASE",
     perChi:
-      "Attività che non ha ancora una presenza online seria, o ha un sito vecchio che non porta clienti.",
+      "Attività che non ha ancora una presenza online seria, o che si affida solo a un profilo Google Business lasciato indietro.",
     percheConviene:
-      "Hai subito uno strumento che lavora per te: un sito veloce, trovabile su Google e ottimizzato da mobile, più contenuti video che fanno vedere davvero cosa offri, non solo raccontarlo.",
+      "Parti con le basi giuste e un primo aiuto che lavora per te ogni giorno: un sito veloce e trovabile su Google, più un'automazione che recupera clienti che altrimenti perderesti. È il primo passo di un percorso che continuiamo a costruire insieme nel tempo.",
     items: [
       "Sito web o landing page su misura",
-      "2 video promo o tour",
-      "Ottimizzazione mobile e velocità",
+      "Ottimizzazione della scheda Google Business Profile",
+      "1 automazione AI a scelta",
       "Modulo contatti e collegamento WhatsApp",
     ],
+    automationSlots: 1,
   },
   {
-    slug: "pro",
-    name: "LIMITLESS PRO",
+    slug: "crescita",
+    name: "LIMITLESS CRESCITA",
     perChi:
-      "Attività già online che vuole una presenza completa, capace di reggere il passo con la crescita del business.",
+      "Attività già online che vuole affiancare al sito contenuti video e strumenti che lavorano anche quando tu non puoi.",
     percheConviene:
-      "Non hai solo un sito, ma un sistema di contenuti coerente: lo stesso materiale video lavora sul sito e sui social, moltiplicando i punti di contatto con i clienti senza moltiplicare lo sforzo.",
+      "Non aggiungi solo contenuti, aggiungi tempo: mentre sito e video portano visibilità, le automazioni si occupano di recensioni, chiamate perse o lead da ricontattare. Ti seguiamo passo passo mentre l'attività cresce, non solo al lancio.",
     items: [
       "Sito web completo su misura",
-      "4 video promo o tour",
+      "Video promo o tour (a scelta)",
+      "2 automazioni AI a scelta",
       "Contenuti riformattati anche per i social",
     ],
+    automationSlots: 2,
     featured: true,
   },
   {
-    slug: "all-in",
-    name: "LIMITLESS ALL-IN",
+    slug: "identita-completa",
+    name: "LIMITLESS IDENTITÀ COMPLETA",
     perChi:
-      "Attività strutturate (ristoranti, hotel, immobiliari) che vogliono gestire tutto — sito, prenotazioni, contenuti — con un unico interlocutore.",
+      "Attività strutturate che vogliono una presenza digitale completa — sito, video e automazioni — senza doverci più pensare.",
     percheConviene:
-      "Riduci l'attrito tra un cliente interessato e una prenotazione confermata: sito multi-sezione, prenotazione integrata e video che raccontano ogni aspetto della tua attività.",
+      "Hai un partner unico che si occupa di tutto: dal primo contatto alla recensione finale, ogni fase del rapporto con il cliente è coperta, con assistenza prioritaria quando ne hai bisogno.",
     items: [
-      "Sito web completo e multi-sezione con prenotazione",
-      "6 video promo o tour",
-      "Contenuti riformattati anche per i social",
+      "Sito web premium multi-sezione",
+      "Video walk tour",
+      "Video ads",
+      "Tutte le automazioni AI incluse",
+      "Assistenza prioritaria",
     ],
-  },
-  {
-    slug: "video-media",
-    name: "LIMITLESS VIDEO & MEDIA",
-    perChi:
-      "Chi ha già un sito funzionante ma non ha ancora contenuti video all'altezza, o ha bisogno di produzione continuativa.",
-    percheConviene:
-      "Il video è oggi il contenuto che converte di più: ottieni materiale professionale, curato in montaggio, colore e sonoro, pronto per essere usato ovunque serva.",
-    items: [
-      "Video singoli o serie di contenuti",
-      "Montaggio, color e sound design",
-      "Collaborazioni continuative con agenzie",
-    ],
+    automationSlots: 4,
   },
   {
     slug: "social",
-    name: "LIMITLESS SOCIAL",
+    name: "LIMITLESS CONTENUTI SOCIAL",
     perChi: "Attività che vive soprattutto sui social e ha bisogno di contenuti pensati per quel formato.",
     percheConviene:
       "Contenuti tagliati, montati e ritmati per come si guardano davvero i social, non adattamenti last-minute di altri video.",
     items: ["Contenuti video studiati appositamente per una presenza social ottimale"],
+    note: "Formula ancora in definizione — i dettagli si affinano insieme a te in consulenza.",
   },
   {
     slug: "custom",
-    name: "LIMITLESS CUSTOM",
+    name: "LIMITLESS PERSONALIZZATO",
     perChi: "Chi ha esigenze specifiche che non rientrano perfettamente negli altri pacchetti.",
     percheConviene:
-      "Paghi solo quello che ti serve davvero, costruito insieme a noi partendo dal tuo obiettivo, non da un listino fisso.",
+      "Paghi solo quello che ti serve davvero, costruito insieme a noi partendo dal tuo obiettivo — un rapporto che continua a evolversi con la tua attività, non un pacchetto chiuso.",
     items: ["Componiamo il tuo pacchetto su misura: scegli tu cosa includere e ci accordiamo."],
   },
 ];
@@ -282,6 +339,10 @@ export const VERTICALS: Vertical[] = [
         title: "Foto professionali dei piatti",
         desc: "Le immagini giuste vendono il piatto prima ancora che venga assaggiato.",
       },
+      {
+        title: "Recensioni automatiche",
+        desc: "Dopo ogni cena, un invito automatico a lasciare una recensione Google — vedi le Automazioni AI.",
+      },
     ],
     caseStudySlugs: ["da-mario", "da-riccardo"],
   },
@@ -310,6 +371,10 @@ export const VERTICALS: Vertical[] = [
         title: "Sito multilingua",
         desc: "Pronto ad accogliere anche gli ospiti internazionali, quando serve.",
       },
+      {
+        title: "Chat AI nel sito",
+        desc: "Risponde su disponibilità e prezzi fuori orario reception — vedi le Automazioni AI.",
+      },
     ],
     caseStudySlugs: ["bellezza"],
   },
@@ -337,6 +402,10 @@ export const VERTICALS: Vertical[] = [
       {
         title: "Pacchetti multi-immobile",
         desc: "Collaborazioni continuative pensate per agenzie con più immobili da presentare.",
+      },
+      {
+        title: "Follow-up automatico dei lead",
+        desc: "Chi chiede informazioni su un immobile viene ricontattato in automatico se non risponde — vedi le Automazioni AI.",
       },
     ],
     caseStudySlugs: ["da-riccardo", "bellezza"],
