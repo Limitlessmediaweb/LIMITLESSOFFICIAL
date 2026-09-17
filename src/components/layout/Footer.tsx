@@ -38,6 +38,15 @@ export function Footer() {
             >
               {BUSINESS.phone}
             </a>
+            <span>
+              <span className="text-muted-foreground">PEC: </span>
+              <a
+                href={`mailto:${BUSINESS.pec}`}
+                className="text-foreground underline-offset-4 hover:text-lime hover:underline"
+              >
+                {BUSINESS.pec}
+              </a>
+            </span>
             <span className="text-muted-foreground">
               {BUSINESS.city} — {BUSINESS.areaServed}
             </span>

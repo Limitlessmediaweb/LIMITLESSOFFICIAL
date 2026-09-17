@@ -61,13 +61,18 @@ export default function LavoriPage() {
           <h2 className="font-display mt-16 text-lg tracking-[0.18em] text-muted-foreground uppercase">
             Video ads
           </h2>
-          <Reveal className="mt-6" stagger={0.1}>
+          <Reveal className="mt-6 grid gap-6 md:grid-cols-2" stagger={0.1}>
             <VideoShowcase
               src="/media/video/vino-ad.mp4"
               poster="/media/video/vino-ad-poster.jpg"
               label="Video ad prodotto — vino (formato 16:9)"
               draftNote="Bozza: la versione finale viene arricchita con scritte, animazioni ed effetti curati, per trasformarla in un vero e proprio spot pubblicitario."
-              className="mx-auto max-w-3xl"
+            />
+            <VideoShowcase
+              src="/media/video/cappellino-ad.mp4"
+              poster="/media/video/cappellino-ad-poster.jpg"
+              label="Video ad prodotto — cappellino (formato 16:9)"
+              draftNote="Bozza: la versione finale viene arricchita con scritte, animazioni ed effetti curati, per trasformarla in un vero e proprio spot pubblicitario."
             />
           </Reveal>
         </div>

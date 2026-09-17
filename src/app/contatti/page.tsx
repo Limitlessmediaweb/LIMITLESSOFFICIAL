@@ -42,6 +42,17 @@ export default function ContattiPage() {
             >
               WhatsApp
             </a>
+            <p className="text-lg text-foreground">
+              <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                PEC:{" "}
+              </span>
+              <a
+                href={`mailto:${BUSINESS.pec}`}
+                className="underline-offset-4 hover:text-lime hover:underline"
+              >
+                {BUSINESS.pec}
+              </a>
+            </p>
           </div>
           <p className="mt-8 text-sm text-muted-foreground">
             {SOCIAL_PROOF.freeConsult}. {BUSINESS.city} — {BUSINESS.areaServed}.
