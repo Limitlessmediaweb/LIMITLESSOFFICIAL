@@ -12,8 +12,7 @@ export const BUSINESS = {
   email: "limitlessmediaweb@gmail.com",
   phone: "+39 339 795 8873",
   phoneHref: "+393397958873",
-  // Not yet available — flagged clearly so it's easy to find and replace.
-  pec: "[PEC-DA-INSERIRE]",
+  pec: "info@pec.limitlessmedia.it",
 } as const;
 
 // Single conversion CTA, reused everywhere (per brief: one CTA, same text,
@@ -97,6 +96,8 @@ export type Automation = {
   perChi: string;
   percheConviene: string;
   items: string[];
+  demoImage: string;
+  demoImageAlt: string;
 };
 
 export const AUTOMATIONS: Automation[] = [
@@ -111,6 +112,9 @@ export const AUTOMATIONS: Automation[] = [
       "Invio via email o WhatsApp",
       "Link diretto alla recensione Google",
     ],
+    demoImage: "/media/automations/recensioni-whatsapp.png",
+    demoImageAlt:
+      "Esempio dimostrativo: messaggio WhatsApp automatico che chiede una recensione a 5 stelle dopo la visita",
   },
   {
     slug: "chat-ai",
@@ -123,6 +127,9 @@ export const AUTOMATIONS: Automation[] = [
       "Risposte personalizzate sulla tua attività",
       "Raccolta contatti automatica",
     ],
+    demoImage: "/media/portfolio/mockup-nexora.png",
+    demoImageAlt:
+      "Esempio dimostrativo: widget di chat AI aperto sul sito, con un messaggio di benvenuto automatico",
   },
   {
     slug: "chiamate-perse",
@@ -135,6 +142,9 @@ export const AUTOMATIONS: Automation[] = [
       "Gestione base della richiesta",
       "Possibilità di prenotare direttamente",
     ],
+    demoImage: "/media/automations/chiamata-persa.png",
+    demoImageAlt:
+      "Esempio dimostrativo: notifica di chiamata persa seguita da un messaggio automatico di risposta",
   },
   {
     slug: "follow-up",
@@ -147,6 +157,9 @@ export const AUTOMATIONS: Automation[] = [
       "Messaggi personalizzati sul contesto del preventivo",
       "Nessun lead dimenticato",
     ],
+    demoImage: "/media/automations/follow-up-preventivo.png",
+    demoImageAlt:
+      "Esempio dimostrativo: email automatica di promemoria su un preventivo ancora disponibile",
   },
 ];
 
@@ -295,6 +308,40 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Un'identità digitale che tiene il passo con la qualità della cucina, pensata per farsi notare in un mercato molto competitivo.",
     services: ["Sito web", "Identità visiva"],
   },
+  {
+    slug: "lago-resort",
+    title: "Lago Resort",
+    sector: "Hotel",
+    location: "Lago di Como",
+    isConcept: true,
+    image: "/media/portfolio/mockup-lago-resort.png",
+    imageAlt:
+      "Sito web per un resort sul lago con prenotazione camere, mostrato su laptop con vista lago e montagne",
+    prima:
+      "Una struttura come Lago Resort, senza un sito diretto forte, dipende quasi interamente dai portali di prenotazione: margini ridotti dalle commissioni e nessuna relazione diretta con l'ospite prima dell'arrivo.",
+    intervento:
+      "Abbiamo progettato un sito con booking diretto, presentazione delle camere e dei servizi (spa, ristorante gourmet, concierge) e un video walk tour della suite per far vivere l'atmosfera prima ancora della prenotazione.",
+    dopo:
+      "Un sito che vende l'esperienza, non solo la camera: prenotazioni dirette, meno dipendenza dalle OTA, prima impressione all'altezza del soggiorno.",
+    services: ["Sito web", "Video walk tour", "Booking diretto"],
+  },
+  {
+    slug: "nexora",
+    title: "Nexora",
+    sector: "Azienda tech / AI",
+    location: "Italia",
+    isConcept: true,
+    image: "/media/portfolio/mockup-nexora.png",
+    imageAlt:
+      "Sito web per l'azienda tech Nexora con widget di chat AI integrato, mostrato su laptop",
+    prima:
+      "Un'azienda tech come Nexora, senza un modo per rispondere subito ai visitatori del sito, perde lead che arrivano fuori orario o che vogliono una risposta immediata prima di lasciare una richiesta demo.",
+    intervento:
+      "Abbiamo realizzato un sito dal design curato con una chat AI integrata, pensata per rispondere alle domande base sui prodotti e raccogliere i contatti di chi è davvero interessato — la stessa automazione descritta nella sezione Automazioni AI.",
+    dopo:
+      "Un sito che qualifica i lead 24 ore su 24, anche quando il team commerciale non è disponibile.",
+    services: ["Sito web", "Chat AI integrata"],
+  },
 ];
 
 export const SOCIAL_PROOF = {
@@ -311,6 +358,8 @@ export type Vertical = {
   problem: string;
   solution: { title: string; desc: string }[];
   caseStudySlugs: string[];
+  /** Optional standalone walk-tour video shown on the vertical page. */
+  walkTour?: { src: string; poster: string; label: string; isConcept: boolean };
 };
 
 export const VERTICALS: Vertical[] = [
@@ -376,7 +425,13 @@ export const VERTICALS: Vertical[] = [
         desc: "Risponde su disponibilità e prezzi fuori orario reception — vedi le Automazioni AI.",
       },
     ],
-    caseStudySlugs: ["bellezza"],
+    caseStudySlugs: ["lago-resort"],
+    walkTour: {
+      src: "/media/video/hotel-suite-tour.mp4",
+      poster: "/media/video/hotel-suite-tour-poster.jpg",
+      label: "Suite con vista lago — Lago Resort (progetto concept)",
+      isConcept: true,
+    },
   },
   {
     slug: "immobiliare",
@@ -408,6 +463,12 @@ export const VERTICALS: Vertical[] = [
         desc: "Chi chiede informazioni su un immobile viene ricontattato in automatico se non risponde — vedi le Automazioni AI.",
       },
     ],
-    caseStudySlugs: ["da-riccardo", "bellezza"],
+    caseStudySlugs: [],
+    walkTour: {
+      src: "/media/video/villa-lounge-tour.mp4",
+      poster: "/media/video/villa-lounge-tour-poster.jpg",
+      label: "Soggiorno vista mare — progetto concept",
+      isConcept: true,
+    },
   },
 ];

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { AutomationCard } from "@/components/AutomationCard";
-import { AutomationDemo } from "@/components/AutomationDemo";
 import { Reveal } from "@/components/gsap/Reveal";
 import { CtaSection } from "@/components/CtaSection";
 import { AUTOMATIONS } from "@/lib/content";
@@ -30,23 +29,14 @@ export default function AutomazioniPage() {
         </Reveal>
       </section>
 
-      <section className="bg-card px-5 py-20 md:px-8 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">Come funziona</p>
-            <h2 className="mt-4 font-display text-3xl leading-[1.08] sm:text-4xl">
-              Un esempio, non un caso reale
-            </h2>
-            <p className="mt-5 text-muted-foreground">
-              Nessuno dei moduli qui sopra ha ancora un cliente attivo con dati misurati: questa è
-              una conversazione dimostrativa, costruita per mostrare come funziona il modulo
-              Recensioni Automatiche — non un risultato reale.
-            </p>
-          </Reveal>
-          <Reveal className="mt-10">
-            <AutomationDemo />
-          </Reveal>
-        </div>
+      <section className="bg-card px-5 py-10 md:px-8 md:py-12">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="text-sm text-muted-foreground">
+            Nessuno dei moduli qui sopra ha ancora un cliente attivo con dati misurati: le immagini
+            sono esempi dimostrativi costruiti per mostrare come funziona ogni automazione, non
+            risultati reali.
+          </p>
+        </Reveal>
       </section>
 
       <CtaSection

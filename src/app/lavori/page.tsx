@@ -46,6 +46,16 @@ export default function LavoriPage() {
               poster="/media/video/interno-tour-poster.jpg"
               label="Interni — sala di rappresentanza"
             />
+            <VideoShowcase
+              src="/media/video/hotel-suite-tour.mp4"
+              poster="/media/video/hotel-suite-tour-poster.jpg"
+              label="Suite con vista lago — Lago Resort (progetto concept)"
+            />
+            <VideoShowcase
+              src="/media/video/villa-lounge-tour.mp4"
+              poster="/media/video/villa-lounge-tour-poster.jpg"
+              label="Soggiorno vista mare — progetto concept"
+            />
           </Reveal>
 
           <h2 className="font-display mt-16 text-lg tracking-[0.18em] text-muted-foreground uppercase">

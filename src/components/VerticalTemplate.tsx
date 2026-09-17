@@ -1,6 +1,7 @@
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/gsap/Reveal";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
+import { VideoShowcase } from "@/components/VideoShowcase";
 import { CtaSection } from "@/components/CtaSection";
 import { CASE_STUDIES, type Vertical } from "@/lib/content";
 
@@ -38,6 +39,31 @@ export function VerticalTemplate({ vertical }: { vertical: Vertical }) {
           </Reveal>
         </div>
       </section>
+
+      {vertical.walkTour && (
+        <section className="bg-card px-5 py-20 md:px-8 md:py-24">
+          <div className="mx-auto max-w-3xl">
+            <Reveal className="text-center">
+              <p className="eyebrow">Video walk tour</p>
+              <h2 className="mt-4 font-display text-3xl leading-[1.08] sm:text-4xl">
+                Fai vivere lo spazio prima della visita
+              </h2>
+              {vertical.walkTour.isConcept && (
+                <p className="mt-3 text-sm text-muted-foreground">
+                  Progetto concept — esempio illustrativo, non un cliente reale.
+                </p>
+              )}
+            </Reveal>
+            <Reveal className="mt-8">
+              <VideoShowcase
+                src={vertical.walkTour.src}
+                poster={vertical.walkTour.poster}
+                label={vertical.walkTour.label}
+              />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {relevantCaseStudies.length > 0 && (
         <section className="px-5 py-20 md:px-8 md:py-24">
