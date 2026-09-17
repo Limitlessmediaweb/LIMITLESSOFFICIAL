@@ -1,0 +1,27 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esempio illustrativo di un sito datato per un centro estetico: layout generico, poche immagini, nessuna prenotazione online">
+  <rect width="800" height="500" fill="#f1e7e4"/>
+  <rect width="800" height="70" fill="#d9bdb6"/>
+  <text x="24" y="44" font-family="Georgia, serif" font-size="26" fill="#5c3a35">Centro Estetico</text>
+  <text x="560" y="30" font-family="Arial" font-size="12" fill="#6b4842">Home</text>
+  <text x="610" y="30" font-family="Arial" font-size="12" fill="#6b4842">Trattamenti</text>
+  <text x="690" y="30" font-family="Arial" font-size="12" fill="#6b4842">Contatti</text>
+  <text x="560" y="48" font-family="Arial" font-size="10" fill="#8a655e">Tel: 0000 000000</text>
+
+  <rect x="24" y="100" width="752" height="180" fill="#e6d3ce"/>
+  <text x="400" y="195" font-family="Arial" font-size="14" fill="#8a655e" text-anchor="middle">[ foto scattate col telefono ]</text>
+
+  <text x="24" y="320" font-family="Georgia, serif" font-size="18" fill="#5c3a35">Benvenuti</text>
+  <rect x="24" y="336" width="360" height="10" fill="#d9bdb6"/>
+  <rect x="24" y="354" width="330" height="10" fill="#d9bdb6"/>
+  <rect x="24" y="372" width="300" height="10" fill="#d9bdb6"/>
+
+  <rect x="24" y="404" width="150" height="34" fill="#a77068"/>
+  <text x="99" y="426" font-family="Arial" font-size="12" fill="#f6ece9" text-anchor="middle">CHIAMA ORA</text>
+
+  <rect x="420" y="320" width="356" height="118" fill="none" stroke="#d9bdb6" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="598" y="384" font-family="Arial" font-size="13" fill="#8a655e" text-anchor="middle">nessuna prenotazione online</text>
+  <text x="598" y="402" font-family="Arial" font-size="13" fill="#8a655e" text-anchor="middle">nessun catalogo trattamenti</text>
+
+  <rect x="0" y="470" width="800" height="30" fill="#d9bdb6"/>
+  <text x="400" y="490" font-family="Arial" font-size="11" fill="#5c3a35" text-anchor="middle">© Sito realizzato anni fa — non ottimizzato per mobile</text>
+</svg>

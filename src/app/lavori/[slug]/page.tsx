@@ -89,8 +89,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
       <section className="px-5 pb-20 md:px-8 md:pb-28">
         <div className="mx-auto max-w-5xl">
           <BeforeAfterSlider
-            beforeSrc="/media/illustrative/generic-old-site.svg"
-            beforeAlt="Esempio illustrativo generico di un sito datato, non il sito reale di questa attività"
+            beforeSrc={caseStudy.beforeSrc}
+            beforeAlt={caseStudy.beforeAlt}
             beforeLabel="Prima (esempio illustrativo)"
             afterSrc={caseStudy.image}
             afterAlt={caseStudy.imageAlt}

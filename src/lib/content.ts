@@ -250,6 +250,9 @@ export type CaseStudy = {
   isConcept: boolean;
   image: string;
   imageAlt: string;
+  /** Illustrative "before" mockup for the slider — generic per sector, never the real site. */
+  beforeSrc: string;
+  beforeAlt: string;
   prima: string;
   intervento: string;
   dopo: string;
@@ -266,6 +269,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     image: "/media/portfolio/mockup-bellezza.jpg",
     imageAlt:
       "Sito web per centro estetico Bellezza a Pavia, mostrato su desktop e smartphone",
+    beforeSrc: "/media/illustrative/old-site-estetico.svg",
+    beforeAlt:
+      "Esempio illustrativo generico di un sito datato per un centro estetico, non il sito reale di questa attività",
     prima:
       "Un centro estetico come Bellezza, tipicamente, si affida a un profilo social e a un sito vetrina generico: poche foto, nessuna prenotazione online, difficile da trovare su Google per chi cerca trattamenti nella zona.",
     intervento:
@@ -283,6 +289,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     image: "/media/portfolio/mockup-damario.jpg",
     imageAlt:
       "Sito web per ristorante Da Mario con prenotazione tavolo, mostrato su laptop e smartphone",
+    beforeSrc: "/media/illustrative/old-site-ristorante-1.svg",
+    beforeAlt:
+      "Esempio illustrativo generico di un sito datato per un ristorante, con menu solo in PDF, non il sito reale di questa attività",
     prima:
       "Un ristorante come Da Mario, senza una presenza digitale curata, si affida spesso solo al passaparola e alle chiamate telefoniche per le prenotazioni, perdendo clienti che decidono dove mangiare guardando prima il sito o i social.",
     intervento:
@@ -300,6 +309,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     image: "/media/portfolio/mockup-dariccardo.jpg",
     imageAlt:
       "Sito web per ristorante Da Riccardo a Roma con il menù, mostrato su desktop e smartphone",
+    beforeSrc: "/media/illustrative/old-site-ristorante-2.svg",
+    beforeAlt:
+      "Esempio illustrativo generico di un sito datato per un ristorante, con menu non aggiornato, non il sito reale di questa attività",
     prima:
       "Un ristorante a Roma come Da Riccardo compete in una delle piazze più affollate d'Italia: senza un sito che si distingua, il rischio è restare invisibile tra decine di alternative a pochi metri di distanza.",
     intervento:
@@ -317,6 +329,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     image: "/media/portfolio/mockup-lago-resort.png",
     imageAlt:
       "Sito web per un resort sul lago con prenotazione camere, mostrato su laptop con vista lago e montagne",
+    beforeSrc: "/media/illustrative/old-site-hotel.svg",
+    beforeAlt:
+      "Esempio illustrativo generico di un sito datato per un hotel, senza galleria camere, non il sito reale di questa struttura",
     prima:
       "Una struttura come Lago Resort, senza un sito diretto forte, dipende quasi interamente dai portali di prenotazione: margini ridotti dalle commissioni e nessuna relazione diretta con l'ospite prima dell'arrivo.",
     intervento:
@@ -334,6 +349,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     image: "/media/portfolio/mockup-nexora.png",
     imageAlt:
       "Sito web per l'azienda tech Nexora con widget di chat AI integrato, mostrato su laptop",
+    beforeSrc: "/media/illustrative/old-site-tech.svg",
+    beforeAlt:
+      "Esempio illustrativo generico di un sito aziendale datato, senza chat dal vivo, non il sito reale di questa azienda",
     prima:
       "Un'azienda tech come Nexora, senza un modo per rispondere subito ai visitatori del sito, perde lead che arrivano fuori orario o che vogliono una risposta immediata prima di lasciare una richiesta demo.",
     intervento:
