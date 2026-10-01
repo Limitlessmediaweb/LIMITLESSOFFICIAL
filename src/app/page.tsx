@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
+import { UltimiLavoriSection } from "@/components/home/UltimiLavoriSection";
 import { Positioning } from "@/components/home/Positioning";
 import { CaseStudiesPreview } from "@/components/home/CaseStudiesPreview";
 import { ServicesSection } from "@/components/home/ServicesSection";
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <UltimiLavoriSection />
       <Positioning />
       <CaseStudiesPreview />
       <ServicesSection />
