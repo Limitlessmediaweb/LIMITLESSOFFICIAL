@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/ui/LegalPage";
-import { T } from "@/components/ui/T";
 import { azienda } from "@/data/azienda";
 import { pageMetadata } from "@/lib/seo";
 
@@ -63,7 +62,7 @@ export default function PrivacyPage() {
 
       <h2>6. Per quanto tempo li conserviamo</h2>
       <p>
-        Le conversazioni per un preventivo che non diventa un lavoro sono cancellate entro 12 mesi <T>{"[DA CONFERMARE]"}</T>. I dati legati a un
+        Le conversazioni per un preventivo che non diventa un lavoro sono cancellate entro 12 mesi. I dati legati a un
         lavoro svolto sono conservati per il tempo richiesto dagli obblighi fiscali (in genere 10 anni).
       </p>
 

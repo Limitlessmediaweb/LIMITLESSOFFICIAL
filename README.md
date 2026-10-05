@@ -202,7 +202,7 @@ docs/              screenshots/ e lighthouse/
 - **Manutenzione 9 €/mese**: confermare cosa è incluso.
 - **Tempi** di consegna di sito, spot e walk tour; acconto 50%; frase "partiamo dalle foto che hai già, senza sopralluogo".
 - **Frasi dei progetti**: Osteria del Borgo, VOLTA, FLUSSO (da confermare); Meridia, Saetta, Versante, Casco, Limitless da zero e i walk tour (da scrivere); nome del progetto "Casco".
-- Orari di risposta, testo "Chi c'è dietro", conservazione dei dati (12 mesi) nella privacy.
+- Orari di risposta e testo "Chi c'è dietro".
 - Logo ufficiale in `materiali/brand/`.
-- Privacy e termini: far revisionare.
+- Privacy e termini: definitivi sul sito (nota "bozza" rimossa il 05/10); consigliata comunque una verifica legale.
 - Al lancio: variabili su Vercel (vedi "Modifiche 05/10"), poi `npm run check:launch`.

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/ui/LegalPage";
-import { T } from "@/components/ui/T";
 import { azienda } from "@/data/azienda";
 import { pageMetadata } from "@/lib/seo";
 
@@ -41,8 +40,7 @@ export default function TerminiPage() {
       <p>
         I prezzi indicati sul sito sono &ldquo;a partire da&rdquo; e hanno valore indicativo. Il prezzo finale, i tempi e cosa è incluso sono definiti
         nel preventivo che ti mandiamo dopo la consulenza gratuita e diventano validi solo dopo la tua conferma scritta e il pagamento
-        dell&apos;acconto. Ogni sito include la manutenzione mensile a 9 €/mese (hosting, sicurezza, aggiornamenti e piccole modifiche).{" "}
-        <T>{"[DA CONFERMARE]"}</T>
+        dell&apos;acconto. Ogni sito include la manutenzione mensile a 9 €/mese (hosting, sicurezza, aggiornamenti e piccole modifiche).
       </p>
 
       <h2>5. Link esterni</h2>
