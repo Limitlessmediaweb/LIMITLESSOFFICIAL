@@ -35,7 +35,7 @@ export function Marquee({
   return (
     <div className={cn("group flex overflow-hidden", className)}>
       <div
-        className="flex w-max group-hover:[animation-play-state:paused] motion-reduce:!animate-none"
+        className="marquee-track flex w-max group-hover:[animation-play-state:paused] motion-reduce:!animate-none"
         style={{
           animation: `marquee-x ${speed}s linear infinite`,
           animationDirection: reverse ? "reverse" : "normal",

@@ -170,7 +170,7 @@ export function Intro({ frames, finale, finaleMobile }: { frames: string[]; fina
         onClick={skip}
         className="absolute bottom-6 right-4 z-20 min-h-11 border border-white/40 bg-black/40 px-5 font-medium backdrop-blur hover:border-white md:right-8"
       >
-        Salta
+        Salta l&apos;intro
       </button>
     </div>
   );

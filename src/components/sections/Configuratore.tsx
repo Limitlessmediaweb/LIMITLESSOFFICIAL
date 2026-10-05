@@ -6,8 +6,24 @@ import { waLink } from "@/data/contatti";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
-const ATTIVITA = ["Ristorante o bar", "Salone o estetica", "Location o eventi", "B&B o agriturismo", "Agenzia immobiliare", "Brand di prodotto", "Artigiano", "Altro"];
-const SERVIZI = ["Sito web", "Spot video", "Walk tour", "Non lo so ancora"];
+/** etichetta del chip → come suona nel messaggio */
+const ATTIVITA: Record<string, string> = {
+  "Ristorante o bar": "un ristorante o un bar",
+  "Salone o estetica": "un salone o un centro estetico",
+  "Location o eventi": "una location per eventi",
+  "B&B o agriturismo": "un B&B o un agriturismo",
+  "Agenzia immobiliare": "un'agenzia immobiliare",
+  "Brand di prodotto": "un brand di prodotti",
+  Artigiano: "un'attività artigiana",
+  Altro: "un'attività",
+};
+const SERVIZI: Record<string, string> = {
+  "Sito web": "un sito web",
+  "Spot video": "uno spot video",
+  "Walk tour": "un video walk tour",
+  "Non lo so ancora": "",
+};
+const elenco = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} e ${xs.at(-1)}`);
 
 /**
  * "Cosa ti serve?": due scelte a chip generano un messaggio WhatsApp precompilato.
@@ -25,13 +41,13 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
     });
 
   const pronto = Boolean(attivita && servizi.length);
-  const cosa =
-    servizi.length === 0
-      ? ""
-      : servizi.includes("Non lo so ancora")
-        ? "non so ancora cosa mi serve e vorrei un consiglio"
-        : `mi interessa: ${servizi.map((s) => s.toLowerCase()).join(", ")}`;
-  const messaggio = `Ciao LIMITLESS! Ho ${attivita ? `un'attività di tipo "${attivita.toLowerCase()}"` : "un'attività"} e ${cosa || "vorrei qualche informazione"}. Mi mandate un esempio?`;
+  const chi = `Ho ${attivita ? ATTIVITA[attivita] : "un'attività"}.`;
+  const cosa = servizi.includes("Non lo so ancora")
+    ? "Non so ancora cosa mi serve: mi date un consiglio?"
+    : servizi.length
+      ? `Mi interessa ${elenco(servizi.map((s) => SERVIZI[s]))}. Mi mandate un esempio?`
+      : "Vorrei qualche informazione.";
+  const messaggio = `Ciao LIMITLESS! ${chi} ${cosa}`;
 
   const chip = (active: boolean) =>
     cn(
@@ -53,7 +69,7 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
               <span className="mono mr-3 text-accent-text">1</span>Che attività hai?
             </legend>
             <div className="flex flex-wrap gap-2">
-              {ATTIVITA.map((a) => (
+              {Object.keys(ATTIVITA).map((a) => (
                 <button key={a} type="button" aria-pressed={attivita === a} onClick={() => setAttivita(a === attivita ? null : a)} className={chip(attivita === a)}>
                   {a}
                 </button>
@@ -65,7 +81,7 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
               <span className="mono mr-3 text-accent-text">2</span>Cosa ti interessa?
             </legend>
             <div className="flex flex-wrap gap-2">
-              {SERVIZI.map((s) => (
+              {Object.keys(SERVIZI).map((s) => (
                 <button key={s} type="button" aria-pressed={servizi.includes(s)} onClick={() => toggleServizio(s)} className={chip(servizi.includes(s))}>
                   {s}
                 </button>
@@ -83,6 +99,7 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
             target="_blank"
             rel="noopener"
             aria-disabled={!pronto}
+            aria-describedby={pronto ? undefined : "config-hint"}
             onClick={(e) => {
               if (!pronto) {
                 e.preventDefault();
@@ -97,7 +114,7 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
             Invia su WhatsApp
           </a>
         </div>
-        {!pronto && <p className="mt-3 text-sm text-fg-muted">Scegli un&apos;attività e almeno un servizio.</p>}
+        {!pronto && <p id="config-hint" className="mt-3 text-sm text-fg-muted">Scegli un&apos;attività e almeno un servizio.</p>}
       </div>
     </section>
   );

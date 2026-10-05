@@ -9,7 +9,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
  * Si nasconde mentre scorri verso il basso e ricompare quando risali (ScrollTrigger, niente listener di scroll).
  */
 export function MobileWhatsAppBar() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   useGSAP(() => {
     const el = ref.current!;
     let hidden = false;
@@ -28,11 +28,12 @@ export function MobileWhatsAppBar() {
   });
 
   return (
-    <div
+    <aside
       ref={ref}
+      aria-label="Contatto rapido"
       className="fixed inset-x-0 bottom-0 z-[75] border-t border-line bg-bg/85 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur lg:hidden"
     >
       <WhatsAppButton posizione="barra_mobile" className="w-full" />
-    </div>
+    </aside>
   );
 }

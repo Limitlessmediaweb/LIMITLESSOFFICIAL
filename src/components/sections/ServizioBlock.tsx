@@ -92,7 +92,7 @@ export function ServizioBlock({
         </div>
 
         <Link href={`/servizi#${s.id}`} className="mt-8 inline-flex items-center gap-2 font-semibold text-[#e8ff3a] link-line">
-          Cosa include
+          Scopri cosa include
           <ArrowRight size={16} aria-hidden />
           <span className="sr-only"> il servizio {s.nome}</span>
         </Link>

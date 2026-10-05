@@ -10,7 +10,7 @@ export const faq: Faq[] = [
     a: "Uno spot in 3-5 giorni, un walk tour in 5-7 giorni, un sito in circa una settimana. I tempi partono da quando abbiamo il materiale. [DA CONFERMARE]",
   },
   {
-    q: "Cosa ti devo mandare?",
+    q: "Cosa vi devo mandare?",
     a: "Logo, qualche foto, i tuoi contatti e due righe su cosa fai. Se non hai tutto, ti guidiamo noi passo per passo.",
   },
   {

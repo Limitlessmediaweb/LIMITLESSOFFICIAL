@@ -11,9 +11,9 @@ export function CtaFinale({ title = "Il prossimo progetto può essere il tuo.", 
   return (
     <section aria-labelledby="cta-title" className="relative isolate flex min-h-[100svh] items-center overflow-hidden">
       {showreel.desktop && (
-        <div aria-hidden className="absolute inset-0 -z-10">
-          <SmartVideo src={showreel.desktop} mobile={showreel.mobile} label="Showreel LIMITLESS" showPause={false} className="h-full w-full" />
-          <div className="absolute inset-0 bg-[rgb(8_8_8/0.78)]" />
+        <div className="absolute inset-0 -z-10">
+          <SmartVideo src={showreel.desktop} mobile={showreel.mobile} label="Showreel LIMITLESS" className="h-full w-full" controlsClassName="right-4 top-4 md:right-8 md:top-8" />
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[rgb(8_8_8/0.78)]" />
         </div>
       )}
       <div className="wrap py-28 text-[#f2f0ea]">

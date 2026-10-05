@@ -118,7 +118,7 @@ export default function ServiziPage() {
                 </Reveal>
               )}
             </div>
-            <FaqList items={s.faq.map((f) => ({ q: f.q, a: f.a }))} title={`Domande su: ${s.nome.toLowerCase()}`} />
+            <FaqList items={s.faq.map((f) => ({ q: f.q, a: f.a }))} title={s.faqTitolo} headingLevel="h3" />
           </section>
         );
       })}

@@ -26,6 +26,13 @@ export function Header() {
     return () => st.kill();
   });
 
+  // con il menu aperto il resto della pagina è inerte: il focus resta nel menu
+  useEffect(() => {
+    const others = [document.getElementById("contenuto"), document.querySelector("footer"), document.querySelector('aside[aria-label="Contatto rapido"]')];
+    others.forEach((el) => el && ((el as HTMLElement).inert = open));
+    return () => others.forEach((el) => el && ((el as HTMLElement).inert = false));
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpenAt(null);

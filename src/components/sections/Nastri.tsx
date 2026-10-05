@@ -1,4 +1,5 @@
 import { Marquee } from "@/components/motion/Marquee";
+import { MotionToggle } from "@/components/ui/MotionToggle";
 
 const SERVIZI = ["Siti web", "Spot video", "Walk tour", "Video social"];
 const SETTORI = ["Ristoranti", "Saloni", "Location", "Immobiliare", "Vino", "Moda", "Moto", "Artigiani", "B&B"];
@@ -6,7 +7,7 @@ const SETTORI = ["Ristoranti", "Saloni", "Location", "Immobiliare", "Vino", "Mod
 /** Due nastri in direzioni opposte: cosa facciamo e per chi. */
 export function Nastri() {
   return (
-    <section aria-label="Servizi e settori" className="overflow-hidden border-y border-line bg-bg py-6 md:py-8">
+    <section aria-label="Servizi e settori" className="relative overflow-hidden border-y border-line bg-bg py-6 md:py-8">
       <h2 className="sr-only">Cosa facciamo e per chi</h2>
       <p className="sr-only">Servizi: {SERVIZI.join(", ")}. Settori: {SETTORI.join(", ")}.</p>
       <div aria-hidden>
@@ -24,6 +25,7 @@ export function Nastri() {
           separator="/"
         />
       </div>
+      <MotionToggle className="absolute bottom-2 right-2 md:right-4" />
     </section>
   );
 }

@@ -12,6 +12,8 @@ export type Servizio = {
   /** Video di sfondo (cartella/slug in public/media). */
   video: { kind: "spot" | "walktour" | "siti"; slug: string };
   tempi: string;
+  /** Titolo della sezione FAQ del servizio. */
+  faqTitolo: string;
   faq: { q: string; a: string }[];
 };
 
@@ -35,6 +37,7 @@ export const servizi: Servizio[] = [
     ],
     video: { kind: "siti", slug: "nottea-desktop" },
     tempi: "Online in circa 7 giorni [DA CONFERMARE]",
+    faqTitolo: "Domande sul sito",
     faq: [
       {
         q: "Il sito è mio?",
@@ -64,6 +67,7 @@ export const servizi: Servizio[] = [
     ],
     video: { kind: "spot", slug: "saetta" },
     tempi: "Pronto in 3-5 giorni [DA CONFERMARE]",
+    faqTitolo: "Domande sugli spot",
     faq: [
       {
         q: "Serve girare un video?",
@@ -78,7 +82,7 @@ export const servizi: Servizio[] = [
   {
     id: "walktour",
     nome: "Video walk tour",
-    titolo: "Una visita, senza muoversi da casa.",
+    titolo: "Una visita completa, dal telefono.",
     ottieni:
       "Un tour video della tua location, del tuo B&B o dell'immobile in vendita. Chi guarda si immagina già lì, e ti contatta.",
     include: [
@@ -93,6 +97,7 @@ export const servizi: Servizio[] = [
     ],
     video: { kind: "walktour", slug: "attico" },
     tempi: "Pronto in 5-7 giorni [DA CONFERMARE]",
+    faqTitolo: "Domande sui walk tour",
     faq: [
       {
         q: "Servono foto professionali?",

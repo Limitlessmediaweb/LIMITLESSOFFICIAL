@@ -36,7 +36,7 @@ export function SpotCarousel({ cards }: { cards: SpotCard[] }) {
               Il tuo prodotto, come un grande brand.
             </SplitReveal>
             <p className="mt-4 max-w-[52ch] text-fg-muted">
-              Video verticali per Instagram, TikTok e WhatsApp. Tocca un video per l&apos;audio, toccalo due volte per vederlo a tutto schermo.
+              Video verticali per Instagram, TikTok e WhatsApp. Tocca un video per sentire l&apos;audio. Toccalo due volte per vederlo a schermo intero.
             </p>
           </div>
         }

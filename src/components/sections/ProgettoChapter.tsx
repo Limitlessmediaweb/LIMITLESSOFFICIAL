@@ -73,7 +73,7 @@ export function ProgettoChapter({
               </a>
             )}
             <Link href={`/lavori/${p.slug}`} className="btn link-line px-1 text-fg-muted hover:text-fg">
-              Com&apos;è fatto
+              Vedi il progetto
             </Link>
           </div>
         </div>

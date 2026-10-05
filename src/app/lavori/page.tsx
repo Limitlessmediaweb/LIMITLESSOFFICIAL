@@ -26,8 +26,10 @@ export default function LavoriPage() {
         <SplitReveal as="h1" immediate className="max-w-[14ch] text-display-xl">
           Lavori
         </SplitReveal>
-        <p className="mt-6 max-w-[56ch] text-lead text-fg-muted">
-          Siti, spot e walk tour. {CONCEPT_LINE}
+        <p className="mt-6 max-w-[56ch] text-lead text-fg-muted">Siti, spot e walk tour. Guarda i video e scegli quello che fa per te.</p>
+        <p className="mt-3 flex max-w-[60ch] items-start gap-3 text-fg-muted">
+          <span className="tag-concept mt-0.5 shrink-0">Concept</span>
+          <span>{CONCEPT_LINE}</span>
         </p>
         <div className="mt-12">
           <LavoriGrid cards={cards} />
