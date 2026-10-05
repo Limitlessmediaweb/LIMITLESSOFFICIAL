@@ -5,7 +5,8 @@ Concept di design: **"La sala di proiezione"**. I lavori non si descrivono, si g
 
 Stack: Next.js 16 (App Router) · TypeScript strict · Tailwind CSS 4 (token in `@theme`) · GSAP 3.15 (ScrollTrigger, SplitText, ScrambleText, DrawSVG, Flip: tutti gratuiti da GSAP 3.13) · Lenis · `next/font` · `lucide-react`.
 
-> Il vecchio sito resta online sul suo progetto Vercel. **Questo progetto non è ancora stato pubblicato.**
+> Repository: `Limitlessmediaweb/LIMITLESSOFFICIAL`, ramo `main`. Il sito precedente è conservato nel ramo `sito-precedente`.
+> Su Vercel impostare le variabili d'ambiente (vedi sotto): senza `NEXT_PUBLIC_ALLOW_INDEXING=true` il sito è in `noindex`.
 
 ---
 
@@ -129,7 +130,9 @@ docs/              screenshots/ e lighthouse/
 
 - Usate: `design-taste-frontend` (taste-skill). Le regole sono state applicate (niente trattini lunghi nei testi visibili, un solo accento, una sola etichetta per l'intento "contatto": "Scrivici su WhatsApp").
 - Non presente: `frontend-design`.
-- Non usate in questa sessione per contenere i tempi: `ui-ux-pro-max`, `scroll-cinematic`, `modern-web-guidance`, `design:design-system`, `design:ux-copy`, `stop-slop`, le skill `searchfit-seo:*`, `design:accessibility-review`, `design:design-critique`, `engineering:code-review`. I controlli equivalenti (SEO on-page, schema, alt, contrasto, Lighthouse) sono stati fatti a mano o con script: vedi sotto.
+- `design:ux-copy`: revisione di tutti i testi (FAQ dal punto di vista del cliente, messaggio del configuratore in italiano naturale, etichette dei link coerenti).
+- `design:accessibility-review`: audit WCAG 2.1 AA con axe-core su tutte le pagine (temi chiaro/scuro, mobile/desktop, con e senza reduced motion): **0 violazioni**. Test da tastiera di skip link, menu mobile (resto della pagina inerte), lightbox (focus, frecce, Esc), carosello, accordion. Aggiunti i pulsanti pausa per nastri e showreel finale (WCAG 2.2.2).
+- Non usate: `ui-ux-pro-max`, `scroll-cinematic`, `modern-web-guidance`, `design:design-system`, `stop-slop`, le skill `searchfit-seo:*`, `design:design-critique`, `engineering:code-review`. I controlli equivalenti (SEO on-page, schema, alt, contrasto, Lighthouse) sono stati fatti a mano o con script: vedi sotto.
 
 ## Verifica
 
