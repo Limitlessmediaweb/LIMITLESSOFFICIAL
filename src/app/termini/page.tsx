@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/ui/LegalPage";
 import { T } from "@/components/ui/T";
-import { contatti } from "@/data/contatti";
+import { azienda } from "@/data/azienda";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -16,8 +16,9 @@ export default function TerminiPage() {
     <LegalPage title="Termini d'uso" updated="5 ottobre 2026">
       <h2>1. Chi siamo</h2>
       <p>
-        Questo sito è gestito da LIMITLESS (<T fallback="titolare in arrivo">{contatti.titolare}</T>, P.IVA <T fallback="in arrivo">{contatti.piva}</T>
-        ). Usando il sito accetti questi termini.
+        Questo sito è gestito da <strong>{azienda.ragioneSociale}</strong>, P.IVA {azienda.piva}, con sede a {azienda.sede.comune} (
+        {azienda.sede.provincia}), Italia. Email <a href={`mailto:${azienda.email}`}>{azienda.email}</a>, PEC{" "}
+        <a href={`mailto:${azienda.pec}`}>{azienda.pec}</a>. Usando il sito accetti questi termini.
       </p>
 
       <h2>2. Uso del sito</h2>
@@ -39,12 +40,14 @@ export default function TerminiPage() {
       <h2>4. Preventivi e prezzi</h2>
       <p>
         I prezzi indicati sul sito sono &ldquo;a partire da&rdquo; e hanno valore indicativo. Il prezzo finale, i tempi e cosa è incluso sono definiti
-        nel preventivo che ti mandiamo e diventano validi solo dopo la tua conferma scritta e il pagamento dell&apos;acconto. <T>{"[DA CONFERMARE]"}</T>
+        nel preventivo che ti mandiamo dopo la consulenza gratuita e diventano validi solo dopo la tua conferma scritta e il pagamento
+        dell&apos;acconto. Ogni sito include la manutenzione mensile a 9 €/mese (hosting, sicurezza, aggiornamenti e piccole modifiche).{" "}
+        <T>{"[DA CONFERMARE]"}</T>
       </p>
 
       <h2>5. Link esterni</h2>
       <p>
-        Il sito contiene link a siti di terzi (per esempio i siti dimostrativi dei progetti concept, WhatsApp e Instagram). Non siamo responsabili dei
+        Il sito contiene link a siti di terzi (per esempio i siti dimostrativi dei progetti concept, WhatsApp, Instagram e TikTok). Non siamo responsabili dei
         loro contenuti né delle loro regole sulla privacy.
       </p>
 
@@ -60,8 +63,8 @@ export default function TerminiPage() {
 
       <h2>8. Legge applicabile e contatti</h2>
       <p>
-        Questi termini sono regolati dalla legge italiana. Per domande scrivi a <a href={`mailto:${contatti.email}`}>{contatti.email}</a> o alla PEC{" "}
-        {contatti.pec}.
+        Questi termini sono regolati dalla legge italiana. Per domande scrivi a <a href={`mailto:${azienda.email}`}>{azienda.email}</a> o alla PEC{" "}
+        <a href={`mailto:${azienda.pec}`}>{azienda.pec}</a>.
       </p>
     </LegalPage>
   );

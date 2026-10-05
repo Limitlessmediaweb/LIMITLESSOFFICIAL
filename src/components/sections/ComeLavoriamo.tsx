@@ -6,7 +6,10 @@ import { DrawLine } from "@/components/motion/DrawLine";
 import { T } from "@/components/ui/T";
 
 const PASSI = [
-  { t: "Ci scrivi su WhatsApp", d: "Ci racconti la tua attività in due righe. Rispondiamo in giornata. [DA CONFERMARE]" },
+  {
+    t: "Consulenza gratuita",
+    d: "15 minuti su WhatsApp o in chiamata. Capiamo cosa serve alla tua attività e ti diamo un prezzo chiaro.",
+  },
   { t: "Ti mostriamo un esempio", d: "Prepariamo un'anteprima pensata per un'attività come la tua. Così vedi la direzione prima di decidere." },
   { t: "Confermi con un acconto", d: "Il 50% per partire, il resto alla consegna. Nessun costo nascosto." },
   {

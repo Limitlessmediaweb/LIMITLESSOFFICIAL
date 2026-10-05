@@ -1,7 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { HeroVideo } from "./HeroVideo";
 import { MagneticButton } from "@/components/motion/MagneticButton";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
 import { CropMarks, Rec } from "@/components/ui/Viewfinder";
 import { showreel } from "@/lib/media";
 import { HeroCopy } from "./HeroCopy";
@@ -41,11 +41,14 @@ export function Hero() {
           <p data-hero-fade className="mt-6 max-w-[46ch] text-lead text-white/80">
             Siti web animati, spot video e walk tour per attività locali e brand. Pronti in pochi giorni.
           </p>
-          <div data-hero-fade className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            {/* su mobile e tablet il pulsante WhatsApp è la barra fissa in basso: qui non lo ripetiamo */}
+          <div data-hero-fade className="mt-7">
+            <BadgeConsulenza onMedia />
+          </div>
+          <div data-hero-fade className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+            {/* su mobile e tablet la CTA è la barra fissa in basso ("Consulenza gratuita"): qui non la ripetiamo */}
             <div className="hidden lg:block">
               <MagneticButton>
-                <WhatsAppButton posizione="hero" />
+                <ConsulenzaButton posizione="hero" />
               </MagneticButton>
             </div>
             <a href="#lavori" className="btn btn-on-media">

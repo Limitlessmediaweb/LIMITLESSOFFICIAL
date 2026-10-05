@@ -10,6 +10,47 @@ Stack: Next.js 16 (App Router) · TypeScript strict · Tailwind CSS 4 (token in 
 
 ---
 
+## Modifiche 05/10
+
+**1. Dati legali e social.** Tutti i dati sono in `src/data/azienda.ts` (titolare Riccardo Pasquini, P.IVA 03051470189, sede, email, PEC, telefono, Instagram, TikTok) e si usano solo da lì (`contatti.ts` è stato eliminato). Nessun regime fiscale indicato.
+- Footer su tutte le pagine: "LIMITLESS di Riccardo Pasquini · P.IVA 03051470189 · Miradolo Terme (PV) · Disponibile online in tutta Italia", email, PEC, telefono, icone Instagram e TikTok, link a Privacy, Termini e Cookie.
+- TikTok aggiunto ovunque c'è Instagram: menu mobile, footer, /contatti, CTA finale, JSON-LD `sameAs`. Evento `social_click` con `{ rete, posizione }`. Icone ufficiali da Simple Icons (`components/ui/Social.tsx`).
+- **TikTok: handle e link da confermare** (`azienda.tiktok`, ora `@limitlessmediaweb`).
+- /privacy e /termini con titolare, sede, P.IVA, email e PEC. Nuova sezione **Cookie** nella privacy (`/privacy#cookie`): solo cookie e strumenti tecnici (tema scelto, intro già vista), nessun banner. Plausible non usa cookie; nel sito non ci sono altri script di terze parti.
+- JSON-LD `Organization` e `ProfessionalService`: `legalName`, `vatID` IT03051470189, email, telefono, `address` (solo Miradolo Terme, PV, IT), `areaServed` Italia.
+- Nelle sezioni commerciali il comune non compare (solo "Disponibile online in tutta Italia"): si legge solo nel footer e nelle pagine legali.
+
+**2. Prezzi.** Un solo prezzo "a partire da" per servizio: sito **da 500 €**, spot **da 99 €**, walk tour **da 99 €**, manutenzione **9 €/mese**, automazioni su richiesta (`src/data/servizi.ts`). Sotto i prezzi, sempre: "Il prezzo finale dipende dal progetto: te lo diciamo dopo la consulenza gratuita, senza sorprese." Tolti i pacchetti a prezzo preciso, le cifre vecchie e ogni frase sulla proprietà del sito o del dominio; al loro posto la frase sulla manutenzione a 9 €/mese (contenuto da confermare). FAQ "Il sito è mio?" sostituita da "Ci sono costi mensili?". JSON-LD `OfferCatalog` aggiornato.
+
+**3. Consulenza gratuita.** CTA principale "Prenota la consulenza gratuita" (componente `ConsulenzaButton`) con messaggio WhatsApp "Ciao! Vorrei una consulenza gratuita per la mia attività." Badge "Consulenza gratuita · senza impegno" nell'hero, nei servizi, nella CTA finale, in /contatti e nelle pagine progetto. Versione breve "Consulenza gratuita" nell'header e nella barra fissa mobile. Primo passo di "Come lavoriamo" = consulenza di 15 minuti. Nuova prima FAQ "La consulenza è davvero gratuita?". Il configuratore genera "Ciao! Vorrei una consulenza gratuita per la mia attività: ho …". Evento `consulenza_click` con la posizione.
+
+**4. Video location eventi rimosso.** Eliminati voce in `progetti.ts`, file in `public/media/walktour/` e in `materiali/`, poster, riga in `poster-times.txt` e le due clip nello showreel (sostituite con Villa Chiara e Camera hotel; showreel rigenerato). Non era nell'intro, nella sitemap né nelle immagini OG. Restano 3 walk tour: il selettore a chip funziona senza spazi vuoti.
+
+**5. Bug della registrazione di ORDITO.**
+- *Difetto*: lo scroll era fatto con `window.scrollTo` a ogni frame, che litigava con lo smooth scroll Lenis del sito e con le sezioni fissate di GSAP. Risultato: sezioni fuori ordine (la maglietta compariva prima dell'esploso, poi si tornava alla giacca), esploso quasi invisibile, immagini lazy non caricate (riquadri bianchi) e ultimi 3 secondi fermi su una pagina vuota, senza mai arrivare al footer.
+- *Soluzione* (`scripts/media/record-sites.ts` riscritto): cattura con CDP `Page.startScreencast` (DPR 2) e ricostruzione a 30 fps costanti dai timestamp; attesa di intro, font e immagini; scroll di riscaldamento fino in fondo e ritorno su; scrollbar nascosta; scroll guidato da un ciclo `requestAnimationFrame` nella pagina che invia piccoli eventi di rotellina a Lenis (o muove lo scroll nativo di pochi pixel per frame sui siti senza Lenis), con easing; sezioni fissate più lente e l'esploso di ORDITO 5 volte più lento. Calibrazione automatica del moltiplicatore della rotellina (ORDITO lo riduceva a 0,9 e la registrazione si fermava al 90%).
+- Rifatte con lo stesso metodo le registrazioni di tutti e 5 i siti, ricompresse (H.264, yuv420p, +faststart) con poster nuovi.
+
+**6. Controllo completo (05/10).**
+- Indicizzazione: con `NEXT_PUBLIC_ALLOW_INDEXING=true` `robots.txt` permette tutto e punta a `https://www.limitlessmedia.it/sitemap.xml`, il meta robots è `index, follow`, sitemap e canonical usano `https://www.limitlessmedia.it` (con www).
+- Link: 39 link unici controllati (`node scripts/check-links.mjs`): pagine interne, ancore, "Apri il sito live", WhatsApp, Instagram, TikTok, email, PEC, telefono. 0 errori, nessun `example.com` o `localhost`.
+- Console: 0 errori e 0 warning (anche di idratazione) su tutte le pagine.
+- Video: `muted` + `playsinline`, play da JS solo se visibile, massimo 2 insieme, Risparmio dati e reduced motion = solo poster + pulsante play. Il più pesante è 3,03 MB (walk tour Attico); spot ≤ 2 MB, registrazioni dei siti ≤ 1,5 MB.
+- Accessibilità: axe-core 0 violazioni su tutte le pagine (chiaro/scuro, mobile/desktop). Lighthouse Accessibility 100.
+- SEO: title e description unici, OG per ogni pagina e progetto, favicon, una sola H1 per pagina, 404 con status 404.
+- Testi: nessuna cifra, cliente o recensione inventata; ogni concept ha il tag "Concept".
+- Prestazioni: i titoli animati (SplitText) ora si preparano solo quando stanno per entrare nello schermo, ed è stato tolto un `ScrollTrigger.refresh()` doppio al `load`: TBT della home da 280-400 ms a ~100 ms.
+
+### Variabili da impostare su Vercel (Production)
+
+| Variabile | Valore |
+|---|---|
+| `NEXT_PUBLIC_ALLOW_INDEXING` | `true` |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.limitlessmedia.it` |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `limitlessmedia.it` (solo se usi Plausible) |
+
+Dopo averle salvate serve un nuovo deploy (sono variabili `NEXT_PUBLIC_`, entrano nella build).
+
 ## Avvio
 
 ```bash
@@ -128,7 +169,7 @@ docs/              screenshots/ e lighthouse/
 
 ## Skill usate
 
-- Usate: `design-taste-frontend` (taste-skill). Le regole sono state applicate (niente trattini lunghi nei testi visibili, un solo accento, una sola etichetta per l'intento "contatto": "Scrivici su WhatsApp").
+- Usate: `design-taste-frontend` (taste-skill). Le regole sono state applicate (niente trattini lunghi nei testi visibili, un solo accento, una sola etichetta per l'intento "contatto": "Prenota la consulenza gratuita", breve "Consulenza gratuita").
 - Non presente: `frontend-design`.
 - `design:ux-copy`: revisione di tutti i testi (FAQ dal punto di vista del cliente, messaggio del configuratore in italiano naturale, etichette dei link coerenti).
 - `design:accessibility-review`: audit WCAG 2.1 AA con axe-core su tutte le pagine (temi chiaro/scuro, mobile/desktop, con e senza reduced motion): **0 violazioni**. Test da tastiera di skip link, menu mobile (resto della pagina inerte), lightbox (focus, frecce, Esc), carosello, accordion. Aggiunti i pulsanti pausa per nastri e showreel finale (WCAG 2.2.2).
@@ -144,8 +185,10 @@ docs/              screenshots/ e lighthouse/
 
   | Pagina | Performance | Accessibility | Best Practices | SEO | LCP simulato | CLS | TBT | Peso |
   |---|---|---|---|---|---|---|---|---|
-  | Home | 91-92 | 100 | 100 | 100 | 3,1-3,5 s | 0 | 90-140 ms | 455 KB |
-  | /lavori/nottea | 96-97 | 100 | 100 | 100 | 2,6-2,7 s | 0 | 50 ms | 1,4 MB (lo spot parte subito) |
+  | Home | 90-93 | 100 | 100 | 100 | 3,1-3,5 s | 0-0,023 | 90-120 ms | 462 KB |
+  | /lavori/nottea | 98-100 | 100 | 100 | 100 | 1,8-2,2 s | 0,001 | 30-110 ms | 1,4 MB (lo spot parte subito) |
+
+  (Misure del 05/10, quattro prove consecutive.)
 
   L'LCP **osservato** è ~0,17 s; quello simulato da Lighthouse (rete 4G lenta) resta sopra i 2,5 s sulla home perché nella simulazione condivide la banda con JS e font. Con `NEXT_PUBLIC_ALLOW_INDEXING=false` la SEO scende a ~66 solo per il `noindex` voluto.
 - Intro testata: 3,9 s compreso il caricamento, 0,7 s con reduced motion, una sola volta per sessione, pulsante "Salta" funzionante.
@@ -154,13 +197,12 @@ docs/              screenshots/ e lighthouse/
 
 ## Da completare prima del lancio
 
-Lancia `npm run check:placeholders` per l'elenco preciso con file e riga. In sintesi:
-
-- **Dati legali**: P.IVA, titolare del trattamento, fornitore email, tempi di conservazione (`contatti.ts`, privacy, termini). Far revisionare privacy e termini.
-- **Prezzi e tempi** di sito, spot e walk tour, manutenzione 29 €/mese (`servizi.ts`, `faq.ts`, "Come lavoriamo").
-- **Frasi dei progetti**: Osteria del Borgo, VOLTA, FLUSSO da confermare; frasi di Meridia, Saetta, Versante, Casco, Limitless da zero e di tutti i walk tour da scrivere; nome del progetto "Casco".
-- **Zona servita** e **orari di risposta** (`contatti.ts`).
-- Testo "Chi c'è dietro" da completare con Riccardo.
-- Frase sui walk tour "partiamo dalle foto che hai già, senza sopralluogo".
+`npm run check:placeholders` li elenca tutti con file e riga (30 al 05/10). In sintesi:
+- **TikTok**: handle e link del profilo (`azienda.tiktok`, ora provvisorio `@limitlessmediaweb`).
+- **Manutenzione 9 €/mese**: confermare cosa è incluso.
+- **Tempi** di consegna di sito, spot e walk tour; acconto 50%; frase "partiamo dalle foto che hai già, senza sopralluogo".
+- **Frasi dei progetti**: Osteria del Borgo, VOLTA, FLUSSO (da confermare); Meridia, Saetta, Versante, Casco, Limitless da zero e i walk tour (da scrivere); nome del progetto "Casco".
+- Orari di risposta, testo "Chi c'è dietro", conservazione dei dati (12 mesi) nella privacy.
 - Logo ufficiale in `materiali/brand/`.
-- Al lancio: `NEXT_PUBLIC_ALLOW_INDEXING=true`, `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=limitlessmedia.it`, poi `npm run check:launch`.
+- Privacy e termini: far revisionare.
+- Al lancio: variabili su Vercel (vedi "Modifiche 05/10"), poi `npm run check:launch`.

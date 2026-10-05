@@ -1,9 +1,8 @@
-import { AtSign } from "lucide-react";
 import { SmartVideo } from "@/components/media/SmartVideo";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { SplitReveal } from "@/components/motion/SplitReveal";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { contatti } from "@/data/contatti";
+import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
+import { SocialIcon, SocialLink } from "@/components/ui/Social";
 import { showreel } from "@/lib/media";
 
 /** CTA finale a tutto schermo sopra lo showreel velato. */
@@ -20,14 +19,19 @@ export function CtaFinale({ title = "Il prossimo progetto può essere il tuo.", 
         <SplitReveal id="cta-title" className="max-w-[13ch] text-display-xl">
           {title}
         </SplitReveal>
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <BadgeConsulenza onMedia className="mt-8" />
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
           <MagneticButton>
-            <WhatsAppButton posizione="cta_finale" messaggio={messaggio} className="w-full sm:w-auto" />
+            <ConsulenzaButton posizione="cta_finale" messaggio={messaggio} className="w-full sm:w-auto" />
           </MagneticButton>
-          <a href={contatti.instagramUrl} target="_blank" rel="noopener" className="btn btn-on-media">
-            <AtSign size={18} aria-hidden />
-            Seguici su Instagram
-          </a>
+          <SocialLink rete="instagram" posizione="cta_finale" className="btn btn-on-media">
+            <SocialIcon rete="instagram" />
+            Instagram
+          </SocialLink>
+          <SocialLink rete="tiktok" posizione="cta_finale" className="btn btn-on-media">
+            <SocialIcon rete="tiktok" />
+            TikTok
+          </SocialLink>
         </div>
       </div>
     </section>

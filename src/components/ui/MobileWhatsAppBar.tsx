@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
-import { WhatsAppButton } from "./WhatsAppButton";
+import { ConsulenzaButton } from "./ConsulenzaButton";
 
 /**
  * Barra fissa in basso su mobile con il pulsante WhatsApp.
@@ -33,7 +33,7 @@ export function MobileWhatsAppBar() {
       aria-label="Contatto rapido"
       className="fixed inset-x-0 bottom-0 z-[75] border-t border-line bg-bg/85 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur lg:hidden"
     >
-      <WhatsAppButton posizione="barra_mobile" className="w-full" />
+      <ConsulenzaButton posizione="barra_mobile" breve className="w-full" />
     </aside>
   );
 }

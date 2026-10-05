@@ -127,14 +127,6 @@ export const progetti: Progetto[] = [
   { slug: "attico", nome: "Attico", tipo: "walktour", settore: "Appartamento", frase: "[DA COMPLETARE]", concept: true },
   { slug: "villa-chiara", nome: "Villa Chiara", tipo: "walktour", settore: "Villa", frase: "[DA COMPLETARE]", concept: true },
   { slug: "camera-hotel", nome: "Camera hotel", tipo: "walktour", settore: "Hotel", frase: "[DA COMPLETARE]", concept: true },
-  {
-    slug: "location-eventi",
-    nome: "Location eventi",
-    tipo: "walktour",
-    settore: "Location per eventi",
-    frase: "[DA COMPLETARE]",
-    concept: true,
-  },
 ];
 
 export const sitoSpot = progetti.filter((p) => p.tipo === "sito-spot");

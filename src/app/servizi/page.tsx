@@ -7,8 +7,9 @@ import { FaqList } from "@/components/sections/Faq";
 import { CtaFinale } from "@/components/sections/CtaFinale";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { T } from "@/components/ui/T";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { automazioni, euro, servizi } from "@/data/servizi";
+import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
+import { NotaPrezzo, Prezzo } from "@/components/ui/Prezzo";
+import { automazioni, MANUTENZIONE_MESE, MANUTENZIONE_TESTO, servizi } from "@/data/servizi";
 import { media } from "@/lib/media";
 import { clean } from "@/lib/placeholder";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
@@ -17,7 +18,7 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = pageMetadata({
   title: "Servizi e prezzi | LIMITLESS",
   description:
-    "Siti web da 700 €, spot video da 119 €, walk tour da 149 €. Cosa include ogni servizio, tempi di consegna e domande frequenti. Preventivo su WhatsApp.",
+    "Siti web da 500 €, spot video e walk tour da 99 €, manutenzione 9 €/mese. Cosa include ogni servizio e domande frequenti. Consulenza gratuita.",
   path: "/servizi",
 });
 
@@ -27,13 +28,18 @@ export default function ServiziPage() {
     "@type": "OfferCatalog",
     name: "Servizi LIMITLESS",
     url: `${SITE_URL}/servizi`,
-    itemListElement: servizi.flatMap((s) =>
-      s.prezzi.map((pr) => ({
+    itemListElement: [
+      ...servizi.map((s) => ({
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: `${s.nome}: ${pr.voce}`, provider: { "@id": `${SITE_URL}/#organization` } },
-        priceSpecification: { "@type": "PriceSpecification", minPrice: pr.da, priceCurrency: "EUR" },
+        itemOffered: { "@type": "Service", name: s.nome, provider: { "@id": `${SITE_URL}/#organization` } },
+        priceSpecification: { "@type": "PriceSpecification", minPrice: s.da, priceCurrency: "EUR" },
       })),
-    ),
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Manutenzione del sito", provider: { "@id": `${SITE_URL}/#organization` } },
+        priceSpecification: { "@type": "UnitPriceSpecification", price: MANUTENZIONE_MESE, priceCurrency: "EUR", unitText: "mese" },
+      },
+    ],
   };
 
   return (
@@ -43,8 +49,10 @@ export default function ServiziPage() {
           Servizi e prezzi
         </SplitReveal>
         <p className="mt-6 max-w-[52ch] text-lead text-fg-muted">
-          Tre servizi, prezzi &ldquo;a partire da&rdquo; e nessuna sorpresa. Ti mandiamo il preventivo esatto su WhatsApp, di solito in giornata.
+          Tre servizi, prezzi sempre &ldquo;a partire da&rdquo;. Si comincia con una consulenza gratuita di 15 minuti.
         </p>
+        <NotaPrezzo className="mt-5 max-w-[60ch] text-base" />
+        <BadgeConsulenza className="mt-6" />
         <nav aria-label="Vai al servizio" className="mt-10 flex flex-wrap gap-2">
           {servizi.map((s) => (
             <a key={s.id} href={`#${s.id}`} className="min-h-11 border border-line px-4 py-2.5 font-semibold hover:border-line-strong">
@@ -67,19 +75,10 @@ export default function ServiziPage() {
                 </h2>
                 <p className="mt-5 max-w-[50ch] text-lead text-fg-muted">{s.ottieni}</p>
 
-                <dl className="mt-10 grid gap-6 sm:grid-cols-2">
-                  {s.prezzi.map((pr) => (
-                    <div key={pr.voce} className="border-t border-line-strong pt-4">
-                      <dt className="text-fg-muted">
-                        {pr.voce} {pr.nota && <T>{pr.nota}</T>}
-                      </dt>
-                      <dd className="mt-1 font-display text-5xl font-extrabold md:text-6xl">
-                        <span className="mr-1.5 align-top font-sans text-base font-medium text-fg-muted">da</span>
-                        {euro(pr.da)}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
+                <div className="mt-10 border-t border-line-strong pt-5">
+                  <Prezzo da={s.da} />
+                  <NotaPrezzo className="mt-4" />
+                </div>
 
                 <h3 className="mt-10 font-sans text-lg font-semibold tracking-normal">Cosa include</h3>
                 <ul className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -96,7 +95,8 @@ export default function ServiziPage() {
                   <strong className="font-semibold text-fg">Tempi:</strong> <T>{s.tempi}</T>
                 </p>
                 <div className="mt-8">
-                  <WhatsAppButton posizione={`servizi_${s.id}`} messaggio={`Ciao LIMITLESS! Vorrei un preventivo per: ${s.nome.toLowerCase()}.`} />
+                  <ConsulenzaButton posizione={`servizi_${s.id}`} messaggio={`Ciao! Vorrei una consulenza gratuita per: ${s.nome.toLowerCase()}.`} />
+                  <p className="mt-3 text-sm text-fg-muted">Consulenza gratuita, senza impegno.</p>
                 </div>
               </div>
 
@@ -124,9 +124,14 @@ export default function ServiziPage() {
       })}
 
       <section className="wrap border-t border-line py-16">
-        <p className="text-lead text-fg-muted">{automazioni}</p>
+        <div className="grid gap-4 text-lead text-fg-muted md:grid-cols-2 md:gap-12">
+          <p>
+            <T>{MANUTENZIONE_TESTO}</T>
+          </p>
+          <p>{automazioni}</p>
+        </div>
       </section>
-      <CtaFinale messaggio="Ciao LIMITLESS! Ho visto i servizi e vorrei un preventivo." />
+      <CtaFinale />
       <JsonLd data={offerJsonLd} />
       <JsonLd
         data={{

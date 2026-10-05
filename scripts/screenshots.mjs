@@ -41,6 +41,17 @@ for (const [dname, viewport, mobile] of DEVICES) {
     const page = await ctx.newPage();
     for (const [name, path] of PAGES) {
       const res = await page.goto(BASE + path, { waitUntil: "networkidle" });
+      if (reduce) {
+        // scorre tutta la pagina per far caricare i poster lazy, poi torna su
+        await page.evaluate(async () => {
+          for (let y = 0; y < document.documentElement.scrollHeight; y += innerHeight * 0.8) {
+            window.scrollTo(0, y);
+            await new Promise((r) => setTimeout(r, 120));
+          }
+          window.scrollTo(0, 0);
+        });
+        await page.waitForLoadState('networkidle');
+      }
       await page.waitForTimeout(reduce ? 400 : 2200);
       const file = join(OUT, `${name}-${dname}${reduce ? "-full" : ""}.png`);
       await page.screenshot({ path: file, fullPage: reduce });

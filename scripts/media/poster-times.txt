@@ -8,7 +8,6 @@ spot/villa-lume 16
 spot/limitless-da-zero 10.5
 spot/casco 2
 walktour/attico 10
-walktour/location-eventi 1
 spot/versante 16
 walktour/villa-chiara 0.5
 walktour/camera-hotel 0.5

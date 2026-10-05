@@ -21,7 +21,7 @@ R="$ROOT/.cache/recordings"
 
 # file | inizio (s)
 HORIZONTAL=(
-  "$M/walktour/location-eventi.mp4|0.4"
+  "$M/walktour/villa-chiara.mp4|7.2"
   "$M/spot/casco.mp4|2.0"
   "$R/nottea-desktop.mp4|0.2"
   "$M/spot/meridia.mp4|16.2"
@@ -34,7 +34,7 @@ HORIZONTAL=(
   "$R/ordito-desktop.mp4|5.0"
   "$M/spot/versante.mp4|12.0"
   "$R/flusso-desktop.mp4|0.3"
-  "$M/walktour/location-eventi.mp4|5.2"
+  "$M/walktour/camera-hotel.mp4|3.2"
 )
 
 VERTICAL=(

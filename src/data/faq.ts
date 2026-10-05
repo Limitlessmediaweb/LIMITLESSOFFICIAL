@@ -1,9 +1,15 @@
+import { MANUTENZIONE_MESE } from "./servizi";
+
 export type Faq = { q: string; a: string };
 
 export const faq: Faq[] = [
   {
+    q: "La consulenza è davvero gratuita?",
+    a: "Sì. Ci racconti la tua attività, ti mostriamo esempi adatti e ti diciamo quanto costa. Decidi tu se partire, senza nessun obbligo.",
+  },
+  {
     q: "Quanto costa un sito, uno spot o un walk tour?",
-    a: "Un sito parte da 700 €, uno spot da 119 €, un walk tour da 149 €. Il prezzo finale dipende da cosa ti serve: scrivici e ti mandiamo un preventivo chiaro, senza sorprese. [DA CONFERMARE]",
+    a: "Un sito parte da 500 €, uno spot da 99 €, un walk tour da 99 €. Il prezzo finale dipende dal progetto: te lo diciamo dopo la consulenza gratuita, senza sorprese.",
   },
   {
     q: "In quanto tempo è pronto?",
@@ -19,7 +25,7 @@ export const faq: Faq[] = [
   },
   {
     q: "Posso vedere un esempio prima di decidere?",
-    a: "Sì. Ti mostriamo un esempio pensato per un'attività come la tua, così vedi la direzione prima di confermare.",
+    a: "Sì. Nella consulenza gratuita ti mostriamo esempi pensati per un'attività come la tua, così vedi la direzione prima di confermare.",
   },
   {
     q: "Come funziona il pagamento?",
@@ -30,8 +36,8 @@ export const faq: Faq[] = [
     a: "Due giri di revisioni sono sempre inclusi. Di solito bastano e avanzano.",
   },
   {
-    q: "Il sito è mio? Chi lo aggiorna?",
-    a: "Il sito è tuo. Per aggiornamenti e assistenza c'è la manutenzione da 29 € al mese, oppure ci chiedi le modifiche quando servono. [DA CONFERMARE]",
+    q: "Ci sono costi mensili?",
+    a: `Sì, solo la manutenzione: ${MANUTENZIONE_MESE} €/mese. Comprende hosting, sicurezza, aggiornamenti e piccole modifiche, così il sito resta sempre online e veloce senza che tu debba pensarci.`,
   },
   {
     q: "I video vanno bene per Instagram e TikTok?",

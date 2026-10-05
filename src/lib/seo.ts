@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { contatti } from "@/data/contatti";
+import { azienda } from "@/data/azienda";
 import { clean } from "@/lib/placeholder";
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.limitlessmedia.it").replace(/\/$/, "");
@@ -39,9 +39,16 @@ export function pageMetadata({
   };
 }
 
-/** JSON-LD dell'organizzazione: Organization + WebSite + ProfessionalService (senza indirizzo). */
+/** JSON-LD dell'organizzazione: Organization + WebSite + ProfessionalService (indirizzo: solo comune e provincia). */
 export function organizationJsonLd() {
-  const sameAs = [contatti.instagramUrl];
+  const sameAs = [azienda.instagram.url, azienda.tiktok.url];
+  const telephone = azienda.telefono.replace(/\s/g, "");
+  const address = {
+    "@type": "PostalAddress",
+    addressLocality: azienda.sede.comune,
+    addressRegion: azienda.sede.provincia,
+    addressCountry: azienda.sede.paese,
+  };
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -49,10 +56,13 @@ export function organizationJsonLd() {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         name: SITE_NAME,
+        legalName: azienda.ragioneSociale,
+        vatID: azienda.vatID,
         url: SITE_URL,
         logo: `${SITE_URL}/brand/logo.png`,
-        email: contatti.email,
-        telephone: contatti.telefono.replace(/\s/g, ""),
+        email: azienda.email,
+        telephone,
+        address,
         sameAs,
       },
       {
@@ -67,17 +77,17 @@ export function organizationJsonLd() {
         "@type": "ProfessionalService",
         "@id": `${SITE_URL}/#service`,
         name: SITE_NAME,
+        legalName: azienda.ragioneSociale,
+        vatID: azienda.vatID,
         url: SITE_URL,
         image: `${SITE_URL}/opengraph-image`,
         description:
-          "Siti web animati, spot video promo e video walk tour per attività locali, location, immobili e piccoli brand.",
-        telephone: contatti.telefono.replace(/\s/g, ""),
-        email: contatti.email,
-        areaServed: contatti.areaServed.map((name) => ({
-          "@type": name === "Italia" ? "Country" : "AdministrativeArea",
-          name,
-        })),
-        priceRange: "€€",
+          "Siti web animati, spot video promo e video walk tour per attività locali, location, immobili e piccoli brand. Consulenza gratuita.",
+        telephone,
+        email: azienda.email,
+        address,
+        areaServed: { "@type": "Country", name: azienda.areaServed },
+        priceRange: "€",
         parentOrganization: { "@id": `${SITE_URL}/#organization` },
         sameAs,
       },

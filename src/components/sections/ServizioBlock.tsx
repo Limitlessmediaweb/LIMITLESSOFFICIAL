@@ -5,7 +5,8 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { SmartVideo } from "@/components/media/SmartVideo";
 import { T } from "@/components/ui/T";
-import { euro, type Servizio } from "@/data/servizi";
+import type { Servizio } from "@/data/servizi";
+import { Prezzo } from "@/components/ui/Prezzo";
 import type { MediaSource } from "@/lib/media";
 import { cn } from "@/lib/cn";
 
@@ -76,19 +77,7 @@ export function ServizioBlock({
               </li>
             ))}
           </ul>
-          <dl className="flex flex-wrap gap-x-10 gap-y-4">
-            {s.prezzi.map((pr) => (
-              <div key={pr.voce}>
-                <dt className="text-sm text-white/70">
-                  {pr.voce} {pr.nota && <T>{pr.nota}</T>}
-                </dt>
-                <dd className="font-display text-4xl font-extrabold md:text-5xl">
-                  <span className="mr-1 align-top font-sans text-sm font-medium text-white/70">da</span>
-                  {euro(pr.da)}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <Prezzo da={s.da} onMedia />
         </div>
 
         <Link href={`/servizi#${s.id}`} className="mt-8 inline-flex items-center gap-2 font-semibold text-[#e8ff3a] link-line">

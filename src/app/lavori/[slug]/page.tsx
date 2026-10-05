@@ -12,7 +12,7 @@ import { SmartVideo } from "@/components/media/SmartVideo";
 import { LiveLink } from "@/components/ui/LiveLink";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { T } from "@/components/ui/T";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
 import { CropMarks } from "@/components/ui/Viewfinder";
 import { getProgetto, sitoSpot } from "@/data/progetti";
 import { mediaProgetto } from "@/lib/media";
@@ -46,7 +46,7 @@ export default async function ProgettoPage({ params }: { params: Promise<{ slug:
   const next = sitoSpot[(idx + 1) % sitoSpot.length];
   const nome = clean(p.nome);
   const heroMedia = m.spot ?? m.sitoMobile;
-  const messaggio = `Ciao LIMITLESS! Ho visto il progetto ${nome} e vorrei qualcosa di simile per la mia attività.`;
+  const messaggio = `Ciao! Vorrei una consulenza gratuita: ho visto il progetto ${nome} e vorrei qualcosa di simile per la mia attività.`;
 
   const videoJsonLd = m.spot && {
     "@context": "https://schema.org",
@@ -80,7 +80,7 @@ export default async function ProgettoPage({ params }: { params: Promise<{ slug:
           </p>
           {p.concept && <span className="tag-concept mt-6">Concept</span>}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <WhatsAppButton posizione={`progetto_${p.slug}_hero`} messaggio={messaggio} />
+            <ConsulenzaButton posizione={`progetto_${p.slug}_hero`} messaggio={messaggio} />
             {p.sitoUrl && <LiveLink href={p.sitoUrl} slug={p.slug} nome={nome} />}
           </div>
         </div>
@@ -159,7 +159,8 @@ export default async function ProgettoPage({ params }: { params: Promise<{ slug:
             Vuoi qualcosa così per la tua attività?
           </SplitReveal>
           <div className="mt-10">
-            <WhatsAppButton posizione={`progetto_${p.slug}_cta`} messaggio={messaggio} />
+            <BadgeConsulenza className="mb-5" />
+            <ConsulenzaButton posizione={`progetto_${p.slug}_cta`} messaggio={messaggio} />
           </div>
         </div>
       </section>

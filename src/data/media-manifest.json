@@ -132,16 +132,6 @@
       "height": 720,
       "vertical": false
     },
-    "location-eventi": {
-      "mp4": "/media/walktour/location-eventi.mp4",
-      "mp4Mobile": "/media/walktour/location-eventi-m.mp4",
-      "poster": "/media/walktour/location-eventi.jpg",
-      "posterAvif": "/media/walktour/location-eventi.avif",
-      "bytes": 1187670,
-      "width": 1280,
-      "height": 720,
-      "vertical": false
-    },
     "villa-chiara": {
       "mp4": "/media/walktour/villa-chiara.mp4",
       "mp4Mobile": "/media/walktour/villa-chiara-m.mp4",
@@ -159,7 +149,7 @@
       "mp4Mobile": "/media/siti/flusso-desktop-m.mp4",
       "poster": "/media/siti/flusso-desktop.jpg",
       "posterAvif": "/media/siti/flusso-desktop.avif",
-      "bytes": 1348437,
+      "bytes": 1353861,
       "width": 1280,
       "height": 800,
       "vertical": false
@@ -169,7 +159,7 @@
       "mp4Mobile": "/media/siti/flusso-mobile-m.mp4",
       "poster": "/media/siti/flusso-mobile.jpg",
       "posterAvif": "/media/siti/flusso-mobile.avif",
-      "bytes": 1417166,
+      "bytes": 1310309,
       "width": 720,
       "height": 1558,
       "vertical": true
@@ -179,7 +169,7 @@
       "mp4Mobile": "/media/siti/nottea-desktop-m.mp4",
       "poster": "/media/siti/nottea-desktop.jpg",
       "posterAvif": "/media/siti/nottea-desktop.avif",
-      "bytes": 1281499,
+      "bytes": 1226946,
       "width": 1280,
       "height": 800,
       "vertical": false
@@ -189,7 +179,7 @@
       "mp4Mobile": "/media/siti/nottea-mobile-m.mp4",
       "poster": "/media/siti/nottea-mobile.jpg",
       "posterAvif": "/media/siti/nottea-mobile.avif",
-      "bytes": 1271655,
+      "bytes": 1282321,
       "width": 720,
       "height": 1558,
       "vertical": true
@@ -199,7 +189,7 @@
       "mp4Mobile": "/media/siti/ordito-desktop-m.mp4",
       "poster": "/media/siti/ordito-desktop.jpg",
       "posterAvif": "/media/siti/ordito-desktop.avif",
-      "bytes": 963304,
+      "bytes": 1279656,
       "width": 1280,
       "height": 800,
       "vertical": false
@@ -209,7 +199,7 @@
       "mp4Mobile": "/media/siti/ordito-mobile-m.mp4",
       "poster": "/media/siti/ordito-mobile.jpg",
       "posterAvif": "/media/siti/ordito-mobile.avif",
-      "bytes": 1159745,
+      "bytes": 1408365,
       "width": 720,
       "height": 1558,
       "vertical": true
@@ -219,7 +209,7 @@
       "mp4Mobile": "/media/siti/osteria-del-borgo-desktop-m.mp4",
       "poster": "/media/siti/osteria-del-borgo-desktop.jpg",
       "posterAvif": "/media/siti/osteria-del-borgo-desktop.avif",
-      "bytes": 1342658,
+      "bytes": 1405278,
       "width": 1280,
       "height": 800,
       "vertical": false
@@ -229,7 +219,7 @@
       "mp4Mobile": "/media/siti/osteria-del-borgo-mobile-m.mp4",
       "poster": "/media/siti/osteria-del-borgo-mobile.jpg",
       "posterAvif": "/media/siti/osteria-del-borgo-mobile.avif",
-      "bytes": 1368758,
+      "bytes": 1508995,
       "width": 720,
       "height": 1558,
       "vertical": true
@@ -239,7 +229,7 @@
       "mp4Mobile": "/media/siti/volta-desktop-m.mp4",
       "poster": "/media/siti/volta-desktop.jpg",
       "posterAvif": "/media/siti/volta-desktop.avif",
-      "bytes": 1286156,
+      "bytes": 1187983,
       "width": 1280,
       "height": 800,
       "vertical": false
@@ -249,7 +239,7 @@
       "mp4Mobile": "/media/siti/volta-mobile-m.mp4",
       "poster": "/media/siti/volta-mobile.jpg",
       "posterAvif": "/media/siti/volta-mobile.avif",
-      "bytes": 1345271,
+      "bytes": 1374931,
       "width": 720,
       "height": 1558,
       "vertical": true
@@ -261,7 +251,7 @@
       "mp4Mobile": "/media/showreel/showreel-vertical-m.mp4",
       "poster": "/media/showreel/showreel-vertical.jpg",
       "posterAvif": "/media/showreel/showreel-vertical.avif",
-      "bytes": 1983858,
+      "bytes": 1972310,
       "width": 720,
       "height": 1280,
       "vertical": true
@@ -271,7 +261,7 @@
       "mp4Mobile": "/media/showreel/showreel-m.mp4",
       "poster": "/media/showreel/showreel.jpg",
       "posterAvif": "/media/showreel/showreel.avif",
-      "bytes": 2277583,
+      "bytes": 2110618,
       "width": 1280,
       "height": 720,
       "vertical": false

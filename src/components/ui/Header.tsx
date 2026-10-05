@@ -7,7 +7,8 @@ import { ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
-import { WhatsAppButton } from "./WhatsAppButton";
+import { ConsulenzaButton } from "./ConsulenzaButton";
+import { SocialIcons } from "./Social";
 import { cn } from "@/lib/cn";
 import { NAV } from "@/data/nav";
 
@@ -64,7 +65,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle className="grid size-11 place-items-center border border-line bg-bg/60 backdrop-blur hover:border-line-strong" />
-          <WhatsAppButton posizione="header" className="hidden min-h-11 px-4 text-[0.95rem] lg:inline-flex" />
+          <ConsulenzaButton posizione="header" breve className="hidden min-h-11 px-4 text-[0.95rem] lg:inline-flex" />
           <button
             type="button"
             className="grid size-11 place-items-center border border-line bg-bg/60 backdrop-blur lg:hidden"
@@ -98,7 +99,8 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <WhatsAppButton posizione="menu_mobile" className="mt-8 w-full" />
+        <ConsulenzaButton posizione="menu_mobile" className="mt-8 w-full" />
+        <SocialIcons posizione="menu_mobile" className="mt-6" />
       </div>
     </header>
   );

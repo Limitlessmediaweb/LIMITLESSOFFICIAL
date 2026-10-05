@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
-import { waLink } from "@/data/contatti";
+import { waLink } from "@/data/azienda";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
@@ -41,13 +41,13 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
     });
 
   const pronto = Boolean(attivita && servizi.length);
-  const chi = `Ho ${attivita ? ATTIVITA[attivita] : "un'attività"}.`;
+  const chi = attivita ? `Vorrei una consulenza gratuita per la mia attività: ho ${ATTIVITA[attivita]}.` : "Vorrei una consulenza gratuita per la mia attività.";
   const cosa = servizi.includes("Non lo so ancora")
     ? "Non so ancora cosa mi serve: mi date un consiglio?"
     : servizi.length
-      ? `Mi interessa ${elenco(servizi.map((s) => SERVIZI[s]))}. Mi mandate un esempio?`
-      : "Vorrei qualche informazione.";
-  const messaggio = `Ciao LIMITLESS! ${chi} ${cosa}`;
+      ? `Mi interessa ${elenco(servizi.map((s) => SERVIZI[s]))}.`
+      : "";
+  const messaggio = `Ciao! ${chi} ${cosa}`.trim();
 
   const chip = (active: boolean) =>
     cn(
@@ -106,6 +106,7 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
                 return;
               }
               track("configuratore_invio", { attivita: attivita!, servizi: servizi.join("+") });
+              track("consulenza_click", { posizione: "configuratore" });
               track("whatsapp_click", { posizione: "configuratore" });
             }}
             className={cn("btn btn-accent shrink-0", !pronto && "cursor-not-allowed opacity-50")}

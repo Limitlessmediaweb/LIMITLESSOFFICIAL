@@ -7,7 +7,9 @@ export type EventName =
   | "progetto_live_click"
   | "video_audio_on"
   | "configuratore_invio"
-  | "filtro_lavori";
+  | "filtro_lavori"
+  | "social_click"
+  | "consulenza_click";
 
 type Props = Record<string, string | number | boolean>;
 

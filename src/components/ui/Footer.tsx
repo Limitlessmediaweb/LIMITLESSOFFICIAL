@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { contatti } from "@/data/contatti";
-import { Logo } from "./Logo";
+import { azienda, rigaLegale, telHref } from "@/data/azienda";
 import { NAV } from "@/data/nav";
-import { T } from "./T";
-import { WhatsAppButton } from "./WhatsAppButton";
+import { Logo } from "./Logo";
+import { SocialIcons } from "./Social";
+import { ConsulenzaButton } from "./ConsulenzaButton";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -15,7 +15,7 @@ export function Footer() {
           <p className="max-w-[34ch] text-fg-muted">
             Siti web animati, spot video e walk tour per attività locali e piccoli brand.
           </p>
-          <WhatsAppButton posizione="footer" variant="ghost" className="self-start" />
+          <ConsulenzaButton posizione="footer" variant="ghost" className="self-start" />
         </div>
 
         <div>
@@ -29,12 +29,6 @@ export function Footer() {
                 <Link href={n.href} className="link-line">{n.label}</Link>
               </li>
             ))}
-            <li>
-              <Link href="/privacy" className="link-line">Privacy</Link>
-            </li>
-            <li>
-              <Link href="/termini" className="link-line">Termini d&apos;uso</Link>
-            </li>
           </ul>
         </div>
 
@@ -42,27 +36,39 @@ export function Footer() {
           <h2 className="mono mb-4 font-sans text-fg-faint">Contatti</h2>
           <ul className="flex flex-col gap-2">
             <li>
-              <a className="link-line" href={`tel:${contatti.telefono.replace(/\s/g, "")}`}>{contatti.telefono}</a>
-            </li>
-            <li>
-              <a className="link-line break-all" href={`mailto:${contatti.email}`}>{contatti.email}</a>
-            </li>
-            <li>
-              <a className="link-line" href={contatti.instagramUrl} target="_blank" rel="noopener">
-                Instagram @{contatti.instagram}
+              <a className="link-line" href={`mailto:${azienda.email}`}>
+                <span className="sr-only">Email: </span>
+                <span className="break-all">{azienda.email}</span>
               </a>
             </li>
-            <li className="text-fg-muted">PEC {contatti.pec}</li>
+            <li>
+              <a className="link-line" href={`mailto:${azienda.pec}`}>
+                <span className="text-fg-muted">PEC </span>
+                <span className="break-all">{azienda.pec}</span>
+              </a>
+            </li>
+            <li>
+              <a className="link-line" href={telHref}>
+                <span className="text-fg-muted">Tel. e WhatsApp </span>
+                {azienda.telefono}
+              </a>
+            </li>
           </ul>
+          <SocialIcons posizione="footer" className="mt-5" />
         </div>
       </div>
 
-      <div className="wrap mt-16 flex flex-col gap-2 border-t border-line pt-6 text-sm text-fg-faint md:flex-row md:justify-between">
+      <div className="wrap mt-16 flex flex-col gap-4 border-t border-line pt-6 text-sm text-fg-muted lg:flex-row lg:items-start lg:justify-between">
         <p>
-          © {year} LIMITLESS. P.IVA <T fallback="in arrivo">{contatti.piva}</T>
+          © {year} {rigaLegale}
         </p>
-        <p>I lavori &ldquo;Concept&rdquo; sono progetti creati da LIMITLESS a scopo dimostrativo.</p>
+        <nav aria-label="Note legali" className="flex shrink-0 gap-5">
+          <Link href="/privacy" className="link-line">Privacy</Link>
+          <Link href="/termini" className="link-line">Termini</Link>
+          <Link href="/privacy#cookie" className="link-line">Cookie</Link>
+        </nav>
       </div>
+      <p className="wrap mt-3 text-sm text-fg-faint">I lavori &ldquo;Concept&rdquo; sono progetti creati da LIMITLESS a scopo dimostrativo.</p>
     </footer>
   );
 }
