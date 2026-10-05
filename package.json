@@ -1,0 +1,45 @@
+{
+  "name": "limitless-v3",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "node scripts/check-alt.mjs && node scripts/check-placeholders.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "check:alt": "node scripts/check-alt.mjs",
+    "check:placeholders": "node scripts/check-placeholders.mjs",
+    "check:launch": "node scripts/check-alt.mjs && node scripts/check-placeholders.mjs --strict",
+    "media": "bash scripts/media/compress.sh",
+    "media:siti": "tsx scripts/media/record-sites.ts && bash scripts/media/compress.sh siti",
+    "media:showreel": "bash scripts/media/showreel.sh",
+    "screenshots": "node scripts/screenshots.mjs",
+    "lighthouse": "node scripts/lighthouse.mjs"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "lucide-react": "^1.52.0",
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "lighthouse": "^13.5.0",
+    "playwright": "^1.63.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  }
+}

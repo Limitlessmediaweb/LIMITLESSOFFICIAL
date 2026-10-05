@@ -1,0 +1,15 @@
+spot/nottea 2.5
+spot/flusso 3
+spot/volta 4.6
+spot/meridia 16.5
+spot/osteria-del-borgo 6.5
+spot/saetta 3
+spot/villa-lume 16
+spot/limitless-da-zero 10.5
+spot/casco 2
+walktour/attico 10
+walktour/location-eventi 1
+spot/versante 16
+walktour/villa-chiara 0.5
+walktour/camera-hotel 0.5
+spot/ordito 2.6

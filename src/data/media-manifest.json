@@ -1,0 +1,280 @@
+{
+  "spot": {
+    "casco": {
+      "mp4": "/media/spot/casco.mp4",
+      "mp4Mobile": "/media/spot/casco-m.mp4",
+      "poster": "/media/spot/casco.jpg",
+      "posterAvif": "/media/spot/casco.avif",
+      "bytes": 835126,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "flusso": {
+      "mp4": "/media/spot/flusso.mp4",
+      "mp4Mobile": "/media/spot/flusso-m.mp4",
+      "poster": "/media/spot/flusso.jpg",
+      "posterAvif": "/media/spot/flusso.avif",
+      "bytes": 1299915,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "limitless-da-zero": {
+      "mp4": "/media/spot/limitless-da-zero.mp4",
+      "mp4Mobile": "/media/spot/limitless-da-zero-m.mp4",
+      "poster": "/media/spot/limitless-da-zero.jpg",
+      "posterAvif": "/media/spot/limitless-da-zero.avif",
+      "bytes": 1155459,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "meridia": {
+      "mp4": "/media/spot/meridia.mp4",
+      "mp4Mobile": "/media/spot/meridia-m.mp4",
+      "poster": "/media/spot/meridia.jpg",
+      "posterAvif": "/media/spot/meridia.avif",
+      "bytes": 1305445,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "nottea": {
+      "mp4": "/media/spot/nottea.mp4",
+      "mp4Mobile": "/media/spot/nottea-m.mp4",
+      "poster": "/media/spot/nottea.jpg",
+      "posterAvif": "/media/spot/nottea.avif",
+      "bytes": 1607308,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "ordito": {
+      "mp4": "/media/spot/ordito.mp4",
+      "mp4Mobile": "/media/spot/ordito-m.mp4",
+      "poster": "/media/spot/ordito.jpg",
+      "posterAvif": "/media/spot/ordito.avif",
+      "bytes": 1367141,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "osteria-del-borgo": {
+      "mp4": "/media/spot/osteria-del-borgo.mp4",
+      "mp4Mobile": "/media/spot/osteria-del-borgo-m.mp4",
+      "poster": "/media/spot/osteria-del-borgo.jpg",
+      "posterAvif": "/media/spot/osteria-del-borgo.avif",
+      "bytes": 1185655,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "saetta": {
+      "mp4": "/media/spot/saetta.mp4",
+      "mp4Mobile": "/media/spot/saetta-m.mp4",
+      "poster": "/media/spot/saetta.jpg",
+      "posterAvif": "/media/spot/saetta.avif",
+      "bytes": 2049031,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "versante": {
+      "mp4": "/media/spot/versante.mp4",
+      "mp4Mobile": "/media/spot/versante-m.mp4",
+      "poster": "/media/spot/versante.jpg",
+      "posterAvif": "/media/spot/versante.avif",
+      "bytes": 1659859,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "villa-lume": {
+      "mp4": "/media/spot/villa-lume.mp4",
+      "mp4Mobile": "/media/spot/villa-lume-m.mp4",
+      "poster": "/media/spot/villa-lume.jpg",
+      "posterAvif": "/media/spot/villa-lume.avif",
+      "bytes": 1179077,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "volta": {
+      "mp4": "/media/spot/volta.mp4",
+      "mp4Mobile": "/media/spot/volta-m.mp4",
+      "poster": "/media/spot/volta.jpg",
+      "posterAvif": "/media/spot/volta.avif",
+      "bytes": 866861,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    }
+  },
+  "walktour": {
+    "attico": {
+      "mp4": "/media/walktour/attico.mp4",
+      "mp4Mobile": "/media/walktour/attico-m.mp4",
+      "poster": "/media/walktour/attico.jpg",
+      "posterAvif": "/media/walktour/attico.avif",
+      "bytes": 3180168,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "camera-hotel": {
+      "mp4": "/media/walktour/camera-hotel.mp4",
+      "mp4Mobile": "/media/walktour/camera-hotel-m.mp4",
+      "poster": "/media/walktour/camera-hotel.jpg",
+      "posterAvif": "/media/walktour/camera-hotel.avif",
+      "bytes": 453404,
+      "width": 1280,
+      "height": 720,
+      "vertical": false
+    },
+    "location-eventi": {
+      "mp4": "/media/walktour/location-eventi.mp4",
+      "mp4Mobile": "/media/walktour/location-eventi-m.mp4",
+      "poster": "/media/walktour/location-eventi.jpg",
+      "posterAvif": "/media/walktour/location-eventi.avif",
+      "bytes": 1187670,
+      "width": 1280,
+      "height": 720,
+      "vertical": false
+    },
+    "villa-chiara": {
+      "mp4": "/media/walktour/villa-chiara.mp4",
+      "mp4Mobile": "/media/walktour/villa-chiara-m.mp4",
+      "poster": "/media/walktour/villa-chiara.jpg",
+      "posterAvif": "/media/walktour/villa-chiara.avif",
+      "bytes": 961977,
+      "width": 1280,
+      "height": 720,
+      "vertical": false
+    }
+  },
+  "siti": {
+    "flusso-desktop": {
+      "mp4": "/media/siti/flusso-desktop.mp4",
+      "mp4Mobile": "/media/siti/flusso-desktop-m.mp4",
+      "poster": "/media/siti/flusso-desktop.jpg",
+      "posterAvif": "/media/siti/flusso-desktop.avif",
+      "bytes": 1348437,
+      "width": 1280,
+      "height": 800,
+      "vertical": false
+    },
+    "flusso-mobile": {
+      "mp4": "/media/siti/flusso-mobile.mp4",
+      "mp4Mobile": "/media/siti/flusso-mobile-m.mp4",
+      "poster": "/media/siti/flusso-mobile.jpg",
+      "posterAvif": "/media/siti/flusso-mobile.avif",
+      "bytes": 1417166,
+      "width": 720,
+      "height": 1558,
+      "vertical": true
+    },
+    "nottea-desktop": {
+      "mp4": "/media/siti/nottea-desktop.mp4",
+      "mp4Mobile": "/media/siti/nottea-desktop-m.mp4",
+      "poster": "/media/siti/nottea-desktop.jpg",
+      "posterAvif": "/media/siti/nottea-desktop.avif",
+      "bytes": 1281499,
+      "width": 1280,
+      "height": 800,
+      "vertical": false
+    },
+    "nottea-mobile": {
+      "mp4": "/media/siti/nottea-mobile.mp4",
+      "mp4Mobile": "/media/siti/nottea-mobile-m.mp4",
+      "poster": "/media/siti/nottea-mobile.jpg",
+      "posterAvif": "/media/siti/nottea-mobile.avif",
+      "bytes": 1271655,
+      "width": 720,
+      "height": 1558,
+      "vertical": true
+    },
+    "ordito-desktop": {
+      "mp4": "/media/siti/ordito-desktop.mp4",
+      "mp4Mobile": "/media/siti/ordito-desktop-m.mp4",
+      "poster": "/media/siti/ordito-desktop.jpg",
+      "posterAvif": "/media/siti/ordito-desktop.avif",
+      "bytes": 963304,
+      "width": 1280,
+      "height": 800,
+      "vertical": false
+    },
+    "ordito-mobile": {
+      "mp4": "/media/siti/ordito-mobile.mp4",
+      "mp4Mobile": "/media/siti/ordito-mobile-m.mp4",
+      "poster": "/media/siti/ordito-mobile.jpg",
+      "posterAvif": "/media/siti/ordito-mobile.avif",
+      "bytes": 1159745,
+      "width": 720,
+      "height": 1558,
+      "vertical": true
+    },
+    "osteria-del-borgo-desktop": {
+      "mp4": "/media/siti/osteria-del-borgo-desktop.mp4",
+      "mp4Mobile": "/media/siti/osteria-del-borgo-desktop-m.mp4",
+      "poster": "/media/siti/osteria-del-borgo-desktop.jpg",
+      "posterAvif": "/media/siti/osteria-del-borgo-desktop.avif",
+      "bytes": 1342658,
+      "width": 1280,
+      "height": 800,
+      "vertical": false
+    },
+    "osteria-del-borgo-mobile": {
+      "mp4": "/media/siti/osteria-del-borgo-mobile.mp4",
+      "mp4Mobile": "/media/siti/osteria-del-borgo-mobile-m.mp4",
+      "poster": "/media/siti/osteria-del-borgo-mobile.jpg",
+      "posterAvif": "/media/siti/osteria-del-borgo-mobile.avif",
+      "bytes": 1368758,
+      "width": 720,
+      "height": 1558,
+      "vertical": true
+    },
+    "volta-desktop": {
+      "mp4": "/media/siti/volta-desktop.mp4",
+      "mp4Mobile": "/media/siti/volta-desktop-m.mp4",
+      "poster": "/media/siti/volta-desktop.jpg",
+      "posterAvif": "/media/siti/volta-desktop.avif",
+      "bytes": 1286156,
+      "width": 1280,
+      "height": 800,
+      "vertical": false
+    },
+    "volta-mobile": {
+      "mp4": "/media/siti/volta-mobile.mp4",
+      "mp4Mobile": "/media/siti/volta-mobile-m.mp4",
+      "poster": "/media/siti/volta-mobile.jpg",
+      "posterAvif": "/media/siti/volta-mobile.avif",
+      "bytes": 1345271,
+      "width": 720,
+      "height": 1558,
+      "vertical": true
+    }
+  },
+  "showreel": {
+    "showreel-vertical": {
+      "mp4": "/media/showreel/showreel-vertical.mp4",
+      "mp4Mobile": "/media/showreel/showreel-vertical-m.mp4",
+      "poster": "/media/showreel/showreel-vertical.jpg",
+      "posterAvif": "/media/showreel/showreel-vertical.avif",
+      "bytes": 1983858,
+      "width": 720,
+      "height": 1280,
+      "vertical": true
+    },
+    "showreel": {
+      "mp4": "/media/showreel/showreel.mp4",
+      "mp4Mobile": "/media/showreel/showreel-m.mp4",
+      "poster": "/media/showreel/showreel.jpg",
+      "posterAvif": "/media/showreel/showreel.avif",
+      "bytes": 2277583,
+      "width": 1280,
+      "height": 720,
+      "vertical": false
+    }
+  }
+}
