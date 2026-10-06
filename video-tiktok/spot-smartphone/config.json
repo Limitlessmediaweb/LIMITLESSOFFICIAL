@@ -1,0 +1,203 @@
+{
+  "subject": "ÈTERE One – smartphone top di gamma inventato (concept LIMITLESS)",
+  "style": "limitless-spot-prodotto (lusso: fondo nero, luce dura laterale, rim colorata)",
+  "goal": "Social: lead (Commenta SPOT). Ads: promozione servizi spot LIMITLESS",
+  "bpm": 100,
+  "fps": 30,
+  "samples": 16,
+  "formats": {
+    "social": { "w": 1080, "h": 1920, "render": "916" },
+    "ads916": { "w": 1080, "h": 1920, "render": "916" },
+    "ads45": { "w": 1080, "h": 1350, "render": "45" },
+    "yt169": { "w": 1920, "h": 1080, "render": "169" }
+  },
+  "grade": {
+    "black": 0.025, "contrast": 0.35, "sat": 0.92,
+    "shadow_tint": [-0.012, 0.0, 0.028], "high_tint": [0.028, 0.008, -0.018],
+    "bloom": 0.18, "vignette": 0.3, "grain": 0.02
+  },
+  "plates": {
+    "neon_city_1": { "gain": 1.0, "sat": 0.9 },
+    "neon_city_2": { "gain": 0.95, "sat": 0.85 },
+    "water_drops_1": { "gain": 1.0, "sat": 0.8 },
+    "sunset_walk_1": { "gain": 0.92, "sat": 0.95 },
+    "sunset_walk_2": { "gain": 0.9, "sat": 0.95 },
+    "stars_1": { "gain": 0.95, "sat": 0.9 },
+    "ocean_1": { "gain": 0.92, "sat": 0.95 },
+    "hand_dark_2": { "gain": 1.0, "sat": 0.85 },
+    "fireworks_1": { "gain": 0.9, "sat": 0.85 }
+  },
+  "takes": {
+    "blade": { "shot": "blade", "dur": 2.4 },
+    "reveal": { "shot": "macro_reveal", "dur": 1.2 },
+    "lens": { "shot": "macro_lens", "dur": 3.0 },
+    "drop": { "shot": "drop_turn", "dur": 1.8 },
+    "button": { "shot": "macro_button", "dur": 1.2 },
+    "edge": { "shot": "macro_edge", "dur": 1.8 },
+    "glass": { "shot": "macro_glass", "dur": 1.2 },
+    "hero": { "shot": "hero360", "dur": 2.4 },
+    "pack": { "shot": "packshot", "dur": 5.4 },
+    "c_neon": { "shot": "comp_float", "dur": 2.4, "bg": { "clip": "neon_city_1", "start": 1.5 },
+      "opts": { "screen": "camera", "rim": "#5b84ff", "rimFrom": [-24, 6, -18], "rimI": 30, "keyFrom": [6, 30, 20], "key": 1.8, "keyColor": "#e6edff", "env": 1.0, "yaw": -0.3, "spin": 0.15 } },
+    "c_drops": { "shot": "comp_float", "dur": 1.2, "bg": { "clip": "water_drops_1", "start": 5.0 },
+      "opts": { "screen": "ui", "rim": "#a9c6ff", "rimFrom": [22, 10, -20], "rimI": 26, "keyFrom": [-14, 30, 12], "key": 2.2, "env": 0.6, "yaw": 0.3, "spin": -0.12, "tilt": 0.12 } },
+    "c_sunset": { "shot": "comp_float", "dur": 1.2, "bg": { "clip": "sunset_walk_1", "start": 2.0 },
+      "opts": { "screen": "camera", "rim": "#ff9a50", "rimFrom": [18, 4, -30], "rimI": 60, "keyFrom": [-10, 8, 30], "key": 0.6, "keyColor": "#ffd2a8", "env": 1.2, "yaw": -0.2, "spin": 0.1 } },
+    "c_fire": { "shot": "comp_float", "dur": 1.2, "bg": { "clip": "fireworks_1", "start": 2.5 },
+      "opts": { "screen": "camera", "rim": "#ff6aa0", "rimFrom": [-20, 8, -22], "rimI": 30, "keyFrom": [16, 22, 24], "key": 1.0, "keyColor": "#ffe2d0", "env": 1.2, "yaw": 0.25, "spin": -0.12 } },
+    "c_stars": { "shot": "comp_float", "dur": 1.2, "bg": { "clip": "stars_1", "start": 1.0 },
+      "opts": { "screen": "camera", "rim": "#5fd0c8", "rimFrom": [22, 6, -20], "rimI": 22, "keyFrom": [-20, 24, 20], "key": 0.8, "keyColor": "#d8e6ff", "env": 0.9, "yaw": -0.25, "spin": 0.08, "y": 3.4, "dist": 54 } },
+    "c_ocean": { "shot": "comp_float", "dur": 1.2, "bg": { "clip": "ocean_1", "start": 6.0 },
+      "opts": { "screen": "ui", "rim": "#ff5a2a", "rimFrom": [0, 4, -30], "rimI": 50, "keyFrom": [-18, 14, 26], "key": 0.7, "keyColor": "#ffcfa8", "env": 1.1, "yaw": 0.22, "spin": -0.08, "y": 3.4, "dist": 54 } }
+  },
+  "versions": {
+    "social": {
+      "format": "social", "beats": 55, "fade_out": 0.3, "cover_at": 5.6, "cover_text": "head",
+      "cuts": [
+        { "b": 0, "n": 4, "src": "blade" },
+        { "b": 4, "n": 2, "src": "reveal" },
+        { "b": 6, "n": 2, "src": "lens", "out": "zoom" },
+        { "b": 8, "n": 3, "src": "drop", "fxin": "zoom" },
+        { "b": 11, "n": 2, "src": "c_neon" },
+        { "b": 13, "n": 1, "src": "button" },
+        { "b": 14, "n": 2, "src": "c_drops" },
+        { "b": 16, "n": 1, "src": "edge" },
+        { "b": 17, "n": 2, "src": "c_sunset" },
+        { "b": 19, "n": 1, "src": "stock:water_drops_1", "in": 9.0, "push": 0.05 },
+        { "b": 20, "n": 1, "src": "stock:neon_city_2", "in": 4.0, "push": 0.06 },
+        { "b": 21, "n": 1, "src": "lens", "in": 1.2 },
+        { "b": 22, "n": 2, "src": "c_fire" },
+        { "b": 24, "n": 1, "src": "stock:hand_dark_2", "in": 3.0, "push": 0.05 },
+        { "b": 25, "n": 2, "src": "c_stars" },
+        { "b": 27, "n": 2, "src": "lens", "in": 1.8 },
+        { "b": 29, "n": 2, "src": "edge", "in": 0.6 },
+        { "b": 31, "n": 2, "src": "stock:sunset_walk_2", "in": 3.0, "push": 0.05 },
+        { "b": 33, "n": 2, "src": "c_ocean" },
+        { "b": 35, "n": 2, "src": "stock:stars_1", "in": 2.5, "push": 0.05 },
+        { "b": 37, "n": 0.5, "src": "drop", "in": 1.2 },
+        { "b": 37.5, "n": 0.5, "src": "c_neon", "in": 1.2 },
+        { "b": 38, "n": 0.5, "src": "stock:fireworks_1", "in": 4.0 },
+        { "b": 38.5, "n": 0.5, "src": "button", "in": 0.6 },
+        { "b": 39, "n": 0.5, "src": "stock:water_drops_1", "in": 7.0 },
+        { "b": 39.5, "n": 0.5, "src": "c_sunset", "in": 0.6 },
+        { "b": 40, "n": 0.5, "src": "lens", "in": 2.4 },
+        { "b": 40.5, "n": 0.5, "src": "stock:hand_dark_2", "in": 7.0 },
+        { "b": 41, "n": 0.5, "src": "c_drops", "in": 0.6 },
+        { "b": 41.5, "n": 0.5, "src": "edge", "in": 1.2 },
+        { "b": 42, "n": 4, "src": "hero" },
+        { "b": 46, "n": 9, "src": "pack" }
+      ],
+      "texts": [
+        { "id": "wm", "from": 0, "to": 55, "fixed": true },
+        { "id": "head", "from": 0, "to": 8, "fixed": true },
+        { "id": "f1", "from": 25, "to": 29 },
+        { "id": "f2", "from": 29, "to": 33 },
+        { "id": "f3", "from": 33, "to": 37 },
+        { "id": "pack", "from": 46.5, "to": 50 },
+        { "id": "cta", "from": 50, "to": 55 },
+        { "id": "concept", "from": 53.333, "to": 55 }
+      ]
+    },
+    "ads916": {
+      "format": "ads916", "beats": 25, "cover_at": 9.0, "cover_text": "pack",
+      "cuts": [
+        { "b": 0, "n": 3, "src": "drop" },
+        { "b": 3, "n": 2, "src": "lens", "in": 0.6 },
+        { "b": 5, "n": 2, "src": "edge" },
+        { "b": 7, "n": 2, "src": "c_ocean" },
+        { "b": 9, "n": 2, "src": "button" },
+        { "b": 11, "n": 2, "src": "c_neon", "in": 0.6 },
+        { "b": 13, "n": 3, "src": "hero", "in": 0.6 },
+        { "b": 16, "n": 9, "src": "pack" }
+      ],
+      "texts": [
+        { "id": "wm", "from": 0, "to": 20, "fixed": true },
+        { "id": "f1", "from": 3, "to": 5 },
+        { "id": "f2", "from": 5, "to": 7 },
+        { "id": "f3", "from": 7, "to": 9 },
+        { "id": "pack", "from": 16.5, "to": 18.5 },
+        { "id": "nonexist", "from": 18.5, "to": 20 },
+        { "id": "endcard", "from": 20, "to": 25 },
+        { "id": "concept", "from": 23.333, "to": 25 }
+      ]
+    },
+    "ads45": {
+      "format": "ads45", "beats": 25, "cover_at": 9.0, "cover_text": "pack",
+      "cuts": [
+        { "b": 0, "n": 3, "src": "drop" },
+        { "b": 3, "n": 2, "src": "lens", "in": 0.6 },
+        { "b": 5, "n": 2, "src": "edge" },
+        { "b": 7, "n": 2, "src": "c_ocean" },
+        { "b": 9, "n": 2, "src": "button" },
+        { "b": 11, "n": 2, "src": "c_neon", "in": 0.6 },
+        { "b": 13, "n": 3, "src": "hero", "in": 0.6 },
+        { "b": 16, "n": 9, "src": "pack" }
+      ],
+      "texts": [
+        { "id": "wm", "from": 0, "to": 20, "fixed": true },
+        { "id": "f1", "from": 3, "to": 5 },
+        { "id": "f2", "from": 5, "to": 7 },
+        { "id": "f3", "from": 7, "to": 9 },
+        { "id": "pack", "from": 16.5, "to": 18.5 },
+        { "id": "nonexist", "from": 18.5, "to": 20 },
+        { "id": "endcard", "from": 20, "to": 25 },
+        { "id": "concept", "from": 23.333, "to": 25 }
+      ]
+    },
+    "bumper": {
+      "format": "ads916", "beats": 10, "cover_at": 4.0, "cover_text": "bumper",
+      "cuts": [
+        { "b": 0, "n": 4, "src": "blade" },
+        { "b": 4, "n": 3, "src": "drop" },
+        { "b": 7, "n": 3, "src": "pack", "in": 2.0 }
+      ],
+      "texts": [
+        { "id": "wm", "from": 0, "to": 7, "fixed": true },
+        { "id": "bumper", "from": 7, "to": 10 },
+        { "id": "concept", "from": 8.333, "to": 10 }
+      ]
+    },
+    "yt169": {
+      "format": "yt169", "beats": 50, "fade_out": 0.3, "cover_at": 27.0, "cover_text": "pack",
+      "cuts": [
+        { "b": 0, "n": 4, "src": "blade" },
+        { "b": 4, "n": 2, "src": "reveal" },
+        { "b": 6, "n": 2, "src": "lens", "out": "zoom" },
+        { "b": 8, "n": 3, "src": "drop", "fxin": "zoom" },
+        { "b": 11, "n": 2, "src": "c_neon" },
+        { "b": 13, "n": 1, "src": "button" },
+        { "b": 14, "n": 2, "src": "c_drops" },
+        { "b": 16, "n": 1, "src": "edge" },
+        { "b": 17, "n": 2, "src": "c_sunset" },
+        { "b": 19, "n": 1, "src": "stock:water_drops_1", "in": 9.0, "push": 0.05 },
+        { "b": 20, "n": 1, "src": "stock:neon_city_2", "in": 4.0, "push": 0.06 },
+        { "b": 21, "n": 1, "src": "lens", "in": 1.2 },
+        { "b": 22, "n": 2, "src": "c_fire" },
+        { "b": 24, "n": 1, "src": "stock:hand_dark_2", "in": 3.0, "push": 0.05 },
+        { "b": 25, "n": 2, "src": "c_stars" },
+        { "b": 27, "n": 2, "src": "lens", "in": 1.8 },
+        { "b": 29, "n": 2, "src": "edge", "in": 0.6 },
+        { "b": 31, "n": 2, "src": "stock:sunset_walk_1", "in": 3.0, "push": 0.05 },
+        { "b": 33, "n": 2, "src": "c_ocean" },
+        { "b": 35, "n": 2, "src": "stock:stars_1", "in": 2.5, "push": 0.05 },
+        { "b": 37, "n": 0.5, "src": "drop", "in": 1.2 },
+        { "b": 37.5, "n": 0.5, "src": "c_neon", "in": 1.2 },
+        { "b": 38, "n": 0.5, "src": "stock:fireworks_1", "in": 4.0 },
+        { "b": 38.5, "n": 0.5, "src": "button", "in": 0.6 },
+        { "b": 39, "n": 0.5, "src": "stock:water_drops_1", "in": 7.0 },
+        { "b": 39.5, "n": 0.5, "src": "c_sunset", "in": 0.6 },
+        { "b": 40, "n": 3, "src": "hero" },
+        { "b": 43, "n": 7, "src": "pack" }
+      ],
+      "texts": [
+        { "id": "wm", "from": 0, "to": 45, "fixed": true },
+        { "id": "f1", "from": 25, "to": 29 },
+        { "id": "f2", "from": 29, "to": 33 },
+        { "id": "f3", "from": 33, "to": 37 },
+        { "id": "pack", "from": 43.5, "to": 45 },
+        { "id": "endcard", "from": 45, "to": 50 },
+        { "id": "concept", "from": 48.333, "to": 50 }
+      ]
+    }
+  }
+}
