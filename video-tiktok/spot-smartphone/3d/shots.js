@@ -163,7 +163,7 @@ export const SHOTS = {
     const p = k(t, ctx);
     return {
       ...darkStudio({ env: { intensity: 0.4, rotY: 0.6 }, dust: 0.22 }),
-      cam: { pos: [lerp(4, 2, p), 1, lerp(58, 52, easeOut(p))], target: [0, -2.4, 0], fov: 30, aperture: 0.1 },
+      cam: { pos: [lerp(4, 2, p), 4.5, lerp(70, 64, easeOut(p))], target: [0, 4.2, 0], fov: 30, aperture: 0.1 },
       phone: { pos: [0, 0, 0], rot: [0, -0.32, 0] },
       floor: "mirror", floorY: -15.4 / 2 - 0.01, mirrorOpacity: 0.82,
       key: { pos: [-30, 18, 26], target: [0, 0, 0], intensity: 4.5, angle: 0.35, color: "#fff4e8" },

@@ -49,7 +49,7 @@ def run(cmd, **kw):
 
 # ---------------------------------------------------------------- stock
 def stock_dir(fmt, clip):
-    return ROOT / "stock" / "frames" / fmt / clip
+    return ROOT / "stock" / "frames" / FMT[fmt]["render"] / clip
 
 
 def prep_stock(fmt, clip):
@@ -94,7 +94,7 @@ _nframes = {}
 
 # ---------------------------------------------------------------- 3D
 def take_dir(fmt, take):
-    return ROOT / "render" / "3d" / fmt / take
+    return ROOT / "render" / "3d" / FMT[fmt]["render"] / take
 
 
 def render_jobs(fmt, needs):
@@ -113,16 +113,16 @@ def render_jobs(fmt, needs):
                 runs.append((s, a + 1))
                 s = b
         for a, b in runs:
-            it = {"shot": T["shot"], "dur": T["dur"], "fps": FPS, "frames": [a, b], "out": f"render/3d/{fmt}/{take}",
+            it = {"shot": T["shot"], "dur": T["dur"], "fps": FPS, "frames": [a, b], "out": f"render/3d/{FMT[fmt]['render']}/{take}",
                   "opts": T.get("opts", {}), "samples": T.get("samples", CFG.get("samples", 16))}
             if "bg" in T:
                 prep_stock(fmt, T["bg"]["clip"])
-                it["bg"] = f"stock/frames/{fmt}/{T['bg']['clip']}/%04d.jpg"
+                it["bg"] = f"stock/frames/{FMT[fmt]['render']}/{T['bg']['clip']}/%04d.jpg"
                 it["bgOffset"] = int(round(T["bg"].get("start", 0) * FPS))
             items.append(it)
     if not items:
         return
-    job = ROOT / "render" / f"jobs_{fmt}.json"
+    job = ROOT / "render" / f"jobs_{FMT[fmt]['render']}.json"
     job.write_text(json.dumps({"width": w, "height": h, "items": items}, indent=1), encoding="utf8")
     run(["node", str(ROOT / "scripts" / "render3d.mjs"), str(job)], cwd=ROOT)
 

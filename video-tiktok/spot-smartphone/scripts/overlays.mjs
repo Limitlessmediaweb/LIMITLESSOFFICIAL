@@ -73,11 +73,13 @@ const TEXTS = {
     return `<div class="a b" style="left:0; width:${f.w}px; top:${y - 34}px; text-align:center; font-size:${f.w > f.h ? 26 : 28}px; color:rgba(244,239,230,.78)">Concept LIMITLESS – ÈTERE è un brand inventato</div>`;
   },
   nonexist: (f) => {
+    // in alto, dove stava "ÈTERE One": il telefono resta libero sotto
     const land = f.w > f.h;
-    const y = land ? f.h - 330 : f.h - f.bottom - 300;
-    return `<div class="a sh" style="left:${f.x}px; top:${y}px; width:${f.w - f.x - f.right}px">
-      <div class="d" style="font-size:${land ? 92 : 96}px">Questo telefono <span class="s cu" style="font-size:${land ? 108 : 112}px">non esiste.</span></div>
-      <div class="b" style="font-size:${land ? 38 : 40}px; margin-top:22px; color:rgba(244,239,230,.85)">L'abbiamo creato noi, in 3D.</div></div>`;
+    const top = land ? 130 : f.top + (f.h > 1500 ? 240 : 50);
+    return `<div class="a sh" style="left:0; width:${f.w}px; top:${top}px; text-align:center">
+      <div class="d" style="font-size:${land ? 92 : 96}px">Questo telefono</div>
+      <div class="s cu" style="font-size:${land ? 116 : 124}px; line-height:1">non esiste.</div>
+      <div class="b" style="font-size:${land ? 36 : 40}px; margin-top:14px; color:rgba(244,239,230,.85)">L'abbiamo creato noi, in 3D.</div></div>`;
   },
   endcard: (f) => {
     const land = f.w > f.h;

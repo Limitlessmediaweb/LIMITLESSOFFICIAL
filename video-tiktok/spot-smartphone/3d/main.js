@@ -175,7 +175,7 @@ async function applyState(st, t, bgUrl, isFirstSample) {
   camera.lookAt(target);
   if (st.cam.roll) camera.rotateZ(st.cam.roll);
   const portrait = W / H < 1;
-  const landscapeFactor = st.cam.fovL ?? 0.62;
+  const landscapeFactor = st.cam.fovL ?? 0.95;
   camera.fov = portrait ? st.cam.fov * (W / H > 0.7 ? 0.86 : 1) : st.cam.fov * landscapeFactor;
   camera.aspect = W / H;
   camera.updateProjectionMatrix();

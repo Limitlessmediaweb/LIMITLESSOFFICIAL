@@ -2,5 +2,5 @@ node_modules/
 stock/*.mp4
 stock/frames/
 render/
-out/
+out/*.mp4
 3d/assets/*.hdr

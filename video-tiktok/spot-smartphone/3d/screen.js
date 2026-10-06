@@ -134,7 +134,12 @@ export function createScreen() {
       const ar = img.width / img.height, dr = CW / CH;
       let sw = img.width, sh = img.height, sx = 0, sy = 0;
       if (ar > dr) { sw = img.height * dr; sx = (img.width - sw) / 2; } else { sh = img.width / dr; sy = (img.height - sh) / 2; }
-      g.drawImage(img, sx, sy, sw, sh, 0, 0, CW, CH);
+      // mirino: zoom 1,8x sul soggetto, più luminoso e contrastato del mondo reale (è uno schermo)
+      const z = 1.8, nsw = sw / z, nsh = sh / z;
+      sx += (sw - nsw) * 0.5; sy += (sh - nsh) * 0.42;
+      g.filter = "brightness(1.25) contrast(1.12) saturate(1.15)";
+      g.drawImage(img, sx, sy, nsw, nsh, 0, 0, CW, CH);
+      g.filter = "none";
     }
     // interfaccia fotocamera essenziale
     g.fillStyle = "rgba(0,0,0,0.35)";
