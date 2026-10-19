@@ -1,5 +1,5 @@
-/** Portfolio completo: sito separato (repo limitless-portfolio). Attivo quando il record DNS su Aruba è configurato. */
-export const PORTFOLIO_URL = "https://portfolio.limitlessmedia.it";
+/** Portfolio completo: sito separato (repo limitless-portfolio). Quando il CNAME su Aruba è attivo, passare a https://portfolio.limitlessmedia.it */
+export const PORTFOLIO_URL = "https://limitless-portfolio.vercel.app";
 
 export const NAV = [
   { href: "/lavori", label: "Lavori" },
