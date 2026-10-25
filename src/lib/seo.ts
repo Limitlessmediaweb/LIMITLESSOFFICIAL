@@ -82,7 +82,7 @@ export function organizationJsonLd() {
         url: SITE_URL,
         image: `${SITE_URL}/opengraph-image`,
         description:
-          "Siti web animati, spot video promo e video walk tour per attività locali, location, immobili e piccoli brand. Consulenza gratuita.",
+          "Spot video promo (anche di Natale per produttori di vino, birra, moto e artigiani), video walk tour, siti web, contenuti social mensili, scheda Google e LIMITLESS HUB, il gestionale per piccole aziende manifatturiere. Consulenza gratuita.",
         telephone,
         email: azienda.email,
         address,

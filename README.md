@@ -10,6 +10,10 @@ Stack: Next.js 16 (App Router) · TypeScript strict · Tailwind CSS 4 (token in 
 
 ---
 
+## Modifiche 25/10 (listino)
+
+Prezzi e servizi allineati al listino 2026 del 25/10, unica fonte in `src/data/servizi.ts` (`servizi`, `mensili`, `REGOLE`): spot 20-30 s 119 € (99 € fino al 30/11), walk tour 190/300/590 €, sito Easy 750 € e Premium 990 €, Mese Brand 390 €/mese e Completo 590 €/mese (prezzo fondatore −30% per 3 mesi ai primi 3 clienti mensili), Scheda Google + recensioni 59-99 €/mese, LIMITLESS HUB Base 290, Pro 490, Crescita 790 €/mese con prova di 30 giorni a 300 € scalati dal canone. Tolti manutenzione a 9 €/mese (ora "si concorda nel preventivo"), sito da 500 €, walk tour da 99 €, automazioni. Regole: acconto 50%, 2 revisioni, nessuna anteprima gratuita, fattura in regime forfettario. Spot di Natale per i produttori in evidenza fino a metà dicembre. **Dopo il 30/11** aggiornare `SPOT_LANCIO` in `servizi.ts`.
+
 ## Modifiche 05/10
 
 **1. Dati legali e social.** Tutti i dati sono in `src/data/azienda.ts` (titolare Riccardo Pasquini, P.IVA 03051470189, sede, email, PEC, telefono, Instagram, TikTok) e si usano solo da lì (`contatti.ts` è stato eliminato). Nessun regime fiscale indicato.

@@ -6,6 +6,7 @@ import { CropMarks, Rec } from "@/components/ui/Viewfinder";
 import { showreel } from "@/lib/media";
 import { HeroCopy } from "./HeroCopy";
 import { HeroTimecode } from "./HeroTimecode";
+import { SPOT_LANCIO, SPOT_LANCIO_FINE } from "@/data/servizi";
 
 export function Hero() {
   const desktop = showreel.desktop;
@@ -39,7 +40,7 @@ export function Hero() {
             Più clienti per la tua attività. Con siti e video che si fanno guardare.
           </h1>
           <p data-hero-fade className="mt-6 max-w-[46ch] text-lead text-white/80">
-            Siti web animati, spot video e walk tour per attività locali e brand. Pronti in pochi giorni.
+            Spot di Natale per chi produce vino, birra, moto e artigianato: {SPOT_LANCIO} € fino al {SPOT_LANCIO_FINE}. E poi walk tour, siti web e HUB per piccole aziende manifatturiere.
           </p>
           <div data-hero-fade className="mt-7">
             <BadgeConsulenza onMedia />

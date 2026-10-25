@@ -1,19 +1,27 @@
-import { MANUTENZIONE_MESE } from "./servizi";
+import { SPOT_LANCIO, SPOT_LANCIO_FINE, SPOT_LISTINO } from "./servizi";
 
 export type Faq = { q: string; a: string };
 
 export const faq: Faq[] = [
   {
     q: "La consulenza è davvero gratuita?",
-    a: "Sì. Ci racconti la tua attività, ti mostriamo esempi adatti e ti diciamo quanto costa. Decidi tu se partire, senza nessun obbligo.",
+    a: "Sì. Ci racconti la tua attività, ti mostriamo i lavori già fatti e ti diciamo quanto costa. Decidi tu se partire, senza nessun obbligo.",
   },
   {
-    q: "Quanto costa un sito, uno spot o un walk tour?",
-    a: "Un sito parte da 500 €, uno spot da 99 €, un walk tour da 99 €. Il prezzo finale dipende dal progetto: te lo diciamo dopo la consulenza gratuita, senza sorprese.",
+    q: "Quanto costano spot, walk tour e sito?",
+    a: `Uno spot di 20-30 secondi costa ${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}, poi ${SPOT_LISTINO} €. Un walk tour 190 € (appartamento), 300 € (struttura fino a 5 ambienti) o 590 € (tour completo). Un sito 750 € (Easy) o 990 € (Premium).`,
+  },
+  {
+    q: "Avete servizi mensili?",
+    a: "Sì. Mese Brand a 390 €/mese (1 spot + 8 contenuti + calendario) e Mese Brand Completo a 590 €/mese (2 spot + 12 contenuti + pubblicazione + report). Ai primi 3 clienti mensili: −30% per 3 mesi in cambio del caso studio. Scheda Google + recensioni: 59-99 €/mese.",
+  },
+  {
+    q: "Cos'è LIMITLESS HUB?",
+    a: "È il gestionale per piccole aziende manifatturiere: Base 290 €/mese, Pro 490 €/mese (con portale cliente), Crescita 790 €/mese. Si può iniziare con una prova di 30 giorni a 300 €, che vengono scalati dal canone.",
   },
   {
     q: "In quanto tempo è pronto?",
-    a: "Uno spot in 3-5 giorni, un walk tour in 5-7 giorni, un sito in circa una settimana. I tempi partono da quando abbiamo il materiale. [DA CONFERMARE]",
+    a: "Spot e walk tour in 72 ore dalle riprese o dall'invio delle foto. Il sito Easy in 7-10 giorni, il Premium in 2-3 settimane.",
   },
   {
     q: "Cosa vi devo mandare?",
@@ -25,19 +33,19 @@ export const faq: Faq[] = [
   },
   {
     q: "Posso vedere un esempio prima di decidere?",
-    a: "Sì. Nella consulenza gratuita ti mostriamo esempi pensati per un'attività come la tua, così vedi la direzione prima di confermare.",
+    a: "Sì, nella consulenza gratuita ti mostriamo i lavori già fatti per attività simili alla tua. Non prepariamo anteprime gratuite: il lavoro parte con l'acconto.",
   },
   {
     q: "Come funziona il pagamento?",
-    a: "Acconto del 50% per iniziare, saldo alla consegna. [DA CONFERMARE]",
+    a: "Acconto del 50% alla conferma, saldo alla consegna. Emettiamo fattura con partita IVA in regime forfettario.",
   },
   {
     q: "Quante modifiche sono incluse?",
-    a: "Due giri di revisioni sono sempre inclusi. Di solito bastano e avanzano.",
+    a: "Due revisioni sono sempre incluse. Di solito bastano e avanzano.",
   },
   {
     q: "Ci sono costi mensili?",
-    a: `Sì, solo la manutenzione: ${MANUTENZIONE_MESE} €/mese. Comprende hosting, sicurezza, aggiornamenti e piccole modifiche, così il sito resta sempre online e veloce senza che tu debba pensarci.`,
+    a: "Solo se scegli un servizio mensile (Mese Brand, Scheda Google, HUB). Per il sito, la manutenzione si concorda nel preventivo, prima di partire.",
   },
   {
     q: "I video vanno bene per Instagram e TikTok?",

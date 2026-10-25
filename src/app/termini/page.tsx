@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function TerminiPage() {
   return (
-    <LegalPage title="Termini d'uso" updated="5 ottobre 2026">
+    <LegalPage title="Termini d'uso" updated="25 ottobre 2026">
       <h2>1. Chi siamo</h2>
       <p>
         Questo sito è gestito da <strong>{azienda.ragioneSociale}</strong>, P.IVA {azienda.piva}, con sede a {azienda.sede.comune} (
@@ -22,7 +22,7 @@ export default function TerminiPage() {
 
       <h2>2. Uso del sito</h2>
       <p>
-        Il sito presenta i servizi di LIMITLESS (siti web, spot video, walk tour). Puoi consultarlo liberamente per uso personale e per valutare i
+        Il sito presenta i servizi di LIMITLESS (spot video, walk tour, siti web, contenuti social mensili, scheda Google e il gestionale LIMITLESS HUB). Puoi consultarlo liberamente per uso personale e per valutare i
         nostri servizi. Non è consentito copiare, rivendere o usare i contenuti per scopi commerciali senza il nostro permesso scritto.
       </p>
 
@@ -38,9 +38,10 @@ export default function TerminiPage() {
 
       <h2>4. Preventivi e prezzi</h2>
       <p>
-        I prezzi indicati sul sito sono &ldquo;a partire da&rdquo; e hanno valore indicativo. Il prezzo finale, i tempi e cosa è incluso sono definiti
-        nel preventivo che ti mandiamo dopo la consulenza gratuita e diventano validi solo dopo la tua conferma scritta e il pagamento
-        dell&apos;acconto. Ogni sito include la manutenzione mensile a 9 €/mese (hosting, sicurezza, aggiornamenti e piccole modifiche).
+        I prezzi indicati sul sito sono quelli del listino in vigore. Cosa è incluso e i tempi sono definiti nel preventivo che ti mandiamo dopo la
+        consulenza gratuita e diventano validi solo dopo la tua conferma scritta e il pagamento dell&apos;acconto del 50%; il saldo si paga alla
+        consegna. Ogni lavoro comprende 2 revisioni. Non realizziamo anteprime gratuite. La manutenzione del sito si concorda nel preventivo.
+        Emettiamo fattura con partita IVA in regime forfettario.
       </p>
 
       <h2>5. Link esterni</h2>

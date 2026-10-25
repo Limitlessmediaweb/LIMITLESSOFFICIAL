@@ -22,7 +22,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "LIMITLESS | Siti web e video per attività locali",
   description:
-    "Siti web animati, spot video e walk tour per attività locali e piccoli brand. Più clienti, pronti in pochi giorni. Scrivici su WhatsApp.",
+    "Spot di Natale per produttori a 99 € fino al 30/11, walk tour, siti web e HUB, il gestionale per piccole aziende manifatturiere. Consulenza gratuita.",
   path: "/",
 });
 
