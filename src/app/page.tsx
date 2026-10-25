@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Nastri } from "@/components/sections/Nastri";
 import { Problema } from "@/components/sections/Problema";
 import { LavoriEvidenza } from "@/components/sections/LavoriEvidenza";
+import { HubBlocco } from "@/components/sections/HubBlocco";
 import { SpotCarousel } from "@/components/sections/SpotCarousel";
 import { WalkTour } from "@/components/sections/WalkTour";
 import { Servizi } from "@/components/sections/Servizi";
@@ -44,6 +45,7 @@ export default function Home() {
       <Nastri />
       <Problema />
       <LavoriEvidenza />
+      <HubBlocco />
       <SpotCarousel cards={spotCards()} />
       <WalkTour tours={tours()} />
       <Servizi />

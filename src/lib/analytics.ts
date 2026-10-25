@@ -9,7 +9,8 @@ export type EventName =
   | "configuratore_invio"
   | "filtro_lavori"
   | "social_click"
-  | "consulenza_click";
+  | "consulenza_click"
+  | "demo_hub_click";
 
 type Props = Record<string, string | number | boolean>;
 

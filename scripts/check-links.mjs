@@ -3,7 +3,7 @@
 import { chromium } from "playwright";
 
 const BASE = process.env.BASE ?? "http://localhost:3000";
-const PAGES = ["/", "/lavori", "/servizi", "/contatti", "/privacy", "/termini", "/lavori/nottea", "/lavori/ordito", "/lavori/osteria-del-borgo", "/lavori/volta", "/lavori/flusso"];
+const PAGES = ["/", "/hub", "/lavori", "/servizi", "/contatti", "/privacy", "/termini", "/lavori/nottea", "/lavori/ordito", "/lavori/osteria-del-borgo", "/lavori/volta", "/lavori/flusso"];
 
 const b = await chromium.launch();
 const ctx = await b.newContext({ reducedMotion: "reduce" });
