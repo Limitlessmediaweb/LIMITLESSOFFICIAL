@@ -25,7 +25,7 @@ export function WalkTour({ tours }: { tours: Tour[] }) {
             Fai entrare i clienti prima che arrivino.
           </SplitReveal>
           <p className="mt-6 max-w-[42ch] text-lead text-fg-muted">
-            <T>{"Un tour video della tua location o del tuo immobile. Partiamo dalle foto che hai già, senza sopralluogo. [DA CONFERMARE: frase sulle foto]"}</T>
+            <T>{"Un tour video della tua location o del tuo immobile. Partiamo dalle foto che hai già, senza sopralluogo. Da 190 €."}</T>
           </p>
 
           <div role="radiogroup" aria-label="Scegli il walk tour" className="mt-8 flex flex-wrap gap-2">

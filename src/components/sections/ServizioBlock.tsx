@@ -77,7 +77,7 @@ export function ServizioBlock({
               </li>
             ))}
           </ul>
-          <Prezzo da={s.da} onMedia />
+          <Prezzo voci={s.voci} onMedia />
         </div>
 
         <Link href={`/servizi#${s.id}`} className="mt-8 inline-flex items-center gap-2 font-semibold text-[#e8ff3a] link-line">

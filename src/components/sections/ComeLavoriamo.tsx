@@ -10,11 +10,11 @@ const PASSI = [
     t: "Consulenza gratuita",
     d: "15 minuti su WhatsApp o in chiamata. Capiamo cosa serve alla tua attività e ti diamo un prezzo chiaro.",
   },
-  { t: "Ti mostriamo un esempio", d: "Prepariamo un'anteprima pensata per un'attività come la tua. Così vedi la direzione prima di decidere." },
-  { t: "Confermi con un acconto", d: "Il 50% per partire, il resto alla consegna. Nessun costo nascosto." },
+  { t: "Ti mostriamo i lavori", d: "Guardi spot, siti e walk tour già fatti e scegli la direzione. Prezzi di listino, niente anteprime gratuite." },
+  { t: "Confermi con un acconto", d: "Il 50% per partire, il resto alla consegna. Fattura con partita IVA in regime forfettario. Nessun costo nascosto." },
   {
     t: "Consegna in pochi giorni",
-    d: "Spot in 3-5 giorni, walk tour in 5-7, sito in circa una settimana. Due giri di revisioni inclusi. [DA CONFERMARE: tempi]",
+    d: "Spot e walk tour in 72 ore, sito Easy in 7-10 giorni, Premium in 2-3 settimane. Due revisioni incluse.",
   },
 ];
 

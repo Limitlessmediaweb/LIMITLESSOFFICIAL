@@ -1,6 +1,6 @@
 /**
  * Dati dell'azienda: unica fonte per footer, contatti, pagine legali, JSON-LD e link WhatsApp.
- * Il regime fiscale non va indicato da nessuna parte.
+ * Regime fiscale: dal listino del 25/10 si indica "fattura con partita IVA in regime forfettario" (FAQ, servizi, termini).
  * Il comune compare solo nel footer e nelle pagine legali: nelle sezioni commerciali
  * si usa `disponibilita` ("Disponibile online in tutta Italia").
  */

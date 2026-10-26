@@ -8,8 +8,8 @@ import { CtaFinale } from "@/components/sections/CtaFinale";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { T } from "@/components/ui/T";
 import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
-import { NotaPrezzo, Prezzo } from "@/components/ui/Prezzo";
-import { automazioni, MANUTENZIONE_MESE, MANUTENZIONE_TESTO, servizi } from "@/data/servizi";
+import { NotaPrezzo, Prezzo, VociPrezzo } from "@/components/ui/Prezzo";
+import { mensili, REGOLE, servizi, type Voce } from "@/data/servizi";
 import { media } from "@/lib/media";
 import { clean } from "@/lib/placeholder";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
@@ -18,9 +18,27 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = pageMetadata({
   title: "Servizi e prezzi | LIMITLESS",
   description:
-    "Siti web da 500 €, spot video e walk tour da 99 €, manutenzione 9 €/mese. Cosa include ogni servizio e domande frequenti. Consulenza gratuita.",
+    "Spot 99 € fino al 30/11, walk tour da 190 €, siti da 750 €, Mese Brand da 390 €/mese, HUB da 290 €/mese. Listino chiaro. Consulenza gratuita.",
   path: "/servizi",
 });
+
+/** Offerta schema.org per una riga del listino. */
+function offerta(servizio: string, v: Voce) {
+  const nome = v.nome === servizio ? servizio : `${servizio}: ${v.nome}`;
+  const priceSpecification = v.mese
+    ? {
+        "@type": "UnitPriceSpecification",
+        priceCurrency: "EUR",
+        unitText: "mese",
+        ...(v.fino ? { minPrice: v.prezzo, maxPrice: v.fino } : { price: v.prezzo }),
+      }
+    : { "@type": "PriceSpecification", priceCurrency: "EUR", price: v.prezzo };
+  return {
+    "@type": "Offer",
+    itemOffered: { "@type": "Service", name: nome, provider: { "@id": `${SITE_URL}/#organization` } },
+    priceSpecification,
+  };
+}
 
 export default function ServiziPage() {
   const offerJsonLd = {
@@ -29,16 +47,9 @@ export default function ServiziPage() {
     name: "Servizi LIMITLESS",
     url: `${SITE_URL}/servizi`,
     itemListElement: [
-      ...servizi.map((s) => ({
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: s.nome, provider: { "@id": `${SITE_URL}/#organization` } },
-        priceSpecification: { "@type": "PriceSpecification", minPrice: s.da, priceCurrency: "EUR" },
-      })),
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Manutenzione del sito", provider: { "@id": `${SITE_URL}/#organization` } },
-        priceSpecification: { "@type": "UnitPriceSpecification", price: MANUTENZIONE_MESE, priceCurrency: "EUR", unitText: "mese" },
-      },
+      ...servizi.flatMap((s) => s.voci.map((v) => offerta(s.nome, v))),
+      ...mensili.flatMap((m) => m.voci.map((v) => offerta(m.nome, v))),
+      offerta("LIMITLESS HUB", { nome: "Prova di 30 giorni", prezzo: 300 }),
     ],
   };
 
@@ -49,12 +60,13 @@ export default function ServiziPage() {
           Servizi e prezzi
         </SplitReveal>
         <p className="mt-6 max-w-[52ch] text-lead text-fg-muted">
-          Tre servizi, prezzi sempre &ldquo;a partire da&rdquo;. Si comincia con una consulenza gratuita di 15 minuti.
+          Spot, walk tour, siti e servizi mensili, con i prezzi di listino. Fino a metà dicembre la prima offerta è lo spot di Natale per chi produce: vino,
+          birra, moto, artigianato. Si comincia con una consulenza gratuita di 15 minuti.
         </p>
         <NotaPrezzo className="mt-5 max-w-[60ch] text-base" />
         <BadgeConsulenza className="mt-6" />
         <nav aria-label="Vai al servizio" className="mt-10 flex flex-wrap gap-2">
-          {servizi.map((s) => (
+          {[...servizi, ...mensili].map((s) => (
             <a key={s.id} href={`#${s.id}`} className="min-h-11 border border-line px-4 py-2.5 font-semibold hover:border-line-strong">
               {s.nome}
             </a>
@@ -76,7 +88,8 @@ export default function ServiziPage() {
                 <p className="mt-5 max-w-[50ch] text-lead text-fg-muted">{s.ottieni}</p>
 
                 <div className="mt-10 border-t border-line-strong pt-5">
-                  <Prezzo da={s.da} />
+                  <Prezzo voci={s.voci} />
+                  {s.voci.length > 1 && <VociPrezzo voci={s.voci} className="mt-6" />}
                   <NotaPrezzo className="mt-4" />
                 </div>
 
@@ -123,13 +136,49 @@ export default function ServiziPage() {
         );
       })}
 
-      <section className="wrap border-t border-line py-16">
-        <div className="grid gap-4 text-lead text-fg-muted md:grid-cols-2 md:gap-12">
-          <p>
-            <T>{MANUTENZIONE_TESTO}</T>
-          </p>
-          <p>{automazioni}</p>
-        </div>
+      {mensili.map((m) => (
+        <section key={m.id} id={m.id} aria-labelledby={`t-${m.id}`} className="scroll-mt-20 border-t border-line">
+          <div className="wrap grid gap-10 py-20 md:py-28 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+            <div>
+              <p className="mono text-fg-muted">{m.nome}</p>
+              <h2 id={`t-${m.id}`} className="mt-3 max-w-[14ch] text-title">
+                {m.titolo}
+              </h2>
+              <p className="mt-5 max-w-[50ch] text-lead text-fg-muted">{m.ottieni}</p>
+              <div className="mt-8">
+                <ConsulenzaButton posizione={`servizi_${m.id}`} messaggio={`Ciao! Vorrei una consulenza gratuita per: ${m.nome}.`} />
+                <p className="mt-3 text-sm text-fg-muted">Consulenza gratuita, senza impegno.</p>
+              </div>
+            </div>
+            <div className="lg:pt-8">
+              <Prezzo voci={m.voci} />
+              <VociPrezzo voci={m.voci} className="mt-6" />
+              {m.extra?.map((x) => (
+                <p key={x} className="mt-4 border-l-2 border-accent pl-3 font-medium">
+                  {x}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <section aria-labelledby="regole-title" className="wrap border-t border-line py-16">
+        <h2 id="regole-title" className="font-sans text-lg font-semibold tracking-normal">
+          Valido per tutti i lavori
+        </h2>
+        <ul className="mt-5 grid gap-3 text-lead text-fg-muted md:grid-cols-2 md:gap-x-12">
+          {REGOLE.map((r) => (
+            <li key={r} className="flex gap-3">
+              <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-accent-text" />
+              <span>{r}</span>
+            </li>
+          ))}
+          <li className="flex gap-3">
+            <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-accent-text" />
+            <span>La manutenzione del sito si concorda nel preventivo</span>
+          </li>
+        </ul>
       </section>
       <CtaFinale />
       <JsonLd data={offerJsonLd} />
