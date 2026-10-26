@@ -3,9 +3,9 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitReveal } from "@/components/motion/SplitReveal";
-import { HUB_PROVA } from "@/data/hub";
+import { HUB_DA } from "@/data/hub";
 
-/** Blocco in home che porta a /hub: LIMITLESS HUB per le piccole aziende manifatturiere. */
+/** Blocco in home che porta a /hub: LIMITLESS HUB, il gestionale su misura per qualsiasi attività. */
 export function HubBlocco() {
   return (
     <section id="hub" aria-labelledby="hub-blocco-title" className="scroll-mt-16 border-y border-line bg-bg-raised">
@@ -13,12 +13,12 @@ export function HubBlocco() {
         <div className="min-w-0">
           <p className="mono text-accent-text">Novità · LIMITLESS HUB</p>
           <SplitReveal id="hub-blocco-title" className="mt-4 max-w-[13ch] text-title">
-            Hai un&apos;officina? Sai sempre dov&apos;è ogni ordine.
+            Sai sempre a che punto è ogni lavoro.
           </SplitReveal>
           <Reveal className="mt-6 max-w-[50ch] text-lead text-fg-muted">
             <p>
-              Tablet in reparto, ordini fase per fase e un portale dove i tuoi clienti vedono da soli a che punto è il lavoro. Per officine conto terzi, carpenterie e impiantisti. Prova di{" "}
-              {HUB_PROVA.giorni} giorni a {HUB_PROVA.prezzo} €.
+              Lavori, ordini e clienti in un posto solo, fase per fase, da tablet, telefono o PC. E un portale dove i tuoi clienti vedono da soli a che punto è il loro lavoro. Su misura per aziende, laboratori, negozi, e-commerce e studi. Da{" "}
+              {HUB_DA} €/mese.
             </p>
           </Reveal>
           <Link href="/hub" className="btn btn-accent mt-10 w-full sm:w-auto">
@@ -30,7 +30,7 @@ export function HubBlocco() {
           <Link href="/hub" aria-label="Scopri LIMITLESS HUB" className="block overflow-hidden border border-line-strong">
             <Image
               src="/media/hub/titolare.webp"
-              alt="Schermata di LIMITLESS HUB: il punto del titolare con lavori in ritardo, consegne e commesse a rischio"
+              alt="Schermata di LIMITLESS HUB: il punto del titolare con lavori in ritardo, consegne e lavori a rischio"
               width={1280}
               height={800}
               className="h-auto w-full"
