@@ -15,18 +15,20 @@ const ATTIVITA: Record<string, string> = {
   "Agenzia immobiliare": "un'agenzia immobiliare",
   "Cantina o birrificio": "una cantina o un birrificio",
   "Brand di prodotto": "un brand di prodotti",
-  "Azienda manifatturiera": "una piccola azienda manifatturiera",
+  "Azienda o laboratorio": "un'azienda o un laboratorio",
+  "Negozio o e-commerce": "un negozio o un e-commerce",
+  "Studio professionale": "uno studio professionale",
   Artigiano: "un'attività artigiana",
   Altro: "un'attività",
 };
 const SERVIZI: Record<string, string> = {
+  "HUB gestionale": "il gestionale LIMITLESS HUB",
   "Spot di Natale": "lo spot di Natale",
   "Spot video": "uno spot video",
   "Walk tour": "un video walk tour",
   "Sito web": "un sito web",
   "Contenuti ogni mese": "il Mese Brand",
   "Scheda Google": "la scheda Google con le recensioni",
-  "HUB gestionale": "il gestionale HUB",
   "Non lo so ancora": "",
 };
 const elenco = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} e ${xs.at(-1)}`);

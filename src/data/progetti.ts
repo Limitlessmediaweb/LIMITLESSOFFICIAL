@@ -116,7 +116,7 @@ export const progetti: Progetto[] = [
   { slug: "casco", nome: "Casco", tipo: "spot", settore: "Moto [DA CONFERMARE: nome]", frase: "[DA COMPLETARE]", concept: true },
   {
     slug: "limitless-da-zero",
-    nome: "Limitless da zero",
+    nome: "Spot di Limitless da zero",
     tipo: "spot",
     settore: "Siti web",
     frase: "[DA COMPLETARE]",

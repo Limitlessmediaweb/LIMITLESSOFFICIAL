@@ -10,6 +10,9 @@ import { T } from "@/components/ui/T";
 import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
 import { NotaPrezzo, Prezzo, VociPrezzo } from "@/components/ui/Prezzo";
 import { mensili, REGOLE, servizi, type Voce } from "@/data/servizi";
+import { HUB_DA, HUB_DEMO_COME, HUB_PRIMO_MESE } from "@/data/hub";
+import { DemoHubButton } from "@/components/ui/DemoHubButton";
+import Link from "next/link";
 import { media } from "@/lib/media";
 import { clean } from "@/lib/placeholder";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
@@ -18,7 +21,7 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = pageMetadata({
   title: "Servizi e prezzi | LIMITLESS",
   description:
-    "Spot 99 € fino al 30/11, walk tour da 190 €, siti da 750 €, Mese Brand da 390 €/mese, HUB da 290 €/mese. Listino chiaro. Consulenza gratuita.",
+    "LIMITLESS HUB da 190 €/mese. Spot 99 € fino al 30/11, walk tour da 190 €, siti da 750 €, Mese Brand da 390 €/mese. Listino chiaro. Consulenza gratuita.",
   path: "/servizi",
 });
 
@@ -49,7 +52,7 @@ export default function ServiziPage() {
     itemListElement: [
       ...servizi.flatMap((s) => s.voci.map((v) => offerta(s.nome, v))),
       ...mensili.flatMap((m) => m.voci.map((v) => offerta(m.nome, v))),
-      offerta("LIMITLESS HUB", { nome: "Prova di 30 giorni", prezzo: 300 }),
+      offerta("LIMITLESS HUB", { nome: "Da", prezzo: HUB_DA, mese: true }),
     ],
   };
 
@@ -60,18 +63,53 @@ export default function ServiziPage() {
           Servizi e prezzi
         </SplitReveal>
         <p className="mt-6 max-w-[52ch] text-lead text-fg-muted">
-          Spot, walk tour, siti e servizi mensili, con i prezzi di listino. Fino a metà dicembre la prima offerta è lo spot di Natale per chi produce: vino,
-          birra, moto, artigianato. Si comincia con una consulenza gratuita di 15 minuti.
+          LIMITLESS HUB, il gestionale su misura per la tua attività. E poi spot, walk tour, siti e servizi mensili, con i prezzi di listino. Fino al 30/11 lo
+          spot di Natale per chi produce costa 99 €. Si comincia con una consulenza gratuita di 15 minuti.
         </p>
         <NotaPrezzo className="mt-5 max-w-[60ch] text-base" />
         <BadgeConsulenza className="mt-6" />
         <nav aria-label="Vai al servizio" className="mt-10 flex flex-wrap gap-2">
+          <a href="#hub" className="min-h-11 border border-accent px-4 py-2.5 font-semibold hover:border-line-strong">
+            LIMITLESS HUB
+          </a>
           {[...servizi, ...mensili].map((s) => (
             <a key={s.id} href={`#${s.id}`} className="min-h-11 border border-line px-4 py-2.5 font-semibold hover:border-line-strong">
               {s.nome}
             </a>
           ))}
         </nav>
+      </section>
+
+      {/* LIMITLESS HUB: il servizio principale, con la sua pagina */}
+      <section id="hub" aria-labelledby="t-hub" className="scroll-mt-20 border-t border-line bg-bg-raised">
+        <div className="wrap grid gap-10 py-20 md:py-28 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+          <div>
+            <p className="mono text-accent-text">LIMITLESS HUB · il servizio principale</p>
+            <h2 id="t-hub" className="mt-3 max-w-[16ch] text-title">
+              Il gestionale su misura per la tua attività.
+            </h2>
+            <p className="mt-5 max-w-[50ch] text-lead text-fg-muted">
+              Lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. Pacchetti Base, Pro e Crescita, più il Su misura a preventivo.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <DemoHubButton posizione="servizi_hub" className="w-full sm:w-auto" />
+              <Link href="/hub" className="btn btn-ghost w-full sm:w-auto">
+                Vedi i pacchetti
+              </Link>
+            </div>
+            <p className="mt-3 text-sm text-fg-muted">{HUB_DEMO_COME}</p>
+          </div>
+          <div className="lg:pt-8">
+            <p className="font-display text-5xl font-extrabold leading-none md:text-6xl">
+              <span className="mr-1.5 align-top font-sans text-base font-medium text-fg-muted">da</span>
+              {HUB_DA} €<span className="ml-1.5 font-sans text-base font-medium text-fg-muted">al mese</span>
+            </p>
+            <p className="mt-6 border-l-2 border-accent pl-3 font-medium">
+              {HUB_PRIMO_MESE.titolo}: {HUB_PRIMO_MESE.testo}
+            </p>
+            <p className="mt-4 text-fg-muted">Tablet su richiesta. Non sostituisce il programma delle fatture: mette in ordine il lavoro.</p>
+          </div>
+        </div>
       </section>
 
       {servizi.map((s, i) => {

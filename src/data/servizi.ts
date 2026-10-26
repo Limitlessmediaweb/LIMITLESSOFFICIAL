@@ -38,9 +38,9 @@ export type Servizio = {
   faq: { q: string; a: string }[];
 };
 
-/** Servizi mensili (contenuti, scheda Google, HUB): niente video, solo listino. */
+/** Servizi mensili (contenuti, scheda Google): niente video, solo listino. L'HUB ha la sua pagina, /hub. */
 export type Mensile = {
-  id: "mese-brand" | "scheda-google" | "hub";
+  id: "mese-brand" | "scheda-google";
   nome: string;
   titolo: string;
   ottieni: string;
@@ -58,11 +58,10 @@ export const SPOT_LANCIO_FINE = "30/11";
 export const REGOLE = [
   "Acconto del 50% alla conferma, saldo alla consegna",
   "2 revisioni incluse",
-  "Nessuna anteprima gratuita",
   "Fattura con partita IVA in regime forfettario",
 ];
 
-export const NOTA_PREZZO = "Prezzi di listino. Acconto del 50% per partire, 2 revisioni incluse, nessuna anteprima gratuita.";
+export const NOTA_PREZZO = "Prezzi di listino. Acconto del 50% per partire, 2 revisioni incluse.";
 
 export const servizi: Servizio[] = [
   {
@@ -70,7 +69,7 @@ export const servizi: Servizio[] = [
     nome: "Spot video promo",
     titolo: "Uno spot che ferma lo scroll.",
     ottieni:
-      "Un video verticale di 20-30 secondi pronto per Instagram, TikTok e WhatsApp. Fino a metà dicembre anche in versione natalizia, per cantine, birrifici, moto e artigiani.",
+      "Un video verticale di 20-30 secondi pronto per Instagram, TikTok e WhatsApp. Fino al 30/11 anche in versione natalizia, per cantine, birrifici, moto e artigiani.",
     include: [
       "Formato 9:16, 20-30 secondi, per Reels, TikTok e Stories",
       "Idea, montaggio, testi e musica",
@@ -96,7 +95,7 @@ export const servizi: Servizio[] = [
       },
       {
         q: "Fate anche lo spot di Natale?",
-        a: "Sì, fino a metà dicembre: è pensato per chi produce e vende, come cantine, birrifici, officine moto e artigiani.",
+        a: `Sì, a ${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}: è pensato per chi produce e vende, come cantine, birrifici, moto e artigiani.`,
       },
       {
         q: "Serve girare un video?",
@@ -189,18 +188,6 @@ export const mensili: Mensile[] = [
     titolo: "Fatti trovare, e scegliere, su Google.",
     ottieni: "Scheda Google curata e aggiornata, con la richiesta e la gestione delle recensioni.",
     voci: [{ nome: "Scheda Google + recensioni", dettaglio: "Scheda curata e aggiornata, richiesta e gestione delle recensioni", prezzo: 59, fino: 99, mese: true }],
-  },
-  {
-    id: "hub",
-    nome: "LIMITLESS HUB",
-    titolo: "Il gestionale per piccole aziende manifatturiere.",
-    ottieni: "Un'app per PC, tablet e telefono, costruita sul modo di lavorare della tua azienda.",
-    voci: [
-      { nome: "Base", dettaglio: "Fino a 8 utenti e 2 tablet", prezzo: 290, mese: true },
-      { nome: "Pro", dettaglio: "Fino a 25 utenti e 6 tablet, portale cliente incluso", prezzo: 490, mese: true },
-      { nome: "Crescita", dettaglio: "Fino a 50 utenti e 15 tablet, con marketing", prezzo: 790, mese: true },
-    ],
-    extra: ["Per iniziare: prova di 30 giorni a 300 €, fino a 5 funzioni. I 300 € vengono scalati dal canone."],
   },
 ];
 

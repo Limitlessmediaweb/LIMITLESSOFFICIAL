@@ -1,65 +1,76 @@
-import { ArrowDown } from "lucide-react";
-import { HeroVideo } from "./HeroVideo";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { MagneticButton } from "@/components/motion/MagneticButton";
-import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
-import { CropMarks, Rec } from "@/components/ui/Viewfinder";
-import { showreel } from "@/lib/media";
-import { HeroCopy } from "./HeroCopy";
-import { HeroTimecode } from "./HeroTimecode";
-import { SPOT_LANCIO, SPOT_LANCIO_FINE } from "@/data/servizi";
+import { PhoneFrame } from "@/components/media/PhoneFrame";
+import { DemoHubButton } from "@/components/ui/DemoHubButton";
+import { CropMarks } from "@/components/ui/Viewfinder";
+import { HUB_DA, HUB_DEMO_COME } from "@/data/hub";
 
+/** Hero della home: LIMITLESS HUB è il servizio principale. Video e siti vengono subito dopo. */
 export function Hero() {
-  const desktop = showreel.desktop;
   return (
-    <section aria-labelledby="hero-title" className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        {desktop && (
-          <HeroVideo
-            src={desktop}
-            mobile={showreel.mobile}
-            label="Showreel LIMITLESS"
-            description="Montaggio di spot, siti web e walk tour realizzati da LIMITLESS: profumi, orologi, cerchi racing, ville, ristoranti e artigiani."
-            priority
-            threshold={0.1}
-            className="h-full w-full"
-            controlsClassName="right-4 top-20 md:right-12 md:top-24"
-          />
-        )}
-        {/* velatura: garantisce il contrasto AA del testo sopra il video, in entrambi i temi */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgb(8_8_8/0.92)_0%,rgb(8_8_8/0.72)_38%,rgb(8_8_8/0.15)_70%,rgb(8_8_8/0.35)_100%)]" />
-      </div>
-
-      <div className="wrap relative pb-28 pt-28 text-[#f2f0ea] md:pb-16 lg:pb-14">
-        <div className="mb-6 flex items-center gap-4 text-white/75 md:mb-8">
-          <Rec label="Showreel" />
-          <HeroTimecode />
+    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden border-b border-line">
+      <div className="wrap grid min-h-[100svh] gap-14 pb-20 pt-28 md:pt-36 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16 lg:pb-16">
+        <div className="min-w-0">
+          <p className="mono text-accent-text">LIMITLESS HUB · il gestionale su misura</p>
+          <h1 id="hero-title" className="mt-5 max-w-[15ch] text-[clamp(2.6rem,1rem+5vw,6.2rem)] leading-[0.92]">
+            Il gestionale su misura per la tua attività.
+          </h1>
+          <p className="mt-6 max-w-[48ch] text-lead text-fg-muted">
+            Lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. Il tuo cliente vede da solo a che punto è il suo lavoro. Ci adattiamo
+            alla tua attività, non il contrario.
+          </p>
+          <p className="mt-6 text-fg-muted">
+            <span>da </span>
+            <span className="font-display text-4xl font-extrabold text-fg">{HUB_DA} €</span>
+            <span>/mese · primo mese senza vincoli</span>
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <MagneticButton>
+              <DemoHubButton posizione="hero" className="w-full sm:w-auto" />
+            </MagneticButton>
+            <Link href="/hub" className="btn btn-ghost w-full sm:w-auto">
+              <span>Scopri LIMITLESS HUB</span>
+              <ArrowRight size={17} aria-hidden />
+            </Link>
+          </div>
+          <p className="mt-4 text-sm text-fg-muted">{HUB_DEMO_COME}</p>
+          <a href="#video-e-siti" className="mt-10 inline-flex items-center gap-2 font-semibold text-fg-muted link-line hover:text-fg">
+            Cerchi uno spot o un sito web? Guarda i lavori
+            <ArrowDown size={16} aria-hidden />
+          </a>
         </div>
 
-        <HeroCopy>
-          <h1 id="hero-title" className="max-w-[18ch] text-[clamp(2.7rem,1rem+5.6vw,7rem)] leading-[0.92] md:max-w-[21ch]">
-            Più clienti per la tua attività. Con siti e video che si fanno guardare.
-          </h1>
-          <p data-hero-fade className="mt-6 max-w-[46ch] text-lead text-white/80">
-            Spot di Natale per chi produce vino, birra, moto e artigianato: {SPOT_LANCIO} € fino al {SPOT_LANCIO_FINE}. E poi walk tour, siti web e HUB per piccole aziende manifatturiere.
-          </p>
-          <div data-hero-fade className="mt-7">
-            <BadgeConsulenza onMedia />
+        <div className="relative min-w-0 pb-10 sm:pb-14">
+          <figure className="overflow-hidden border border-line-strong bg-bg-sunken shadow-[0_30px_80px_-30px_rgb(0_0_0/0.6)]">
+            <Image
+              src="/media/hub/titolare.webp"
+              alt="LIMITLESS HUB, il punto del titolare: lavori in ritardo, problemi aperti, consegne della settimana e lavori a rischio"
+              width={1280}
+              height={800}
+              className="h-auto w-full"
+              sizes="(min-width: 1024px) 48vw, 100vw"
+              priority
+            />
+          </figure>
+          <div className="absolute -bottom-2 right-3 w-[32%] max-w-[170px] sm:right-6">
+            <PhoneFrame screenAspect="600 / 1100">
+              {/* spazio in alto per l'isola dinamica della cornice, nel grigio del portale */}
+              <div className="h-full bg-[#eef1f4] pt-[10%]">
+                <Image
+                  src="/media/hub/portale-telefono.webp"
+                  alt="Il portale del cliente sul telefono: un ordine con le sue fasi e la consegna prevista"
+                  width={600}
+                  height={996}
+                  className="h-auto w-full"
+                  sizes="170px"
+                />
+              </div>
+            </PhoneFrame>
           </div>
-          <div data-hero-fade className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-            {/* su mobile e tablet la CTA è la barra fissa in basso ("Consulenza gratuita"): qui non la ripetiamo */}
-            <div className="hidden lg:block">
-              <MagneticButton>
-                <ConsulenzaButton posizione="hero" />
-              </MagneticButton>
-            </div>
-            <a href="#lavori" className="btn btn-on-media">
-              Guarda i lavori
-              <ArrowDown size={17} aria-hidden />
-            </a>
-          </div>
-        </HeroCopy>
+        </div>
       </div>
-
       <CropMarks className="hidden md:block" inset={24} size={22} />
     </section>
   );

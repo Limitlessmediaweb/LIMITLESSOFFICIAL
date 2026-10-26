@@ -4,6 +4,10 @@ export type Faq = { q: string; a: string };
 
 export const faq: Faq[] = [
   {
+    q: "Cos'è LIMITLESS HUB?",
+    a: "È il gestionale su misura per qualsiasi attività: lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. Si parte da 190 €/mese e il primo mese è senza vincoli: paghi il primo canone e, se non ti trovi bene, smetti. La demo dura 10 minuti, su WhatsApp o in chiamata.",
+  },
+  {
     q: "La consulenza è davvero gratuita?",
     a: "Sì. Ci racconti la tua attività, ti mostriamo i lavori già fatti e ti diciamo quanto costa. Decidi tu se partire, senza nessun obbligo.",
   },
@@ -14,10 +18,6 @@ export const faq: Faq[] = [
   {
     q: "Avete servizi mensili?",
     a: "Sì. Mese Brand a 390 €/mese (1 spot + 8 contenuti + calendario) e Mese Brand Completo a 590 €/mese (2 spot + 12 contenuti + pubblicazione + report). Ai primi 3 clienti mensili: −30% per 3 mesi in cambio del caso studio. Scheda Google + recensioni: 59-99 €/mese.",
-  },
-  {
-    q: "Cos'è LIMITLESS HUB?",
-    a: "È il gestionale per piccole aziende manifatturiere: Base 290 €/mese, Pro 490 €/mese (con portale cliente), Crescita 790 €/mese. Si può iniziare con una prova di 30 giorni a 300 €, che vengono scalati dal canone.",
   },
   {
     q: "In quanto tempo è pronto?",
@@ -33,7 +33,7 @@ export const faq: Faq[] = [
   },
   {
     q: "Posso vedere un esempio prima di decidere?",
-    a: "Sì, nella consulenza gratuita ti mostriamo i lavori già fatti per attività simili alla tua. Non prepariamo anteprime gratuite: il lavoro parte con l'acconto.",
+    a: "Sì, nella consulenza gratuita ti mostriamo i lavori già fatti per attività simili alla tua. Il lavoro parte con l'acconto del 50%.",
   },
   {
     q: "Come funziona il pagamento?",
@@ -45,7 +45,7 @@ export const faq: Faq[] = [
   },
   {
     q: "Ci sono costi mensili?",
-    a: "Solo se scegli un servizio mensile (Mese Brand, Scheda Google, HUB). Per il sito, la manutenzione si concorda nel preventivo, prima di partire.",
+    a: "Solo se scegli un servizio mensile (LIMITLESS HUB, Mese Brand, Scheda Google). Per il sito, la manutenzione si concorda nel preventivo, prima di partire.",
   },
   {
     q: "I video vanno bene per Instagram e TikTok?",

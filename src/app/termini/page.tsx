@@ -40,7 +40,7 @@ export default function TerminiPage() {
       <p>
         I prezzi indicati sul sito sono quelli del listino in vigore. Cosa è incluso e i tempi sono definiti nel preventivo che ti mandiamo dopo la
         consulenza gratuita e diventano validi solo dopo la tua conferma scritta e il pagamento dell&apos;acconto del 50%; il saldo si paga alla
-        consegna. Ogni lavoro comprende 2 revisioni. Non realizziamo anteprime gratuite. La manutenzione del sito si concorda nel preventivo.
+        consegna. Ogni lavoro comprende 2 revisioni. La manutenzione del sito si concorda nel preventivo.
         Emettiamo fattura con partita IVA in regime forfettario.
       </p>
 

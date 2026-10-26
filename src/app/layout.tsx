@@ -27,9 +27,9 @@ const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tig
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "LIMITLESS | Siti web e video per attività locali", template: "%s | LIMITLESS" },
+  title: { default: "LIMITLESS | HUB, il gestionale su misura, e video e siti web", template: "%s | LIMITLESS" },
   description:
-    "Spot di Natale per produttori a 99 € fino al 30/11, walk tour, siti web e HUB, il gestionale per piccole aziende manifatturiere. Consulenza gratuita.",
+    "LIMITLESS HUB, il gestionale su misura per qualsiasi attività, poi spot video e siti web. Spot di Natale per produttori a 99 € fino al 30/11. Demo e consulenza gratuite.",
   applicationName: "LIMITLESS",
   robots: ALLOW_INDEXING ? { index: true, follow: true } : { index: false, follow: false },
   formatDetection: { telephone: false },

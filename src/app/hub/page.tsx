@@ -7,7 +7,7 @@ import { SmartVideo } from "@/components/media/SmartVideo";
 import { PhoneFrame } from "@/components/media/PhoneFrame";
 import { DemoHubButton } from "@/components/ui/DemoHubButton";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { HUB_DA, HUB_PROVA, hubEsempi, hubPacchetti, hubSpot, hubSuMisura, hubSuMisuraLink } from "@/data/hub";
+import { HUB_DA, HUB_DEMO_COME, HUB_PRIMO_MESE, hubEsempi, hubPacchetti, hubSpot, hubSuMisura, hubSuMisuraLink } from "@/data/hub";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { cn } from "@/lib/cn";
 
@@ -24,8 +24,8 @@ const passi = [
   {
     n: "01",
     titolo: "Da tablet, telefono o PC",
-    testo: "Chi lavora segna inizio e fine di ogni lavoro con tre pulsanti: I lavori, Materiale, Problema. Niente password da ricordare, niente prezzi a vista.",
-    img: { src: "/media/hub/reparto.webp", w: 1280, h: 600, alt: "Schermata di LIMITLESS HUB con tre pulsanti grandi: I lavori, Materiale, Problema" },
+    testo: "Chi lavora apre il suo lavoro e tocca uno dei tre pulsanti: Inizio, Fatto, Problema. Niente password da ricordare, niente prezzi a vista.",
+    img: { src: "/media/hub/pulsanti.webp", w: 1280, h: 600, alt: "Esempio di schermata di LIMITLESS HUB con un lavoro aperto e tre pulsanti grandi: Inizio, Fatto, Problema" },
   },
   {
     n: "02",
@@ -78,7 +78,7 @@ export default function HubPage() {
               Vedi i pacchetti
             </a>
           </div>
-          <p className="mt-4 text-sm text-fg-muted">La demo dura 10 minuti e la facciamo da te.</p>
+          <p className="mt-4 text-sm text-fg-muted">{HUB_DEMO_COME}</p>
         </div>
         <div className="mx-auto w-full max-w-[330px]">
           <PhoneFrame screenAspect="9 / 16">
@@ -101,7 +101,7 @@ export default function HubPage() {
           <h2 id="come-title" className="max-w-[16ch] text-title">
             Come funziona, in tre punti
           </h2>
-          <p className="mt-5 max-w-[56ch] text-lead text-fg-muted">Schermate vere della demo, con dati di esempio. Nel tuo HUB le fasi, i nomi e il logo sono i tuoi.</p>
+          <p className="mt-5 max-w-[56ch] text-lead text-fg-muted">Schermate della demo, con dati di esempio. Nel tuo HUB le fasi, i nomi e il logo sono i tuoi.</p>
           <ol className="mt-16 grid gap-20">
             {passi.map((p, i) => (
               <li key={p.n} className="grid gap-8 lg:grid-cols-[1fr_1.5fr] lg:items-center lg:gap-16">
@@ -119,7 +119,7 @@ export default function HubPage() {
                         <PhoneFrame screenAspect="600 / 1100">
                           {/* spazio in alto per l'isola dinamica della cornice, nel grigio del portale */}
                           <div className="h-full bg-[#eef1f4] pt-[10%]">
-                            <Image src="/media/hub/portale-telefono.webp" alt="Il portale del cliente sul telefono: l'ordine dal terzista per zincatura, con le fasi e la consegna prevista" width={600} height={996} className="h-auto w-full" sizes="180px" />
+                            <Image src="/media/hub/portale-telefono.webp" alt="Il portale del cliente sul telefono: un ordine con le sue fasi e la consegna prevista" width={600} height={996} className="h-auto w-full" sizes="180px" />
                           </div>
                         </PhoneFrame>
                       </div>
@@ -162,7 +162,7 @@ export default function HubPage() {
         </div>
       </section>
 
-      {/* Pacchetti e prova */}
+      {/* Pacchetti e primo mese */}
       <section id="pacchetti" aria-labelledby="pacchetti-title" className="scroll-mt-20 border-t border-line">
         <div className="wrap py-20 md:py-28">
           <h2 id="pacchetti-title" className="text-title">
@@ -226,13 +226,11 @@ export default function HubPage() {
 
           <div className="mt-10 grid gap-6 border border-accent p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
             <div>
-              <p className="mono text-accent-text">Prova di {HUB_PROVA.giorni} giorni</p>
-              <p className="mt-3 text-2xl font-extrabold md:text-3xl">{euro(HUB_PROVA.prezzo)} per provarlo un mese sul tuo lavoro vero.</p>
-              <p className="mt-3 max-w-[60ch] text-fg-muted">
-                Accendiamo fino a 5 funzioni sul tuo lavoro di tutti i giorni. Se continui, i {euro(HUB_PROVA.prezzo)} vengono scalati dal canone. Se non ti serve, ci si ferma lì.
-              </p>
+              <p className="mono text-accent-text">Per iniziare</p>
+              <p className="mt-3 text-2xl font-extrabold md:text-3xl">{HUB_PRIMO_MESE.titolo}.</p>
+              <p className="mt-3 max-w-[60ch] text-fg-muted">{HUB_PRIMO_MESE.testo}</p>
             </div>
-            <DemoHubButton posizione="hub_prova" className="w-full md:w-auto" />
+            <DemoHubButton posizione="hub_primo_mese" className="w-full md:w-auto" />
           </div>
         </div>
       </section>
@@ -243,7 +241,7 @@ export default function HubPage() {
           <SplitReveal as="h2" id="hub-cta-title" className="max-w-[16ch] text-display">
             A che punto sono i tuoi lavori, adesso?
           </SplitReveal>
-          <p className="mt-6 max-w-[50ch] text-lead text-fg-muted">Scrivici su WhatsApp: in 10 minuti ti facciamo vedere l&apos;HUB con i problemi della tua attività.</p>
+          <p className="mt-6 max-w-[50ch] text-lead text-fg-muted">Scrivici su WhatsApp: in 10 minuti, in chat o in chiamata, ti facciamo vedere l&apos;HUB con i problemi della tua attività.</p>
           <div className="mt-10">
             <DemoHubButton posizione="hub_finale" className="w-full sm:w-auto" />
           </div>

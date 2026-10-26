@@ -82,7 +82,7 @@ export function organizationJsonLd() {
         url: SITE_URL,
         image: `${SITE_URL}/opengraph-image`,
         description:
-          "Spot video promo (anche di Natale per produttori di vino, birra, moto e artigiani), video walk tour, siti web, contenuti social mensili, scheda Google e LIMITLESS HUB, il gestionale per piccole aziende manifatturiere. Consulenza gratuita.",
+          "LIMITLESS HUB, il gestionale su misura per qualsiasi attività. E poi spot video promo (anche di Natale per produttori di vino, birra, moto e artigiani), video walk tour, siti web, contenuti social mensili e scheda Google. Consulenza gratuita.",
         telephone,
         email: azienda.email,
         address,

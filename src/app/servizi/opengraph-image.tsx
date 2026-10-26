@@ -5,5 +5,5 @@ export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export default function Image() {
-  return ogImage({ title: "Spot, walk tour, siti e HUB. Prezzi chiari.", kicker: "Servizi e prezzi", image: "/media/siti/osteria-del-borgo-hero.jpg", imageWide: true });
+  return ogImage({ title: "HUB, spot, walk tour e siti. Prezzi chiari.", kicker: "Servizi e prezzi", image: "/media/siti/osteria-del-borgo-hero.jpg", imageWide: true });
 }

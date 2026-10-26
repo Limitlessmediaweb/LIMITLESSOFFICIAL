@@ -5,7 +5,8 @@ import { waLink } from "@/data/azienda";
  * LIMITLESS HUB: unica fonte per la pagina /hub e il blocco in home.
  * Impostazione del 26/10 (_CONTROLLO/LISTINO-E-REGOLE.md, DECISIONI HUB 26/10):
  * gestionale su misura per qualsiasi attività, pacchetti senza prezzo singolo, solo «da 190 €/mese»,
- * pacchetto Su misura a preventivo, tablet su richiesta.
+ * pacchetto Su misura a preventivo, tablet su richiesta. Dal 27/10: primo mese senza vincoli (niente prova a 300 €),
+ * demo di 10 minuti su WhatsApp o in chiamata, niente visite sul posto prima della demo.
  */
 
 export const HUB_MESSAGGIO_DEMO = "Ciao! Vorrei prenotare una demo di 10 minuti di LIMITLESS HUB per la mia attività.";
@@ -17,7 +18,14 @@ export const hubSuMisuraLink = waLink(HUB_MESSAGGIO_SU_MISURA);
 /** Prezzo d'ingresso: l'unica cifra dei canoni che compare sul sito. */
 export const HUB_DA = 190;
 
-export const HUB_PROVA = { giorni: 30, prezzo: 300 };
+/** Primo mese senza vincoli: si paga il primo canone, se non ci si trova bene si smette. */
+export const HUB_PRIMO_MESE = {
+  titolo: "Primo mese senza vincoli",
+  testo: "Paghi solo il primo canone e lo usi sul tuo lavoro di tutti i giorni. Se non ti trovi bene, smetti lì: nessuna penale, nessun costo in più.",
+};
+
+/** Come si fa la demo: mai visite sul posto prima. */
+export const HUB_DEMO_COME = "Demo di 10 minuti su WhatsApp o in chiamata. Se poi serve, la visita la organizziamo dopo.";
 
 export const hubPacchetti = [
   {

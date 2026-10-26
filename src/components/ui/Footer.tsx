@@ -13,7 +13,7 @@ export function Footer() {
         <div className="flex flex-col gap-6">
           <Logo className="text-3xl" />
           <p className="max-w-[34ch] text-fg-muted">
-            Siti web animati, spot video e walk tour per attività locali e piccoli brand.
+            LIMITLESS HUB, il gestionale su misura per qualsiasi attività. E poi siti web, spot video e walk tour.
           </p>
           <ConsulenzaButton posizione="footer" variant="ghost" className="self-start" />
         </div>
