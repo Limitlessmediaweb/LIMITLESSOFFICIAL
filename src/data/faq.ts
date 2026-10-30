@@ -5,7 +5,7 @@ export type Faq = { q: string; a: string };
 export const faq: Faq[] = [
   {
     q: "Cos'è LIMITLESS HUB?",
-    a: "È il gestionale su misura per qualsiasi attività: lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. Si parte da 190 €/mese e il primo mese è senza vincoli: paghi il primo canone e, se non ti trovi bene, smetti. La demo dura 10 minuti, su WhatsApp o in chiamata.",
+    a: "È il gestionale su misura per qualsiasi attività: lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. I pacchetti sono Start 190, Base 290, Pro 490 e Crescita 790 €/mese. Si comincia con una prova di 30 giorni a 300 €, scalati dal canone se continui; poi minimo 3 mesi e disdetta con 7 giorni di preavviso. La demo dura 10 minuti, su WhatsApp o in chiamata.",
   },
   {
     q: "La consulenza è davvero gratuita?",

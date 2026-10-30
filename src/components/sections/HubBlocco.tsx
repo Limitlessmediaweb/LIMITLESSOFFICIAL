@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitReveal } from "@/components/motion/SplitReveal";
-import { HUB_PRIMO_MESE } from "@/data/hub";
+import { HUB_PROVA } from "@/data/hub";
 
 const punti = [
   { t: "Tre pulsanti per chi lavora", d: "Inizio, Fatto, Problema. Uguali su telefono, tablet e PC." },
@@ -30,7 +30,7 @@ export function HubBlocco() {
             ))}
           </Reveal>
           <p className="mt-8 max-w-[50ch] text-fg-muted">
-            <strong className="text-fg">{HUB_PRIMO_MESE.titolo}:</strong> paghi il primo canone e, se non ti trovi bene, smetti.
+            <strong className="text-fg">{HUB_PROVA.titolo}:</strong> se continui, li scaliamo dal canone; se smetti, non devi nient&apos;altro.
           </p>
           <Link href="/hub" className="btn btn-accent mt-8 w-full sm:w-auto">
             <span>Scopri LIMITLESS HUB</span>

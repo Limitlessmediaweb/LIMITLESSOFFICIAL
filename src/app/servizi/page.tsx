@@ -10,7 +10,7 @@ import { T } from "@/components/ui/T";
 import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
 import { NotaPrezzo, Prezzo, VociPrezzo } from "@/components/ui/Prezzo";
 import { mensili, REGOLE, servizi, type Voce } from "@/data/servizi";
-import { HUB_DA, HUB_DEMO_COME, HUB_PRIMO_MESE } from "@/data/hub";
+import { HUB_DA, HUB_DEMO_COME, HUB_PROVA } from "@/data/hub";
 import { DemoHubButton } from "@/components/ui/DemoHubButton";
 import Link from "next/link";
 import { media } from "@/lib/media";
@@ -105,7 +105,7 @@ export default function ServiziPage() {
               {HUB_DA} €<span className="ml-1.5 font-sans text-base font-medium text-fg-muted">al mese</span>
             </p>
             <p className="mt-6 border-l-2 border-accent pl-3 font-medium">
-              {HUB_PRIMO_MESE.titolo}: {HUB_PRIMO_MESE.testo}
+              {HUB_PROVA.titolo}: {HUB_PROVA.testo}
             </p>
             <p className="mt-4 text-fg-muted">Tablet su richiesta. Non sostituisce il programma delle fatture: mette in ordine il lavoro.</p>
           </div>

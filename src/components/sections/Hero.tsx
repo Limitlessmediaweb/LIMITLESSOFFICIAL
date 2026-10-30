@@ -5,7 +5,7 @@ import { MagneticButton } from "@/components/motion/MagneticButton";
 import { PhoneFrame } from "@/components/media/PhoneFrame";
 import { DemoHubButton } from "@/components/ui/DemoHubButton";
 import { CropMarks } from "@/components/ui/Viewfinder";
-import { HUB_DA, HUB_DEMO_COME } from "@/data/hub";
+import { HUB_DA, HUB_DEMO_COME, HUB_PROVA } from "@/data/hub";
 
 /** Hero della home: LIMITLESS HUB è il servizio principale. Video e siti vengono subito dopo. */
 export function Hero() {
@@ -24,7 +24,7 @@ export function Hero() {
           <p className="mt-6 text-fg-muted">
             <span>da </span>
             <span className="font-display text-4xl font-extrabold text-fg">{HUB_DA} €</span>
-            <span>/mese · primo mese senza vincoli</span>
+            <span>/mese · {HUB_PROVA.breve}</span>
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <MagneticButton>

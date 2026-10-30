@@ -7,14 +7,14 @@ import { SmartVideo } from "@/components/media/SmartVideo";
 import { PhoneFrame } from "@/components/media/PhoneFrame";
 import { DemoHubButton } from "@/components/ui/DemoHubButton";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { HUB_DA, HUB_DEMO_COME, HUB_PRIMO_MESE, hubEsempi, hubPacchetti, hubSpot, hubSuMisura, hubSuMisuraLink } from "@/data/hub";
+import { HUB_DA, HUB_DEMO_COME, HUB_PROVA, hubEsempi, hubPacchetti, hubSpot, hubSuMisura, hubSuMisuraLink } from "@/data/hub";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = pageMetadata({
   title: "LIMITLESS HUB | Il gestionale su misura per la tua attività",
   description:
-    "Lavori, ordini e clienti in un posto solo, fase per fase, da tablet, telefono o PC. Gestionale su misura per aziende, negozi, studi e laboratori. Da 190 €/mese.",
+    "Lavori, ordini e clienti in un posto solo, fase per fase, da tablet, telefono o PC. Gestionale su misura per aziende, negozi, studi e laboratori. Da 190 €/mese, prova di 30 giorni a 300 € scalati dal canone.",
   path: "/hub",
 });
 
@@ -54,6 +54,7 @@ export default function HubPage() {
     offers: {
       "@type": "AggregateOffer",
       lowPrice: HUB_DA,
+      highPrice: Math.max(...hubPacchetti.map((p) => p.prezzo)),
       priceCurrency: "EUR",
       offerCount: hubPacchetti.length + 1,
     },
@@ -162,7 +163,7 @@ export default function HubPage() {
         </div>
       </section>
 
-      {/* Pacchetti e primo mese */}
+      {/* Pacchetti e prova */}
       <section id="pacchetti" aria-labelledby="pacchetti-title" className="scroll-mt-20 border-t border-line">
         <div className="wrap py-20 md:py-28">
           <h2 id="pacchetti-title" className="text-title">
@@ -186,7 +187,11 @@ export default function HubPage() {
                     </h3>
                     {consigliato && <span className="bg-accent px-2 py-1 text-xs font-bold uppercase tracking-wide text-accent-ink">Il più scelto</span>}
                   </div>
-                  <p className="mono mt-6 text-fg-muted">{p.limiti}</p>
+                  <p className="mt-6">
+                    <span className="font-display text-4xl font-extrabold">{euro(p.prezzo)}</span>
+                    <span className="ml-1 text-fg-muted">/mese</span>
+                  </p>
+                  <p className="mono mt-3 text-fg-muted">{p.limiti}</p>
                   <p className="mt-4 text-fg-muted">{p.perChi}</p>
                   <ul className="mt-6 grid gap-3 border-t border-line pt-6">
                     {p.include.map((x) => (
@@ -199,7 +204,7 @@ export default function HubPage() {
                 </article>
               );
             })}
-            <article aria-labelledby="pk-su-misura" className="flex flex-col bg-bg p-6 md:p-8">
+            <article aria-labelledby="pk-su-misura" className="flex flex-col bg-bg p-6 md:col-span-2 md:p-8 xl:col-span-4">
               <h3 id="pk-su-misura" className="text-2xl font-extrabold">
                 {hubSuMisura.nome}
               </h3>
@@ -227,10 +232,11 @@ export default function HubPage() {
           <div className="mt-10 grid gap-6 border border-accent p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
             <div>
               <p className="mono text-accent-text">Per iniziare</p>
-              <p className="mt-3 text-2xl font-extrabold md:text-3xl">{HUB_PRIMO_MESE.titolo}.</p>
-              <p className="mt-3 max-w-[60ch] text-fg-muted">{HUB_PRIMO_MESE.testo}</p>
+              <p className="mt-3 text-2xl font-extrabold md:text-3xl">{HUB_PROVA.titolo}, scalati dal canone.</p>
+              <p className="mt-3 max-w-[60ch] text-fg-muted">{HUB_PROVA.testo}</p>
+              <p className="mt-3 max-w-[60ch] text-sm text-fg-muted">{HUB_PROVA.regole}</p>
             </div>
-            <DemoHubButton posizione="hub_primo_mese" className="w-full md:w-auto" />
+            <DemoHubButton posizione="hub_prova" className="w-full md:w-auto" />
           </div>
         </div>
       </section>
