@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Contatti | LIMITLESS",
   description:
-    "Prenota la consulenza gratuita su WhatsApp al +39 339 795 8873, oppure scrivici via email, Instagram o TikTok. Disponibili online in tutta Italia.",
+    "Prenota la consulenza gratuita su WhatsApp al +39 350 070 4573, oppure scrivici via email, Instagram o TikTok. Disponibili online in tutta Italia.",
   path: "/contatti",
 });
 

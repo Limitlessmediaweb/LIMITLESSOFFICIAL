@@ -16,8 +16,8 @@ export const azienda = {
 
   email: "limitlessmediaweb@gmail.com",
   pec: "info@pec.limitlessmedia.it",
-  telefono: "+39 339 795 8873",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "393397958873",
+  telefono: "+39 350 070 4573",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "393500704573",
   dominio: "limitlessmedia.it",
 
   instagram: { handle: "limitlessmediaweb", url: "https://www.instagram.com/limitlessmediaweb/" },

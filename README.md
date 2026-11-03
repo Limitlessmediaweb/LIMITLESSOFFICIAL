@@ -90,7 +90,7 @@ Copia `.env.example` in `.env.local`.
 | `NEXT_PUBLIC_SITE_URL` | `https://www.limitlessmedia.it` | base per canonical, sitemap, Open Graph, JSON-LD |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | `false` = `noindex` globale e `robots.txt` che blocca tutto. **Mettere `true` al lancio.** |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | (vuota) | se impostata (es. `limitlessmedia.it`) carica Plausible, senza cookie |
-| `NEXT_PUBLIC_WHATSAPP` | `393397958873` | numero per i link `wa.me` |
+| `NEXT_PUBLIC_WHATSAPP` | `393500704573` | numero per i link `wa.me` |
 
 Eventi analytics (`src/lib/analytics.ts`, funzione `track()`): `whatsapp_click` (con `posizione`), `progetto_live_click`, `video_audio_on`, `configuratore_invio`, `filtro_lavori`. Nessun dato personale.
 
