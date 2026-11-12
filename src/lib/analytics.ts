@@ -10,7 +10,10 @@ export type EventName =
   | "filtro_lavori"
   | "social_click"
   | "consulenza_click"
-  | "demo_hub_click";
+  | "demo_hub_click"
+  | "quiz_click"
+  | "quiz_inizio"
+  | "quiz_fine";
 
 type Props = Record<string, string | number | boolean>;
 

@@ -1,0 +1,596 @@
+/* ───────────────────────────────────────────────────────────────
+   HOME «Dal caos all'ordine» (novembre 2026)
+   Gli oggetti del disordine (fogli, post-it, messaggi) imitano cose reali:
+   come la cornice del telefono, sono l'eccezione agli angoli vivi.
+   ─────────────────────────────────────────────────────────────── */
+:root {
+  --paper: #ece7da;
+  --postit: #f4d94a;
+}
+
+.messy {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.25;
+  color: #1b1a17;
+  padding: 10px 12px;
+  width: 150px;
+  border-radius: 3px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.messy small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+.messy.paper {
+  background: var(--paper);
+  background-image: repeating-linear-gradient(transparent 0 17px, rgb(0 0 0 / 0.08) 17px 18px);
+  min-height: 104px;
+}
+.messy.postit {
+  background: var(--postit);
+  width: 118px;
+  min-height: 104px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 2px 2px 14px 2px;
+}
+.messy.chat {
+  background: #1f2c22;
+  color: #e9f5e6;
+  border-radius: 14px 14px 14px 3px;
+  width: 172px;
+}
+.messy.chat small {
+  color: #7fd48a;
+  opacity: 1;
+}
+.messy.xls {
+  background: #f5f5f2;
+  width: 164px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+}
+.messy.xls small {
+  background: #1d6f42;
+  color: #fff;
+  opacity: 1;
+  margin: 0;
+  padding: 5px 8px;
+}
+.messy.xls span {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  border-bottom: 1px solid #d5d5cf;
+}
+.messy.xls span b {
+  font-weight: 400;
+  padding: 4px 8px;
+  border-right: 1px solid #d5d5cf;
+}
+.messy.xls span i {
+  font-style: normal;
+  padding: 4px 8px;
+  color: #b3261e;
+}
+.messy.call {
+  background: var(--rec);
+  color: #fff;
+  width: 148px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+.messy.call small {
+  opacity: 0.85;
+}
+/* ombre solo su computer: su telefono costano fotogrammi */
+@media (min-width: 1024px) {
+  .messy {
+    box-shadow: 0 8px 22px rgb(0 0 0 / 0.45);
+  }
+  .is-lite .messy {
+    box-shadow: none;
+  }
+}
+
+.tidy {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 12px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  font-size: 13.5px;
+  color: var(--fg);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tidy .n {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+}
+.tidy .t {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+.tidy .who {
+  color: var(--fg-muted);
+  font-size: 12px;
+}
+.pill {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+  white-space: nowrap;
+}
+.pill.ok {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.pill.ko {
+  border-color: var(--rec);
+  color: var(--rec);
+}
+
+/* ── Hero: palco alto, contenuto fissato ── */
+.caos-stage {
+  position: relative;
+}
+.caos-pin {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
+  isolation: isolate;
+}
+.caos-grid {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  grid-template-rows: auto 1fr;
+  gap: 0.9rem;
+  padding-top: 4.9rem;
+  padding-bottom: 5.6rem;
+}
+.caos-copy {
+  display: grid;
+  gap: 0.7rem;
+  justify-items: start;
+  align-content: start;
+}
+.caos-copy .btn {
+  width: 100%;
+}
+.caos-h1 {
+  font-size: clamp(3.3rem, 1rem + 11.5vw, 10.5rem);
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+.caos-ch {
+  display: inline-block;
+}
+.caos-ord {
+  transition: color 0.5s;
+}
+.is-order .caos-ord,
+html:not(.js) .caos-ord {
+  color: var(--accent-text);
+}
+.caos-board {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.caos-lab {
+  color: var(--fg-muted);
+}
+.caos-rows {
+  display: grid;
+  gap: 5px;
+}
+.caos-rows > li:nth-child(n + 4) {
+  display: none;
+}
+.caos-strip {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.caos-strip > li,
+.it-clip {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #111;
+  border: 1px solid var(--line);
+}
+.caos-strip img,
+.caos-strip video,
+.it-clip img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.caos-strip .tag {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  padding: 1px 4px;
+  background: rgb(10 10 10 / 0.7);
+  color: #f2f0ea;
+}
+.caos-field {
+  display: none;
+}
+.caos-hints {
+  display: none;
+}
+.caos-hint {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 7px 11px;
+  background: rgb(from var(--bg) r g b / 0.9);
+  border: 1px solid var(--line);
+  color: var(--fg-muted);
+}
+.caos-hint.tap {
+  pointer-events: auto;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+  min-height: 2.75rem;
+}
+.fps-counter {
+  position: fixed;
+  z-index: 95;
+  left: 50%;
+  translate: -50% 0;
+  top: max(14px, env(safe-area-inset-top));
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  padding: 5px 8px;
+  background: rgb(10 10 10 / 0.8);
+  border: 1px solid rgb(242 240 234 / 0.2);
+  color: #e8ff3a;
+  pointer-events: none;
+}
+.fps-counter.low {
+  color: #ff3b30;
+}
+@media (min-width: 1024px) {
+  .caos-grid {
+    grid-template-columns: 1.1fr 1fr;
+    grid-template-rows: none;
+    align-items: center;
+    gap: 5vw;
+    padding-top: 5.5rem;
+    padding-bottom: 2rem;
+  }
+  .caos-copy {
+    gap: 1.2rem;
+  }
+  .caos-copy .btn {
+    width: auto;
+  }
+  .caos-h1 {
+    font-size: clamp(4rem, 8.6vw, 10.5rem);
+  }
+  .caos-board {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .caos-rows {
+    gap: 8px;
+  }
+  .caos-rows > li:nth-child(n + 4) {
+    display: block;
+  }
+  .caos-strip {
+    gap: 10px;
+  }
+  .caos-strip > li,
+  .it-clip {
+    aspect-ratio: 9 / 16;
+  }
+}
+@media (max-width: 1023.98px) and (max-height: 720px) {
+  .caos-rows > li:nth-child(n + 3) {
+    display: none;
+  }
+}
+@media (min-width: 1024px) and (max-height: 820px) {
+  .caos-rows > li:nth-child(n + 6) {
+    display: none;
+  }
+}
+
+/* Con JS e movimento attivo: il palco diventa alto e l'hero resta fermo mentre scorri.
+   L'elenco ordinato è nascosto finché lo script non prende il controllo (niente lampo di «ordine» all'avvio). */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .caos-stage {
+    height: 300svh;
+  }
+  html.js .caos-pin {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  html.js .caos-grid {
+    height: 100%;
+    min-height: 0;
+  }
+  html.js .caos-pin:not(.is-live) .caos-board {
+    visibility: hidden;
+  }
+  html.js .is-live .caos-rows > li,
+  html.js .is-live .caos-strip > li,
+  html.js .is-live .caos-lab {
+    opacity: 0;
+  }
+  html.js .is-live .caos-field {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+  html.js .caos-field .it {
+    position: absolute;
+    left: 0;
+    top: 0;
+    will-change: transform;
+    pointer-events: auto;
+    touch-action: pan-y;
+    cursor: grab;
+  }
+  html.js .caos-field .it.drag {
+    cursor: grabbing;
+    z-index: 5;
+  }
+  html.js .caos-field img {
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+  html.js .is-order .caos-field {
+    visibility: hidden;
+  }
+  html.js .is-live .caos-hints {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    pointer-events: none;
+    opacity: 1;
+  }
+  @media (max-width: 1023.98px) {
+    html.js .caos-field .it[data-solo-desktop] {
+      display: none;
+    }
+  }
+}
+
+/* ── Lente: sotto la giornata di oggi, dentro la stessa giornata in ordine ── */
+.lente-box {
+  position: relative;
+  overflow: hidden;
+  height: min(72svh, 560px);
+  border: 1px solid var(--line-strong);
+  background: var(--bg-sunken);
+  isolation: isolate;
+}
+.lente-layer {
+  position: absolute;
+  inset: 0;
+}
+.lente-caos {
+  display: none;
+}
+.lente-caos .messy {
+  position: absolute;
+  translate: -50% -50%;
+}
+.lente-ordine {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  padding: 1rem;
+}
+.lente-rim {
+  display: none;
+}
+@media (min-width: 768px) {
+  .lente-ordine {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: space-evenly;
+    padding: 1.5rem 4%;
+    gap: 8px 24px;
+  }
+}
+@media (min-width: 1200px) {
+  .lente-ordine {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .lente-caos {
+    display: block;
+    filter: saturate(0.8);
+  }
+  html.js .lente-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    contain: paint;
+    will-change: transform;
+  }
+  html.js .is-live .lente-wrap {
+    border-radius: 50%;
+  }
+  html.js .lente-box:not(.is-live) .lente-wrap {
+    visibility: hidden;
+  }
+  html.js .is-live .lente-ordine {
+    inset: auto;
+    left: 0;
+    top: 0;
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+  html.js .is-live .lente-rim {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    border-radius: 50%;
+    border: 1.5px solid var(--fg);
+    box-shadow:
+      0 0 0 6px rgb(232 255 58 / 0.14),
+      0 18px 60px rgb(0 0 0 / 0.5);
+    touch-action: none;
+    cursor: grab;
+    will-change: transform, opacity;
+  }
+  html.js .is-live .lente-rim::before {
+    content: "IN ORDINE";
+    position: absolute;
+    left: 50%;
+    top: -11px;
+    translate: -50% 0;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    padding: 3px 8px;
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+}
+
+/* ── Tre tasti: sezione fissata a passi ── */
+.tasti-panel {
+  border: 1px solid var(--line-strong);
+  background: var(--bg-raised);
+}
+.tasto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  border: 1px solid var(--line-strong);
+  font-weight: 600;
+  color: var(--fg-muted);
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s,
+    transform 0.3s var(--ease-out-expo);
+}
+.tasto[data-on="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  transform: scale(1.03);
+}
+.tasto[data-on="true"][data-tono="ko"] {
+  background: var(--rec);
+  border-color: var(--rec);
+  color: #fff;
+}
+.tasti-step {
+  transition: opacity 0.4s;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .tasti-stage {
+    height: 260svh;
+  }
+  html.js .tasti-pin {
+    position: sticky;
+    top: 0;
+    min-height: 100svh;
+  }
+  html.js .tasti-step[data-on="false"] {
+    opacity: 0.28;
+  }
+  @media (max-width: 1023.98px) {
+    html.js .tasti-step[data-on="false"] {
+      display: none;
+    }
+    html.js .tasti-step {
+      min-height: 5.5rem;
+    }
+  }
+}
+
+/* ── Lavori: una scheda alla volta a fuoco ── */
+.lavoro-card {
+  transition:
+    opacity 0.4s,
+    border-color 0.4s;
+}
+html.js .lavoro-card[data-fuoco="false"] {
+  opacity: 0.55;
+}
+.lavoro-card[data-fuoco="true"] {
+  border-color: var(--accent);
+}
+
+/* Telefono: niente grana in sovrimpressione e niente sfocature dietro header e barra
+   (costano fotogrammi sopra le animazioni) */
+@media (pointer: coarse) {
+  .grain {
+    display: none;
+  }
+  .site-header.is-scrolled {
+    background: rgb(from var(--bg) r g b / 0.96);
+    backdrop-filter: none;
+  }
+  aside[aria-label="Contatto rapido"] {
+    background: var(--bg);
+    backdrop-filter: none;
+  }
+}

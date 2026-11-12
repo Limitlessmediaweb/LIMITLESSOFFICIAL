@@ -1,58 +1,53 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/Hero";
-import { Nastri } from "@/components/sections/Nastri";
-import { Problema } from "@/components/sections/Problema";
-import { LavoriEvidenza } from "@/components/sections/LavoriEvidenza";
-import { HubBlocco } from "@/components/sections/HubBlocco";
-import { VideoESiti } from "@/components/sections/VideoESiti";
-import { SpotCarousel } from "@/components/sections/SpotCarousel";
-import { WalkTour } from "@/components/sections/WalkTour";
-import { Servizi } from "@/components/sections/Servizi";
-import { ComeLavoriamo } from "@/components/sections/ComeLavoriamo";
-import { Configuratore } from "@/components/sections/Configuratore";
-import { ChiSiamo } from "@/components/sections/ChiSiamo";
+import "./caos.css";
+import { HeroCaos } from "@/components/caos/HeroCaos";
+import { Lente } from "@/components/caos/Lente";
+import { TreTasti } from "@/components/caos/TreTasti";
+import { LavoriNastro } from "@/components/caos/LavoriNastro";
+import { ComeSiParte, PerTe, Prezzi, QuizFinale, Riconosci } from "@/components/caos/SezioniHome";
 import { FaqList } from "@/components/sections/Faq";
-import { CtaFinale } from "@/components/sections/CtaFinale";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { faq } from "@/data/faq";
-import { spotCards, tours } from "@/lib/cards";
+import { domandeHome } from "@/data/home";
 import { clean } from "@/lib/placeholder";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "LIMITLESS | HUB, il gestionale su misura, e video e siti web",
+  title: "LIMITLESS | Dal caos all'ordine: gestionale su misura",
   description:
-    "LIMITLESS HUB, il gestionale su misura per qualsiasi attività, poi spot video e siti web. Spot di Natale per produttori a 99 € fino al 30/11. Demo e consulenza gratuite.",
+    "Mettiamo in ordine il lavoro della tua attività con LIMITLESS HUB, il gestionale su misura da 190 €/mese. Poi la facciamo crescere con sito e video. Fai il quiz.",
   path: "/",
 });
 
+/**
+ * Home «Dal caos all'ordine» in 10 sezioni:
+ * 1 hero (caos fisico) · 2 lo riconosci? · 3 prima e dopo (lente) · 4 tre tasti · 5 per te che decidi ·
+ * 6 lavori 01–07 · 7 come si parte · 8 prezzi · 9 domande · 10 quiz e contatto.
+ */
 export default function Home() {
+  // le domande con la risposta ancora da completare non si mostrano
+  const domande = domandeHome.filter((f) => clean(f.a));
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faq.map((f) => ({
+    mainEntity: domande.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: clean(f.a) },
+      acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
 
   return (
     <>
-      <Hero />
-      <HubBlocco />
-      <VideoESiti />
-      <Nastri />
-      <Problema />
-      <LavoriEvidenza />
-      <SpotCarousel cards={spotCards()} />
-      <WalkTour tours={tours()} />
-      <Servizi />
-      <ComeLavoriamo />
-      <Configuratore />
-      <ChiSiamo />
-      <FaqList items={faq} />
-      <CtaFinale />
+      <HeroCaos />
+      <Riconosci />
+      <Lente />
+      <TreTasti />
+      <PerTe />
+      <LavoriNastro />
+      <ComeSiParte />
+      <Prezzi />
+      <FaqList items={domande} title="Le domande che ci fanno tutti." />
+      <QuizFinale />
       <JsonLd data={faqJsonLd} />
     </>
   );
