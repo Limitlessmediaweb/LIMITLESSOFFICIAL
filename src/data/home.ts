@@ -52,19 +52,19 @@ export type LavoroHome = {
 };
 
 /**
- * PROVVISORI: Riccardo sceglie i 7 definitivi da una lista di 10 candidati (12/11).
+ * Scelti da Riccardo il 12/11: i 7 consigliati, con un walk tour (Attico) al posto di Tecnolambro.
  * Per cambiarli basta modificare questo elenco: i file stanno in public/media/home/<slug>.mp4 (muto),
  * <slug>.jpg, <slug>-s.mp4 e <slug>-s.jpg (miniature dell'hero).
  * Tutti i video sono senza audio. I concept sono sempre segnati.
  */
 export const lavoriHome: LavoroHome[] = [
   { slug: "hub-il-foglio", nome: "HUB · «Il foglio»", tipo: "Gestionale · il nostro prodotto", riga: "Dal foglio sul bancone alla schermata. In trenta secondi.", concept: false },
-  { slug: "cascina-belvedere", nome: "Cascina Belvedere", tipo: "Walk tour", riga: "Un giro dentro casa, prima di andarci.", concept: true },
+  { slug: "cascina-belvedere", nome: "Cascina Belvedere", tipo: "Walk tour · cascina", riga: "Un giro dentro casa, prima di andarci.", concept: true },
   { slug: "scarico-titanio", nome: "Scarico titanio", tipo: "Spot · moto", riga: "Uno scarico, ripreso come merita.", concept: true },
   { slug: "ombralta", nome: "Tenuta Ombralta", tipo: "Spot · vino", riga: "Il regalo di Natale di una cantina.", concept: true },
-  { slug: "volta", nome: "VOLTA", tipo: "Sito + spot · impianti elettrici", riga: "Un elettricista con un sito che si ricorda.", concept: true },
+  { slug: "attico", nome: "Attico in centro", tipo: "Walk tour · appartamento", riga: "Dalla mappa al salotto, stanza per stanza.", concept: true },
   { slug: "nottea", nome: "NÒTTEA", tipo: "Sito + spot · profumi", riga: "Un profumo che nasce di notte.", concept: true },
-  { slug: "villa-lume", nome: "Villa Lume", tipo: "Spot · immobiliare", riga: "Dalla planimetria alla casa, dal giorno alla notte.", concept: true },
+  { slug: "ordito", nome: "ORDITO", tipo: "Sito + spot · abbigliamento", riga: "La giacca si scompone e mostra come è fatta.", concept: true },
 ];
 
 /* ── Sezione 2 · Lo riconosci? ────────────────────────────────────────────────── */
