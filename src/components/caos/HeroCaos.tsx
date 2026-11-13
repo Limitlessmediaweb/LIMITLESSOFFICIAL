@@ -106,11 +106,11 @@ export function HeroCaos() {
       const mobile = isMobile();
       const ms = mobile ? 0.74 : 1.08;
       const mr = more.getBoundingClientRect();
-      for (const b of bodies) {
-        const tr = b.target?.getBoundingClientRect();
+      // prima tutte le letture, poi tutte le scritture: una sola passata di layout
+      const misure = bodies.map((b) => ({ tr: b.target?.getBoundingClientRect(), w: b.el.offsetWidth, h: b.el.offsetHeight }));
+      bodies.forEach((b, i) => {
+        const { tr, w, h } = misure[i];
         if (b.kind === "row") {
-          const w = b.el.offsetWidth;
-          const h = b.el.offsetHeight;
           b.el.style.margin = `${-h / 2}px 0 0 ${-w / 2}px`;
           b.sc = ms;
           b.r = Math.min(w, h) * 0.5 * ms * 1.02;
@@ -143,7 +143,7 @@ export function HeroCaos() {
         }
         b.fo = "";
         b.to = "";
-      }
+      });
       lastP = -1;
       shownP = -1;
       still = 0;
@@ -417,7 +417,13 @@ export function HeroCaos() {
         videos?.forEach((v) => v.pause());
       });
     };
-    (document.fonts?.ready ?? Promise.resolve()).then(start);
+    // si parte quando il browser ha finito il primo disegno della pagina, per non rallentarlo
+    const quandoLibero = (fn: () => void) => {
+      const ric = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+      if (ric) ric(fn, { timeout: 900 });
+      else window.setTimeout(fn, 200);
+    };
+    (document.fonts?.ready ?? Promise.resolve()).then(() => quandoLibero(start));
 
     tiltAuto();
 

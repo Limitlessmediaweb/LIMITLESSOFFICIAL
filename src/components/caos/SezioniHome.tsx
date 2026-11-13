@@ -210,7 +210,7 @@ export function QuizSezione() {
 /** 8 · Contatti: WhatsApp ed email. */
 export function Contatti() {
   return (
-    <section id="contatti" aria-labelledby="contatti-title" className="wrap scroll-mt-16 py-24 md:py-36">
+    <section id="contatti" aria-label="Contatti" className="wrap scroll-mt-16 py-24 md:py-36">
       <p className="mono text-accent-text">Contatti</p>
       <h2 id="contatti-title" className="mt-4 text-[clamp(2.2rem,1rem+5.6vw,6.5rem)] leading-[0.92]">
         <span className="block">Lavorare meglio.</span> <span className="block text-accent-text">Farsi vedere meglio.</span>
