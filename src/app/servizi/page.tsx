@@ -21,7 +21,7 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = pageMetadata({
   title: "Servizi e prezzi | LIMITLESS",
   description:
-    "LIMITLESS HUB da 190 €/mese. Spot 99 € fino al 30/11, walk tour da 190 €, siti da 750 €, Mese Brand da 390 €/mese. Listino chiaro. Consulenza gratuita.",
+    "LIMITLESS HUB da 190 €/mese. Spot 99 € fino al 30/11, walk tour da 190 €, siti da 490 €, Mese Brand da 390 €/mese. Listino chiaro. Consulenza gratuita.",
   path: "/servizi",
 });
 
@@ -214,7 +214,7 @@ export default function ServiziPage() {
           ))}
           <li className="flex gap-3">
             <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-accent-text" />
-            <span>La manutenzione del sito si concorda nel preventivo</span>
+            <span>Manutenzione del sito da 19 €/mese</span>
           </li>
         </ul>
       </section>

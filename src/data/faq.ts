@@ -1,4 +1,4 @@
-import { SPOT_LANCIO, SPOT_LANCIO_FINE, SPOT_LISTINO } from "./servizi";
+import { SITO_DA, SITO_MANUTENZIONE_DA, SITO_PREMIUM, SPOT_LANCIO, SPOT_LANCIO_FINE, SPOT_LISTINO } from "./servizi";
 
 export type Faq = { q: string; a: string };
 
@@ -13,7 +13,7 @@ export const faq: Faq[] = [
   },
   {
     q: "Quanto costano spot, walk tour e sito?",
-    a: `Uno spot di 20-30 secondi costa ${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}, poi ${SPOT_LISTINO} €. Un walk tour 190 € (appartamento), 300 € (struttura fino a 5 ambienti) o 590 € (tour completo). Un sito 750 € (Easy) o 990 € (Premium).`,
+    a: `Uno spot di 20-30 secondi costa ${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}, poi ${SPOT_LISTINO} €. Un walk tour 190 € (appartamento), 300 € (struttura fino a 5 ambienti) o 590 € (tour completo). Un sito da ${SITO_DA} € (Easy) o ${SITO_PREMIUM} € (Premium).`,
   },
   {
     q: "Avete servizi mensili?",
@@ -45,7 +45,7 @@ export const faq: Faq[] = [
   },
   {
     q: "Ci sono costi mensili?",
-    a: "Solo se scegli un servizio mensile (LIMITLESS HUB, Mese Brand, Scheda Google). Per il sito, la manutenzione si concorda nel preventivo, prima di partire.",
+    a: `Solo se scegli un servizio mensile (LIMITLESS HUB, Mese Brand, Scheda Google). Per il sito, la manutenzione parte da ${SITO_MANUTENZIONE_DA} €/mese e te la diciamo prima di partire.`,
   },
   {
     q: "I video vanno bene per Instagram e TikTok?",

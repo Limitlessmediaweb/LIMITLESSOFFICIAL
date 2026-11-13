@@ -55,12 +55,12 @@ export const SPOT_LANCIO = 99;
 export const SPOT_LANCIO_FINE = "30/11";
 
 /**
- * Siti: prezzo d'ingresso e manutenzione confermati da Riccardo il 13/11 (home, scheda «Siti web»).
- * ATTENZIONE: le voci Easy 750 € e Premium 990 € qui sotto sono ancora quelle del listino del 25/10,
- * in attesa dei nuovi prezzi dei due pacchetti.
+ * Siti (confermato da Riccardo il 13/11): si parte da 490 €, manutenzione da 19 €/mese.
+ * Il sito Easy è il prezzo d'ingresso. Il Premium resta a 990 € (listino del 25/10) finché Riccardo non dice altro.
  */
 export const SITO_DA = 490;
-export const SITO_MANUTENZIONE_DA = 9;
+export const SITO_PREMIUM = 990;
+export const SITO_MANUTENZIONE_DA = 19;
 
 /** Regole uguali per tutti i lavori. */
 export const REGOLE = [
@@ -158,8 +158,8 @@ export const servizi: Servizio[] = [
       "Premium: su misura, con animazioni e più pagine",
     ],
     voci: [
-      { nome: "Sito Easy", dettaglio: "Pensato per il telefono, con WhatsApp, chiamata, mappa e testi per Google", prezzo: 750 },
-      { nome: "Sito Premium", dettaglio: "Su misura, con animazioni, più pagine e grafica curata in ogni dettaglio", prezzo: 990 },
+      { nome: "Sito Easy", dettaglio: "Pensato per il telefono, con WhatsApp, chiamata, mappa e testi per Google", prezzo: SITO_DA },
+      { nome: "Sito Premium", dettaglio: "Su misura, con animazioni, più pagine e grafica curata in ogni dettaglio", prezzo: SITO_PREMIUM },
     ],
     video: { kind: "siti", slug: "nottea-desktop" },
     tempi: "Sito Easy in 7-10 giorni, Premium in 2-3 settimane",
@@ -167,11 +167,11 @@ export const servizi: Servizio[] = [
     faq: [
       {
         q: "Che differenza c'è tra Easy e Premium?",
-        a: "Easy (750 €) è il sito pensato per il telefono, con WhatsApp, chiamata, mappa e testi per Google. Premium (990 €) è su misura, con animazioni, più pagine e una grafica curata in ogni dettaglio.",
+        a: `Easy (da ${SITO_DA} €) è il sito pensato per il telefono, con WhatsApp, chiamata, mappa e testi per Google. Premium (${SITO_PREMIUM} €) è su misura, con animazioni, più pagine e una grafica curata in ogni dettaglio.`,
       },
       {
         q: "Ci sono costi mensili?",
-        a: "La manutenzione del sito si concorda nel preventivo, in base a quello che ti serve. Te lo diciamo prima di partire, senza sorprese.",
+        a: `La manutenzione del sito parte da ${SITO_MANUTENZIONE_DA} €/mese, in base a quello che ti serve. Te lo diciamo prima di partire, senza sorprese.`,
       },
     ],
   },
