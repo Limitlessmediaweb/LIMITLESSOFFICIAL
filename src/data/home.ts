@@ -1,6 +1,6 @@
 import { waLink } from "@/data/azienda";
 import { HUB_DA } from "@/data/hub";
-import { prezzoMinimo, servizi, SITO_DA, SITO_MANUTENZIONE_DA } from "@/data/servizi";
+import { prezzoMinimo, servizi, SITO_DA, SITO_MANUTENZIONE_DA, SPOT_NOTA } from "@/data/servizi";
 
 /**
  * Testi e dati della home (riorganizzata il 12/11/2026).
@@ -121,6 +121,7 @@ export const prodotti: Prodotto[] = [
     perChi: "Per brand, prodotti, immobili e strutture.",
     risolve: "Spot per brand e prodotti, video tour per immobili e strutture.",
     da: prezzoMinimo(spot.voci),
+    nota: SPOT_NOTA,
     href: "/servizi#spot",
     linkLabel: "Vedi video e spot",
     sezione: "Video e spot",

@@ -22,14 +22,17 @@ export const hubSuMisuraLink = waLink(HUB_MESSAGGIO_SU_MISURA);
 /** Prezzo d'ingresso: l'unica cifra dei canoni che compare sul sito. */
 export const HUB_DA = 190;
 
-/** Prova di 30 giorni a pagamento: 300 € scalati dai canoni se si continua. */
+/**
+ * Prova di 30 giorni a pagamento. Il prezzo (300 €, uso interno: preventivi e kit di vendita) dal 13/11 NON si scrive sul sito:
+ * in pubblico è «a prezzo convenzionato», scalato dal canone in caso di conferma.
+ */
 export const HUB_PROVA_PREZZO = 300;
 export const HUB_MINIMO_MESI = 3;
 export const HUB_DISDETTA_GIORNI = 7;
 export const HUB_PROVA = {
-  titolo: `Prova di 30 giorni a ${HUB_PROVA_PREZZO} €`,
-  breve: `prova 30 giorni a ${HUB_PROVA_PREZZO} €, scalati dal canone`,
-  testo: `Paghi ${HUB_PROVA_PREZZO} € e usi l'HUB per 30 giorni sul tuo lavoro di tutti i giorni. Se continui, i ${HUB_PROVA_PREZZO} € li scaliamo dai canoni successivi; se smetti, non devi nient'altro e ricevi i tuoi dati in Excel.`,
+  titolo: "Prova di 30 giorni a prezzo convenzionato",
+  breve: "prova 30 giorni a prezzo convenzionato, scalato dal canone in caso di conferma",
+  testo: "Usi l'HUB per 30 giorni sul tuo lavoro di tutti i giorni, a un prezzo convenzionato. Se confermi, lo scaliamo dai canoni successivi; se smetti, non devi nient'altro e ricevi i tuoi dati in Excel.",
   regole: `Se continui dopo la prova: minimo ${HUB_MINIMO_MESI} mesi, poi mese per mese con disdetta ${HUB_DISDETTA_GIORNI} giorni prima.`,
 };
 

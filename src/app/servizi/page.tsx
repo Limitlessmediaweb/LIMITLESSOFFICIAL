@@ -21,7 +21,7 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = pageMetadata({
   title: "Servizi e prezzi | LIMITLESS",
   description:
-    "Gestionale HUB da 190 €/mese, spot da 99 €, walk tour da 190 €, siti da 490 €. Ogni proposta si adatta alla tua attività. Consulenza e preventivo gratuiti.",
+    "Gestionale HUB da 190 €/mese, spot da 99 € fino al 30/11, walk tour da 190 €, siti da 490 €. Ogni proposta si adatta alla tua attività. Consulenza e preventivo gratuiti.",
   path: "/servizi",
 });
 

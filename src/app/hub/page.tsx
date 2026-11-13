@@ -17,7 +17,7 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = pageMetadata({
   title: "LIMITLESS HUB | Il gestionale su misura per la tua attività",
   description:
-    "Lavori, ordini e clienti in un posto solo, fase per fase, da tablet, telefono o PC. Gestionale su misura per aziende, negozi, studi e laboratori. Da 190 €/mese, prova di 30 giorni a 300 € scalati dal canone.",
+    "Lavori, ordini e clienti in un posto solo, fase per fase, da tablet, telefono o PC. Gestionale su misura per aziende, negozi, studi e laboratori. Da 190 €/mese, prova di 30 giorni a prezzo convenzionato.",
   path: "/hub",
 });
 
@@ -237,7 +237,7 @@ export default function HubPage() {
           <div className="mt-10 grid gap-6 border border-accent p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
             <div>
               <p className="mono text-accent-text">Per iniziare</p>
-              <p className="mt-3 text-2xl font-extrabold md:text-3xl">{HUB_PROVA.titolo}, scalati dal canone.</p>
+              <p className="mt-3 text-2xl font-extrabold md:text-3xl">{HUB_PROVA.titolo}, scalato dal canone in caso di conferma.</p>
               <p className="mt-3 max-w-[60ch] text-fg-muted">{HUB_PROVA.testo}</p>
               <p className="mt-3 max-w-[60ch] text-sm text-fg-muted">{HUB_PROVA.regole}</p>
             </div>

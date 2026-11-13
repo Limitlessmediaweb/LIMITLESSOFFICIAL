@@ -12,7 +12,7 @@ export function VideoESiti() {
         Facciamo anche spot video, walk tour e siti web.
       </SplitReveal>
       <p className="mt-6 max-w-[56ch] text-lead text-fg-muted">
-        Per farti trovare e scegliere online. Spot da {SPOT_LANCIO} €.
+        Per farti trovare e scegliere online. Spot da {SPOT_LANCIO} € fino al 30/11.
       </p>
       <Link href="/servizi" className="mt-6 inline-flex items-center gap-2 font-semibold text-accent-text link-line">
         Servizi e prezzi

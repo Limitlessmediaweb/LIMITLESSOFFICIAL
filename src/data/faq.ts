@@ -1,4 +1,4 @@
-import { SITO_DA, SITO_MANUTENZIONE_DA, SPOT_LANCIO } from "./servizi";
+import { SITO_DA, SITO_MANUTENZIONE_DA, SPOT_LANCIO, SPOT_NOTA } from "./servizi";
 
 export type Faq = { q: string; a: string };
 
@@ -13,7 +13,7 @@ export const faq: Faq[] = [
   },
   {
     q: "Quanto costano spot, walk tour e sito?",
-    a: `Uno spot da ${SPOT_LANCIO} €, un walk tour da 190 €, un sito da ${SITO_DA} €. Il prezzo preciso dipende da cosa ti serve: te lo diciamo nel preventivo, prima di partire.`,
+    a: `Uno spot da ${SPOT_LANCIO} € (${SPOT_NOTA}), un walk tour da 190 €, un sito da ${SITO_DA} €. Il prezzo preciso dipende da cosa ti serve: te lo diciamo nel preventivo, prima di partire.`,
   },
   {
     q: "Avete servizi mensili?",

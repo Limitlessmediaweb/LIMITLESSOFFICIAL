@@ -8,11 +8,14 @@ import { cn } from "@/lib/cn";
 export function Prezzo({ voci, className, onMedia = false }: { voci: Voce[]; className?: string; onMedia?: boolean }) {
   const muted = onMedia ? "text-white/75" : "text-fg-muted";
   const mese = voci.every((v) => v.mese);
+  // nota della voce più economica (es. spot: «fino al 30/11, poi da 119 €»)
+  const nota = voci.find((v) => v.prezzo === prezzoMinimo(voci))?.nota;
   return (
     <p className={cn("font-display text-5xl font-extrabold leading-none md:text-6xl", className)}>
       <span className={cn("mr-1.5 align-top font-sans text-base font-medium", muted)}>da</span>
       {euro(prezzoMinimo(voci))}
       {mese && <span className={cn("ml-1.5 font-sans text-base font-medium", muted)}>al mese</span>}
+      {nota && <span className={cn("mt-2 block font-sans text-sm font-medium leading-normal", muted)}>{nota}</span>}
     </p>
   );
 }

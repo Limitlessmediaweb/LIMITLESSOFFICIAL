@@ -51,10 +51,12 @@ export type Mensile = {
   extra?: string[];
 };
 
-/** Spot: prezzo di lancio fino al 30/11, poi listino. */
+/** Spot: sul sito «da 99 € fino al 30/11, poi da 119 €» (confermato da Riccardo il 13/11). */
 export const SPOT_LISTINO = 119;
 export const SPOT_LANCIO = 99;
 export const SPOT_LANCIO_FINE = "30/11";
+/** Riga sotto il prezzo dello spot. */
+export const SPOT_NOTA = `fino al ${SPOT_LANCIO_FINE}, poi da ${SPOT_LISTINO} €`;
 
 /**
  * Siti (confermato da Riccardo il 13/11): si parte da 490 €, Premium da 750 € (dipende da cosa c'è dentro),
@@ -90,6 +92,7 @@ export const servizi: Servizio[] = [
         nome: "Spot 20-30 secondi",
         dettaglio: "Verticale 9:16, anche in versione natalizia",
         prezzo: SPOT_LANCIO,
+        nota: SPOT_NOTA,
       },
     ],
     video: { kind: "spot", slug: "saetta" },
@@ -98,11 +101,11 @@ export const servizi: Servizio[] = [
     faq: [
       {
         q: "Quanto costa uno spot?",
-        a: `Da ${SPOT_LANCIO} €. Lo spot dura 20-30 secondi e comprende 2 revisioni: il prezzo preciso dipende da cosa serve e te lo diciamo nel preventivo.`,
+        a: `Da ${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}, poi da ${SPOT_LISTINO} €. Lo spot dura 20-30 secondi e comprende 2 revisioni: il prezzo preciso dipende da cosa serve e te lo diciamo nel preventivo.`,
       },
       {
         q: "Fate anche lo spot di Natale?",
-        a: `Sì, da ${SPOT_LANCIO} €: è pensato per chi produce e vende, come cantine, birrifici, moto e artigiani.`,
+        a: `Sì, da ${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}: è pensato per chi produce e vende, come cantine, birrifici, moto e artigiani.`,
       },
       {
         q: "Serve girare un video?",

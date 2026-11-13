@@ -30,7 +30,7 @@ export function HubBlocco() {
             ))}
           </Reveal>
           <p className="mt-8 max-w-[50ch] text-fg-muted">
-            <strong className="text-fg">{HUB_PROVA.titolo}:</strong> se continui, li scaliamo dal canone; se smetti, non devi nient&apos;altro.
+            <strong className="text-fg">{HUB_PROVA.titolo}:</strong> se confermi, lo scaliamo dal canone; se smetti, non devi nient&apos;altro.
           </p>
           <Link href="/hub" className="btn btn-accent mt-8 w-full sm:w-auto">
             <span>Scopri LIMITLESS HUB</span>
