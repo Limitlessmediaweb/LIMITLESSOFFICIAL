@@ -1,6 +1,6 @@
 import { waLink } from "@/data/azienda";
 import { HUB_DA } from "@/data/hub";
-import { prezzoMinimo, servizi } from "@/data/servizi";
+import { prezzoMinimo, servizi, SITO_DA, SITO_MANUTENZIONE_DA } from "@/data/servizi";
 
 /**
  * Testi e dati della home (riorganizzata il 12/11/2026).
@@ -69,7 +69,6 @@ export const lati = [
 
 /* ── 3 · Prodotti ─────────────────────────────────────────────────────────────── */
 
-const sito = servizi.find((s) => s.id === "sito")!;
 const spot = servizi.find((s) => s.id === "spot")!;
 
 export type Prodotto = {
@@ -81,6 +80,8 @@ export type Prodotto = {
   /** Prezzo «da …» preso dal listino del sito; null = a preventivo. */
   da: number | null;
   unita?: string;
+  /** Riga piccola sotto il prezzo. */
+  nota?: string;
   /** Pagina di approfondimento; null = si parla su WhatsApp. */
   href: string | null;
   linkLabel: string;
@@ -107,7 +108,8 @@ export const prodotti: Prodotto[] = [
     lato: "Fuori",
     perChi: "Per chi vuole farsi scegliere da chi lo cerca.",
     risolve: "Sito vetrina o premium, anche con le prenotazioni.",
-    da: prezzoMinimo(sito.voci),
+    da: SITO_DA,
+    nota: `manutenzione da ${SITO_MANUTENZIONE_DA} €/mese`,
     href: "/servizi#sito",
     linkLabel: "Vedi i siti",
     sezione: "Siti",

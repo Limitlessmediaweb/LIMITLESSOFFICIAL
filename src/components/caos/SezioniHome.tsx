@@ -67,6 +67,7 @@ export function Prodotti() {
                     <span className="text-fg-muted">da </span>
                     <span className="font-display text-4xl font-extrabold leading-none">{euro(p.da)}</span>
                     {p.unita && <span className="text-fg-muted"> {p.unita}</span>}
+                    {p.nota && <span className="mt-1 block text-sm text-fg-muted">{p.nota}</span>}
                   </>
                 ) : (
                   <span className="font-display text-4xl font-extrabold leading-none">A preventivo</span>

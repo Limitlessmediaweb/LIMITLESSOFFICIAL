@@ -54,6 +54,14 @@ export const SPOT_LISTINO = 119;
 export const SPOT_LANCIO = 99;
 export const SPOT_LANCIO_FINE = "30/11";
 
+/**
+ * Siti: prezzo d'ingresso e manutenzione confermati da Riccardo il 13/11 (home, scheda «Siti web»).
+ * ATTENZIONE: le voci Easy 750 € e Premium 990 € qui sotto sono ancora quelle del listino del 25/10,
+ * in attesa dei nuovi prezzi dei due pacchetti.
+ */
+export const SITO_DA = 490;
+export const SITO_MANUTENZIONE_DA = 9;
+
 /** Regole uguali per tutti i lavori. */
 export const REGOLE = [
   "Acconto del 50% alla conferma, saldo alla consegna",
