@@ -11,12 +11,12 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Contatti | LIMITLESS",
   description:
-    "Prenota la consulenza gratuita su WhatsApp al +39 350 070 4573, oppure scrivici via email, Instagram o TikTok. Disponibili online in tutta Italia.",
+    "Scrivici su WhatsApp al 350 070 4573 o via email: ci racconti cosa fai e ti diciamo da dove partiremmo. Consulenza e preventivo gratuiti.",
   path: "/contatti",
 });
 
 const card = "group flex flex-col gap-6 bg-bg p-6 transition-colors hover:bg-bg-raised md:p-8";
-const valore = "mt-2 block break-all text-xl font-semibold group-hover:underline";
+const valore = "mt-2 block break-all text-[1.05rem] font-semibold group-hover:underline xl:text-lg";
 
 export default function ContattiPage() {
   return (
@@ -26,11 +26,11 @@ export default function ContattiPage() {
           Parliamone.
         </SplitReveal>
         <p className="mt-6 max-w-[48ch] text-lead text-fg-muted">
-          Il modo più veloce è WhatsApp. Raccontaci la tua attività in due righe: in 15 minuti capiamo cosa ti serve e ti diamo un prezzo chiaro.
+          Il modo più veloce è WhatsApp. Raccontaci cosa fai e cosa non gira: ti diciamo da dove partiremmo, e quanto costa.
         </p>
         <BadgeConsulenza className="mt-8" />
         <div className="mt-6">
-          <ConsulenzaButton posizione="contatti_hero" className="w-full sm:w-auto" />
+          <ConsulenzaButton posizione="contatti_hero" messaggio="Ciao, vengo dalla pagina Contatti del sito e vorrei sapere di più." className="w-full sm:w-auto" />
         </div>
 
         <div className="mt-20 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">

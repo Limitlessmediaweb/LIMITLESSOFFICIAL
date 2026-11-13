@@ -6,7 +6,7 @@ import { SocialIcon, SocialLink } from "@/components/ui/Social";
 import { showreel } from "@/lib/media";
 
 /** CTA finale a tutto schermo sopra lo showreel velato. */
-export function CtaFinale({ title = "Il prossimo progetto può essere il tuo.", messaggio }: { title?: string; messaggio?: string }) {
+export function CtaFinale({ title = "Il prossimo progetto può essere il tuo.", sezione = "finale" }: { title?: string; sezione?: string }) {
   return (
     <section aria-labelledby="cta-title" className="relative isolate flex min-h-[100svh] items-center overflow-hidden">
       {showreel.desktop && (
@@ -20,15 +20,15 @@ export function CtaFinale({ title = "Il prossimo progetto può essere il tuo.", 
           {title}
         </SplitReveal>
         <BadgeConsulenza onMedia className="mt-8" />
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
           <MagneticButton>
-            <ConsulenzaButton posizione="cta_finale" messaggio={messaggio} className="w-full sm:w-auto" />
+            <ConsulenzaButton posizione="cta_finale" sezione={sezione} className="w-full sm:w-auto" />
           </MagneticButton>
-          <SocialLink rete="instagram" posizione="cta_finale" className="btn btn-on-media">
+          <SocialLink rete="instagram" posizione="cta_finale" className="link-line inline-flex min-h-11 items-center gap-2 px-2 font-semibold">
             <SocialIcon rete="instagram" />
             Instagram
           </SocialLink>
-          <SocialLink rete="tiktok" posizione="cta_finale" className="btn btn-on-media">
+          <SocialLink rete="tiktok" posizione="cta_finale" className="link-line inline-flex min-h-11 items-center gap-2 px-2 font-semibold">
             <SocialIcon rete="tiktok" />
             TikTok
           </SocialLink>

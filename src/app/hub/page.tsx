@@ -74,7 +74,7 @@ export default function HubPage() {
       {/* Apertura: il problema e lo spot */}
       <section className="wrap grid gap-12 pb-20 pt-32 md:pt-40 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-20">
         <div className="min-w-0">
-          <p className="mono text-fg-muted">LIMITLESS HUB · il gestionale su misura</p>
+          <p className="mono text-fg-muted">Dentro · Gestionale HUB</p>
           <SplitReveal as="h1" immediate className="mt-4 max-w-[13ch] text-display">
             A che punto è il lavoro? Adesso lo sai.
           </SplitReveal>
@@ -83,7 +83,7 @@ export default function HubPage() {
           </p>
           <p className="mt-4 max-w-[50ch] text-lead">LIMITLESS HUB mette ogni lavoro su uno schermo, fase per fase. La risposta arriva in tre secondi, non in tre telefonate.</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <DemoHubButton posizione="hub_hero" className="w-full sm:w-auto" />
+            <DemoHubButton posizione="hub_hero" sezione="iniziale della pagina HUB" className="w-full sm:w-auto" />
             <a href="#pacchetti" className="btn btn-ghost w-full sm:w-auto">
               Vedi i pacchetti
             </a>
@@ -241,7 +241,7 @@ export default function HubPage() {
               <p className="mt-3 max-w-[60ch] text-fg-muted">{HUB_PROVA.testo}</p>
               <p className="mt-3 max-w-[60ch] text-sm text-fg-muted">{HUB_PROVA.regole}</p>
             </div>
-            <DemoHubButton posizione="hub_prova" className="w-full md:w-auto" />
+            <DemoHubButton posizione="hub_prova" sezione="Prova della pagina HUB" className="w-full md:w-auto" />
           </div>
         </div>
       </section>
@@ -259,7 +259,7 @@ export default function HubPage() {
           </SplitReveal>
           <p className="mt-6 max-w-[50ch] text-lead text-fg-muted">Scrivici su WhatsApp: in 10 minuti, in chat o in chiamata, ti facciamo vedere l&apos;HUB con i problemi della tua attività.</p>
           <div className="mt-10">
-            <DemoHubButton posizione="hub_finale" className="w-full sm:w-auto" />
+            <DemoHubButton posizione="hub_finale" sezione="finale della pagina HUB" className="w-full sm:w-auto" />
           </div>
         </div>
       </section>

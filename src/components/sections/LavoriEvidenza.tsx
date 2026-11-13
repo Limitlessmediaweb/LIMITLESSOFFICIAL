@@ -5,7 +5,7 @@ import { mediaProgetto, progettiConMedia } from "@/lib/media";
 import { ProgettoChapter } from "./ProgettoChapter";
 
 export const CONCEPT_LINE =
-  "Concept: progetti creati da noi per mostrarti cosa possiamo fare per un'attività come la tua.";
+  "Concept: progetti nostri per attività inventate. Mostrano cosa sappiamo fare.";
 
 export function LavoriEvidenza() {
   const list = progettiConMedia("sito-spot");

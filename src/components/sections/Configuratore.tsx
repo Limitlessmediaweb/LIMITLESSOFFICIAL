@@ -22,8 +22,8 @@ const ATTIVITA: Record<string, string> = {
   Altro: "un'attività",
 };
 const SERVIZI: Record<string, string> = {
-  "HUB gestionale": "il gestionale LIMITLESS HUB",
-  "Spot di Natale": "lo spot di Natale",
+  "Gestionale HUB": "il gestionale HUB",
+  "Software su misura": "un software su misura",
   "Spot video": "uno spot video",
   "Walk tour": "un video walk tour",
   "Sito web": "un sito web",
@@ -49,13 +49,13 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
     });
 
   const pronto = Boolean(attivita && servizi.length);
-  const chi = attivita ? `Vorrei una consulenza gratuita per la mia attività: ho ${ATTIVITA[attivita]}.` : "Vorrei una consulenza gratuita per la mia attività.";
+  const chi = attivita ? `Ho ${ATTIVITA[attivita]}.` : "";
   const cosa = servizi.includes("Non lo so ancora")
     ? "Non so ancora cosa mi serve: mi date un consiglio?"
     : servizi.length
       ? `Mi interessa ${elenco(servizi.map((s) => SERVIZI[s]))}.`
       : "";
-  const messaggio = `Ciao! ${chi} ${cosa}`.trim();
+  const messaggio = `Ciao, vengo dalla pagina Contatti del sito. ${chi} ${cosa}`.replace(/\s+/g, " ").trim();
 
   const chip = (active: boolean) =>
     cn(
@@ -69,7 +69,7 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
         <H id="config-title" className="text-title">
           Cosa ti serve?
         </H>
-        <p className="mt-4 max-w-[48ch] text-fg-muted">Due tocchi e ti prepariamo il messaggio. Non salviamo niente: decidi tu se inviarlo.</p>
+        <p className="mt-4 max-w-[48ch] text-fg-muted">Due tocchi e il messaggio è pronto. Non salviamo niente: decidi tu se inviarlo.</p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <fieldset>
@@ -114,7 +114,6 @@ export function Configuratore({ headingLevel: H = "h2" }: { headingLevel?: "h2" 
                 return;
               }
               track("configuratore_invio", { attivita: attivita!, servizi: servizi.join("+") });
-              track("consulenza_click", { posizione: "configuratore" });
               track("whatsapp_click", { posizione: "configuratore" });
             }}
             className={cn("btn btn-accent shrink-0", !pronto && "cursor-not-allowed opacity-50")}

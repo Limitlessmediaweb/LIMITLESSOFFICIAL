@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Lavori | LIMITLESS",
   description:
-    "Siti web animati, spot video e walk tour creati da LIMITLESS per profumi, ristoranti, artigiani, immobili e brand. Guarda i video e scegli il tuo.",
+    "Siti web, spot video e walk tour di LIMITLESS per profumi, ristoranti, artigiani, immobili e brand. I concept sono progetti nostri per attività inventate.",
   path: "/lavori",
 });
 
@@ -26,16 +26,16 @@ export default function LavoriPage() {
         <SplitReveal as="h1" immediate className="max-w-[14ch] text-display-xl">
           Lavori
         </SplitReveal>
-        <p className="mt-6 max-w-[56ch] text-lead text-fg-muted">Siti, spot e walk tour. Guarda i video e scegli quello che fa per te.</p>
+        <p className="mt-6 max-w-[56ch] text-lead text-fg-muted">Farsi vedere, fatto bene: siti, spot e walk tour. Guarda i video.</p>
         <p className="mt-3 flex max-w-[60ch] items-start gap-3 text-fg-muted">
           <span className="tag-concept mt-0.5 shrink-0">Concept</span>
-          <span>{CONCEPT_LINE}</span>
+          <span>{CONCEPT_LINE.replace("Concept: p", "P")}</span>
         </p>
         <div className="mt-12">
           <LavoriGrid cards={cards} />
         </div>
       </section>
-      <CtaFinale />
+      <CtaFinale sezione="finale della pagina Lavori" />
     </>
   );
 }

@@ -1,37 +1,38 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
-import { MESSAGGIO_CONSULENZA, waLink } from "@/data/azienda";
+import { waLink } from "@/data/azienda";
+import { waSezione } from "@/data/home";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
 /**
- * CTA principale del sito: "Prenota la consulenza gratuita" (o la versione breve).
- * Apre WhatsApp con il messaggio precompilato e traccia consulenza_click + whatsapp_click con la posizione.
+ * Pulsante WhatsApp delle pagine interne. Dal 13/11 il sito ha una sola call to action:
+ * stessa etichetta ovunque («Scrivici su WhatsApp»), cambia solo il messaggio precompilato,
+ * che dice da quale pagina o sezione arriva il contatto.
  */
 export function ConsulenzaButton({
   posizione,
-  breve = false,
-  messaggio = MESSAGGIO_CONSULENZA,
+  sezione = "del sito",
+  messaggio,
   variant = "accent",
   className,
 }: {
+  /** Etichetta per le statistiche. */
   posizione: string;
-  /** "Consulenza gratuita" invece di "Prenota la consulenza gratuita" (header, barra mobile). */
-  breve?: boolean;
+  /** Nome della sezione, come compare nel messaggio («Ciao, vengo dalla sezione … del sito»). */
+  sezione?: string;
+  /** Messaggio del tutto diverso (es. pagina di un progetto). */
   messaggio?: string;
   variant?: "accent" | "ghost" | "media";
   className?: string;
 }) {
   return (
     <a
-      href={waLink(messaggio)}
+      href={messaggio ? waLink(messaggio) : waSezione(sezione)}
       target="_blank"
       rel="noopener"
-      onClick={() => {
-        track("consulenza_click", { posizione });
-        track("whatsapp_click", { posizione });
-      }}
+      onClick={() => track("whatsapp_click", { posizione })}
       className={cn(
         "btn",
         variant === "accent" && "btn-accent",
@@ -41,13 +42,13 @@ export function ConsulenzaButton({
       )}
     >
       <MessageCircle size={18} strokeWidth={2} aria-hidden />
-      <span>{breve ? "Consulenza gratuita" : "Prenota la consulenza gratuita"}</span>
+      <span>Scrivici su WhatsApp</span>
       <span className="sr-only"> (si apre WhatsApp)</span>
     </a>
   );
 }
 
-/** Badge "Consulenza gratuita · senza impegno". */
+/** Riga «Consulenza e preventivo gratuiti». */
 export function BadgeConsulenza({ className, onMedia = false }: { className?: string; onMedia?: boolean }) {
   return (
     <p
@@ -58,7 +59,7 @@ export function BadgeConsulenza({ className, onMedia = false }: { className?: st
       )}
     >
       <span aria-hidden className="size-1.5 bg-accent" />
-      Consulenza gratuita · senza impegno
+      Consulenza e preventivo gratuiti
     </p>
   );
 }

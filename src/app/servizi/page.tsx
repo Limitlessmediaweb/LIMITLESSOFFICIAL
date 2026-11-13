@@ -19,7 +19,7 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Servizi e prezzi | LIMITLESS",
+  title: "Servizi | LIMITLESS",
   description:
     "Gestionale HUB da 190 €/mese, spot da 99 € fino al 30/11, walk tour da 190 €, siti da 490 €. Ogni proposta si adatta alla tua attività. Consulenza e preventivo gratuiti.",
   path: "/servizi",
@@ -60,17 +60,20 @@ export default function ServiziPage() {
     <>
       <section className="wrap pb-16 pt-32 md:pt-40">
         <SplitReveal as="h1" immediate className="max-w-[12ch] text-display-xl">
-          Servizi e prezzi
+          Servizi
         </SplitReveal>
         <p className="mt-6 max-w-[52ch] text-lead text-fg-muted">
-          Il gestionale HUB, poi spot, walk tour, siti e servizi mensili. Per ognuno trovi il prezzo di partenza: quello preciso dipende da cosa ti serve.
-          Si comincia con una consulenza gratuita di 15 minuti.
+          Dentro: il gestionale HUB e il software su misura. Fuori: siti, video e spot. Per ognuno trovi il prezzo di partenza: quello preciso dipende da
+          cosa ti serve. Ci adattiamo a te, non il contrario.
         </p>
         <NotaPrezzo className="mt-5 max-w-[60ch] text-base" />
         <BadgeConsulenza className="mt-6" />
         <nav aria-label="Vai al servizio" className="mt-10 flex flex-wrap gap-2">
           <a href="#hub" className="min-h-11 border border-accent px-4 py-2.5 font-semibold hover:border-line-strong">
-            LIMITLESS HUB
+            Gestionale HUB
+          </a>
+          <a href="#su-misura" className="min-h-11 border border-line px-4 py-2.5 font-semibold hover:border-line-strong">
+            Sviluppi su misura
           </a>
           {[...servizi, ...mensili].map((s) => (
             <a key={s.id} href={`#${s.id}`} className="min-h-11 border border-line px-4 py-2.5 font-semibold hover:border-line-strong">
@@ -80,11 +83,11 @@ export default function ServiziPage() {
         </nav>
       </section>
 
-      {/* LIMITLESS HUB: il servizio principale, con la sua pagina */}
+      {/* Dentro: il gestionale HUB, con la sua pagina */}
       <section id="hub" aria-labelledby="t-hub" className="scroll-mt-20 border-t border-line bg-bg-raised">
         <div className="wrap grid gap-10 py-20 md:py-28 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <div>
-            <p className="mono text-accent-text">LIMITLESS HUB · il servizio principale</p>
+            <p className="mono text-accent-text">Dentro · Gestionale HUB</p>
             <h2 id="t-hub" className="mt-3 max-w-[16ch] text-title">
               Il gestionale su misura per la tua attività.
             </h2>
@@ -92,7 +95,7 @@ export default function ServiziPage() {
               Lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. Quattro pacchetti, più il Su misura a preventivo.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <DemoHubButton posizione="servizi_hub" className="w-full sm:w-auto" />
+              <DemoHubButton posizione="servizi_hub" sezione="Gestionale HUB della pagina Servizi" className="w-full sm:w-auto" />
               <Link href="/hub" className="btn btn-ghost w-full sm:w-auto">
                 Vedi i pacchetti
               </Link>
@@ -108,6 +111,29 @@ export default function ServiziPage() {
               {HUB_PROVA.titolo}: {HUB_PROVA.testo}
             </p>
             <p className="mt-4 text-fg-muted">Tablet su richiesta. Non sostituisce il programma delle fatture: mette in ordine il lavoro.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Dentro: sviluppi su misura */}
+      <section id="su-misura" aria-labelledby="t-su-misura" className="scroll-mt-20 border-t border-line">
+        <div className="wrap grid gap-10 py-20 md:py-28 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+          <div>
+            <p className="mono text-fg-muted">Dentro · Sviluppi su misura</p>
+            <h2 id="t-su-misura" className="mt-3 max-w-[14ch] text-title">
+              Il software che al tuo lavoro manca.
+            </h2>
+            <p className="mt-5 max-w-[50ch] text-lead text-fg-muted">
+              Quando nessun programma copre il tuo tipo di attività, lo costruiamo noi: parte da come lavori, non da un modello già fatto.
+            </p>
+            <div className="mt-8">
+              <ConsulenzaButton posizione="servizi_su_misura" sezione="Sviluppi su misura della pagina Servizi" />
+              <p className="mt-3 text-sm text-fg-muted">Consulenza e preventivo gratuiti.</p>
+            </div>
+          </div>
+          <div className="lg:pt-8">
+            <p className="font-display text-5xl font-extrabold leading-none md:text-6xl">A preventivo</p>
+            <p className="mt-6 border-l-2 border-accent pl-3 font-medium">Ci racconti cosa ti serve, ti diciamo cosa faremmo, in quanto tempo e a che prezzo.</p>
           </div>
         </div>
       </section>
@@ -146,8 +172,8 @@ export default function ServiziPage() {
                   <strong className="font-semibold text-fg">Tempi:</strong> <T>{s.tempi}</T>
                 </p>
                 <div className="mt-8">
-                  <ConsulenzaButton posizione={`servizi_${s.id}`} messaggio={`Ciao! Vorrei una consulenza gratuita per: ${s.nome.toLowerCase()}.`} />
-                  <p className="mt-3 text-sm text-fg-muted">Consulenza gratuita, senza impegno.</p>
+                  <ConsulenzaButton posizione={`servizi_${s.id}`} sezione={`${s.nome} della pagina Servizi`} />
+                  <p className="mt-3 text-sm text-fg-muted">Consulenza e preventivo gratuiti.</p>
                 </div>
               </div>
 
@@ -184,8 +210,8 @@ export default function ServiziPage() {
               </h2>
               <p className="mt-5 max-w-[50ch] text-lead text-fg-muted">{m.ottieni}</p>
               <div className="mt-8">
-                <ConsulenzaButton posizione={`servizi_${m.id}`} messaggio={`Ciao! Vorrei una consulenza gratuita per: ${m.nome}.`} />
-                <p className="mt-3 text-sm text-fg-muted">Consulenza gratuita, senza impegno.</p>
+                <ConsulenzaButton posizione={`servizi_${m.id}`} sezione={`${m.nome} della pagina Servizi`} />
+                <p className="mt-3 text-sm text-fg-muted">Consulenza e preventivo gratuiti.</p>
               </div>
             </div>
             <div className="lg:pt-8">
@@ -218,7 +244,7 @@ export default function ServiziPage() {
           </li>
         </ul>
       </section>
-      <CtaFinale />
+      <CtaFinale sezione="finale della pagina Servizi" />
       <JsonLd data={offerJsonLd} />
       <JsonLd
         data={{

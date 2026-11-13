@@ -12,7 +12,7 @@ export const NAV = [
 
 /** Pagine di approfondimento, elencate nel piè di pagina. */
 export const PAGINE = [
-  { href: "/servizi", label: "Servizi e prezzi" },
+  { href: "/servizi", label: "Servizi" },
   { href: "/lavori", label: "Tutti i lavori" },
   { href: "/contatti", label: "Pagina contatti" },
 ];

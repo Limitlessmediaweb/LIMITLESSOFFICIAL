@@ -82,7 +82,7 @@ export function organizationJsonLd() {
         url: SITE_URL,
         image: `${SITE_URL}/opengraph-image`,
         description:
-          "LIMITLESS HUB, il gestionale su misura per qualsiasi attività. E poi spot video promo (anche di Natale per produttori di vino, birra, moto e artigiani), video walk tour, siti web, contenuti social mensili e scheda Google. Consulenza gratuita.",
+          "Lavorare meglio. Farsi vedere meglio. Dentro mettiamo ordine nel lavoro, con il gestionale HUB e software su misura. Fuori facciamo vedere l'attività come merita, con siti web, video e spot. Consulenza e preventivo gratuiti.",
         telephone,
         email: azienda.email,
         address,

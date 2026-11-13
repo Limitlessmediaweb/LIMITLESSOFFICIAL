@@ -46,7 +46,7 @@ export default async function ProgettoPage({ params }: { params: Promise<{ slug:
   const next = sitoSpot[(idx + 1) % sitoSpot.length];
   const nome = clean(p.nome);
   const heroMedia = m.spot ?? m.sitoMobile;
-  const messaggio = `Ciao! Vorrei una consulenza gratuita: ho visto il progetto ${nome} e vorrei qualcosa di simile per la mia attività.`;
+  const messaggio = `Ciao, vengo dalla pagina del progetto ${nome} e vorrei qualcosa di simile per la mia attività.`;
 
   const videoJsonLd = m.spot && {
     "@context": "https://schema.org",

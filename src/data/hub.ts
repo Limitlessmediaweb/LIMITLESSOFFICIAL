@@ -13,10 +13,10 @@ import { waLink } from "@/data/azienda";
  * I prezzi qui sotto restano per uso interno (kit di vendita, preventivi).
  */
 
-export const HUB_MESSAGGIO_DEMO = "Ciao! Vorrei prenotare una demo di 10 minuti di LIMITLESS HUB per la mia attività.";
+export const HUB_MESSAGGIO_DEMO = "Ciao, vengo dal sito e vorrei vedere la demo di 10 minuti del gestionale.";
 export const hubDemoLink = waLink(HUB_MESSAGGIO_DEMO);
 
-export const HUB_MESSAGGIO_SU_MISURA = "Ciao! Vorrei parlare di un LIMITLESS HUB su misura per la mia attività.";
+export const HUB_MESSAGGIO_SU_MISURA = "Ciao, vengo dalla sezione Su misura della pagina HUB del sito e vorrei sapere di più.";
 export const hubSuMisuraLink = waLink(HUB_MESSAGGIO_SU_MISURA);
 
 /** Prezzo d'ingresso: l'unica cifra dei canoni che compare sul sito. */
