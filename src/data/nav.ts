@@ -1,11 +1,18 @@
-/** Portfolio completo: sito separato (repo limitless-portfolio). Quando il CNAME su Aruba è attivo, passare a https://portfolio.limitlessmedia.it */
+/** Portfolio completo: sito separato (repo limitless-portfolio). */
 export const PORTFOLIO_URL = "https://limitless-portfolio.vercel.app";
 
-/** L'HUB è il servizio principale: prima voce. Video e siti subito dopo. */
+/** Menu del 12/11: l'HUB è uno dei prodotti. Le voci con # portano alle sezioni della home. */
 export const NAV = [
+  { href: "/#prodotti", label: "Prodotti" },
+  { href: "/#lavori", label: "Lavori" },
   { href: "/hub", label: "HUB" },
-  { href: "/lavori", label: "Lavori" },
+  { href: "/#come-si-parte", label: "Come si parte" },
+  { href: "/#contatti", label: "Contatti" },
+];
+
+/** Pagine di approfondimento, elencate nel piè di pagina. */
+export const PAGINE = [
   { href: "/servizi", label: "Servizi e prezzi" },
-  { href: PORTFOLIO_URL, label: "Portfolio" },
-  { href: "/contatti", label: "Contatti" },
+  { href: "/lavori", label: "Tutti i lavori" },
+  { href: "/contatti", label: "Pagina contatti" },
 ];

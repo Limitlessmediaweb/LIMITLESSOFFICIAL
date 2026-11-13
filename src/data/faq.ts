@@ -37,7 +37,7 @@ export const faq: Faq[] = [
   },
   {
     q: "Come funziona il pagamento?",
-    a: "Acconto del 50% alla conferma, saldo alla consegna. Emettiamo fattura con partita IVA in regime forfettario.",
+    a: "Acconto del 50% alla conferma, saldo alla consegna.",
   },
   {
     q: "Quante modifiche sono incluse?",

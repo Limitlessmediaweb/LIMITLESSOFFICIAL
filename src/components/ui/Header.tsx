@@ -7,7 +7,7 @@ import { ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
-import { ConsulenzaButton } from "./ConsulenzaButton";
+import { WhatsAppButton } from "./WhatsAppButton";
 import { SocialIcons } from "./Social";
 import { cn } from "@/lib/cn";
 import { NAV } from "@/data/nav";
@@ -53,7 +53,7 @@ export function Header() {
             <Link
               key={n.href}
               href={n.href}
-              aria-current={path.startsWith(n.href) ? "page" : undefined}
+              aria-current={!n.href.includes("#") && path.startsWith(n.href) ? "page" : undefined}
               className={cn(
                 "px-3 py-2 text-[0.95rem] font-medium text-fg-muted transition-colors hover:text-fg aria-[current=page]:text-fg",
               )}
@@ -65,7 +65,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle className="grid size-11 place-items-center border border-line bg-bg/60 backdrop-blur hover:border-line-strong" />
-          <ConsulenzaButton posizione="header" breve className="hidden min-h-11 px-4 text-[0.95rem] lg:inline-flex" />
+          <WhatsAppButton sezione="menu in alto" posizione="header" label="WhatsApp" className="hidden min-h-11 px-4 text-[0.95rem] lg:inline-flex" />
           <button
             type="button"
             className="grid size-11 place-items-center border border-line bg-bg/60 backdrop-blur lg:hidden"
@@ -85,21 +85,21 @@ export function Header() {
         className="fixed inset-0 top-0 z-[1] bg-bg px-4 pt-24 lg:hidden"
       >
         <nav aria-label="Menu mobile" className="flex flex-col">
-          <Link href="/" className="border-b border-line py-4 font-display text-5xl font-extrabold">
+          <Link href="/" onClick={() => setOpenAt(null)} className="border-b border-line py-3.5 font-display text-[2.6rem] font-extrabold leading-none">
             Home
           </Link>
           {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
-              aria-current={path.startsWith(n.href) ? "page" : undefined}
-              className="border-b border-line py-4 font-display text-5xl font-extrabold aria-[current=page]:text-accent-text"
+              aria-current={!n.href.includes("#") && path.startsWith(n.href) ? "page" : undefined}
+              onClick={() => setOpenAt(null)}
+              className="border-b border-line py-3.5 font-display text-[2.6rem] font-extrabold leading-none aria-[current=page]:text-accent-text"
             >
               {n.label}
             </Link>
           ))}
         </nav>
-        <ConsulenzaButton posizione="menu_mobile" className="mt-8 w-full" />
         <SocialIcons posizione="menu_mobile" className="mt-6" />
       </div>
     </header>

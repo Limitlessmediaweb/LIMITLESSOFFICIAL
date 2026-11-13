@@ -58,7 +58,6 @@ export const SPOT_LANCIO_FINE = "30/11";
 export const REGOLE = [
   "Acconto del 50% alla conferma, saldo alla consegna",
   "2 revisioni incluse",
-  "Fattura con partita IVA in regime forfettario",
 ];
 
 export const NOTA_PREZZO = "Prezzi di listino. Acconto del 50% per partire, 2 revisioni incluse.";

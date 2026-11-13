@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { azienda, rigaLegale, telHref } from "@/data/azienda";
-import { NAV } from "@/data/nav";
+import { NAV, PAGINE } from "@/data/nav";
 import { Logo } from "./Logo";
 import { SocialIcons } from "./Social";
-import { ConsulenzaButton } from "./ConsulenzaButton";
+import { WhatsAppButton } from "./WhatsAppButton";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -13,9 +13,9 @@ export function Footer() {
         <div className="flex flex-col gap-6">
           <Logo className="text-3xl" />
           <p className="max-w-[34ch] text-fg-muted">
-            LIMITLESS HUB, il gestionale su misura per qualsiasi attività. E poi siti web, spot video e walk tour.
+            Lavorare meglio. Farsi vedere meglio. Gestionale HUB, software su misura, siti web, video e spot.
           </p>
-          <ConsulenzaButton posizione="footer" variant="ghost" className="self-start" />
+          <WhatsAppButton sezione="piè di pagina" posizione="footer" variant="ghost" className="self-start" />
         </div>
 
         <div>
@@ -24,7 +24,7 @@ export function Footer() {
             <li>
               <Link href="/" className="link-line">Home</Link>
             </li>
-            {NAV.map((n) => (
+            {[...NAV, ...PAGINE].map((n) => (
               <li key={n.href}>
                 <Link href={n.href} className="link-line">{n.label}</Link>
               </li>

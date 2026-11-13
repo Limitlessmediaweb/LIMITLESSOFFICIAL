@@ -6,6 +6,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SmartVideo } from "@/components/media/SmartVideo";
 import { PhoneFrame } from "@/components/media/PhoneFrame";
 import { DemoHubButton } from "@/components/ui/DemoHubButton";
+import { FaqList } from "@/components/sections/Faq";
+import { domandeHub } from "@/data/home";
+import { clean } from "@/lib/placeholder";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { HUB_DA, HUB_DEMO_COME, HUB_PROVA, hubEsempi, hubPacchetti, hubSpot, hubSuMisura, hubSuMisuraLink } from "@/data/hub";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
@@ -44,6 +47,13 @@ const passi = [
 const iconeEsempi = [Factory, ShoppingBag, Briefcase, Wrench, Hammer];
 
 export default function HubPage() {
+  // le domande con la risposta ancora da completare non si mostrano
+  const domande = domandeHub.filter((f) => clean(f.a));
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: domande.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -167,7 +177,7 @@ export default function HubPage() {
       <section id="pacchetti" aria-labelledby="pacchetti-title" className="scroll-mt-20 border-t border-line">
         <div className="wrap py-20 md:py-28">
           <h2 id="pacchetti-title" className="text-title">
-            Tre pacchetti, più il su misura
+            Quattro pacchetti, più il su misura
           </h2>
           <p className="mt-6">
             <span className="text-fg-muted">da </span>
@@ -241,6 +251,11 @@ export default function HubPage() {
         </div>
       </section>
 
+      {/* Domande (spostate qui dalla home il 12/11) */}
+      <div id="domande" className="scroll-mt-20 border-t border-line">
+        <FaqList items={domande} title="Le domande che ci fanno tutti." />
+      </div>
+
       {/* Chiusura */}
       <section aria-labelledby="hub-cta-title" className="border-t border-line">
         <div className="wrap py-24 md:py-36">
@@ -254,6 +269,7 @@ export default function HubPage() {
         </div>
       </section>
       <JsonLd data={jsonLd} />
+      <JsonLd data={faqJsonLd} />
     </>
   );
 }

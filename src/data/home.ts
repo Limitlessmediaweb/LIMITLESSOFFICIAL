@@ -1,10 +1,19 @@
 import { waLink } from "@/data/azienda";
+import { HUB_DA } from "@/data/hub";
+import { prezzoMinimo, servizi } from "@/data/servizi";
 
 /**
- * Testi e dati della home «Dal caos all'ordine» (Fase 2, novembre 2026).
- * Direzione approvata da Riccardo il 12/11: hero A (caos fisico) + lente a metà pagina,
- * titolo «Dal caos all'ordine.». Sul sito non si nominano mai strumenti o tecnologie usate per i video.
+ * Testi e dati della home (riorganizzata il 12/11/2026).
+ * Identità: «Lavorare meglio. Farsi vedere meglio.» Dentro mettiamo ordine nel lavoro (HUB e software su misura),
+ * fuori facciamo vedere l'attività come merita (siti, video e spot). L'HUB è uno dei prodotti, non il centro.
+ * Sul sito non si nominano mai strumenti o tecnologie usate per i lavori, né il regime fiscale.
+ * I prezzi vengono sempre da data/hub.ts e data/servizi.ts, mai scritti a mano qui.
  */
+
+export const MOTTO = "Lavorare meglio. Farsi vedere meglio.";
+
+/** Ogni pulsante WhatsApp dice da quale sezione arriva il contatto. */
+export const waSezione = (sezione: string) => waLink(`Ciao, vengo dalla sezione ${sezione} del sito e vorrei sapere di più.`);
 
 /* ── Le cose che il titolare ha in giro oggi → la stessa cosa, in ordine ───────── */
 
@@ -39,43 +48,95 @@ export const cose: Cosa[] = [
   { k: "call", s: "Segreteria", m: "«Richiamatemi, è urgente»", t: "Urgenza Moretti", who: "Tu", st: "Presa in carico" },
 ];
 
-/* ── Lavori 01–07 ─────────────────────────────────────────────────────────────── */
+/* ── 2 · Due lati dello stesso lavoro ─────────────────────────────────────────── */
 
-export type LavoroHome = {
-  slug: string;
+export const lati = [
+  {
+    id: "dentro",
+    etichetta: "Dentro",
+    titolo: "Lavorare meglio.",
+    frase: "Mettiamo ordine nel lavoro: ogni cosa ha un nome, una persona e uno stato.",
+    prodotti: ["Gestionale HUB", "Sviluppi su misura"],
+  },
+  {
+    id: "fuori",
+    etichetta: "Fuori",
+    titolo: "Farsi vedere meglio.",
+    frase: "Facciamo vedere la tua attività come merita: chi ti cerca capisce subito perché scegliere te.",
+    prodotti: ["Siti web", "Video e spot"],
+  },
+] as const;
+
+/* ── 3 · Prodotti ─────────────────────────────────────────────────────────────── */
+
+const sito = servizi.find((s) => s.id === "sito")!;
+const spot = servizi.find((s) => s.id === "spot")!;
+
+export type Prodotto = {
+  id: string;
   nome: string;
-  /** Tipo di lavoro, in parole semplici. */
-  tipo: string;
-  riga: string;
-  /** Brand o attività inventati da LIMITLESS: sulla scheda compare sempre «Concept». */
-  concept: boolean;
+  lato: "Dentro" | "Fuori";
+  perChi: string;
+  risolve: string;
+  /** Prezzo «da …» preso dal listino del sito; null = a preventivo. */
+  da: number | null;
+  unita?: string;
+  /** Pagina di approfondimento; null = si parla su WhatsApp. */
+  href: string | null;
+  linkLabel: string;
+  /** Nome della sezione nel messaggio WhatsApp. */
+  sezione: string;
 };
 
-/**
- * Scelti da Riccardo il 12/11: i 7 consigliati, con un walk tour (Attico) al posto di Tecnolambro.
- * Per cambiarli basta modificare questo elenco: i file stanno in public/media/home/<slug>.mp4 (muto),
- * <slug>.jpg, <slug>-s.mp4 e <slug>-s.jpg (miniature dell'hero).
- * Tutti i video sono senza audio. I concept sono sempre segnati.
- */
-export const lavoriHome: LavoroHome[] = [
-  { slug: "hub-il-foglio", nome: "HUB · «Il foglio»", tipo: "Gestionale · il nostro prodotto", riga: "Dal foglio sul bancone alla schermata. In trenta secondi.", concept: false },
-  { slug: "cascina-belvedere", nome: "Cascina Belvedere", tipo: "Walk tour · cascina", riga: "Un giro dentro casa, prima di andarci.", concept: true },
-  { slug: "scarico-titanio", nome: "Scarico titanio", tipo: "Spot · moto", riga: "Uno scarico, ripreso come merita.", concept: true },
-  { slug: "ombralta", nome: "Tenuta Ombralta", tipo: "Spot · vino", riga: "Il regalo di Natale di una cantina.", concept: true },
-  { slug: "attico", nome: "Attico in centro", tipo: "Walk tour · appartamento", riga: "Dalla mappa al salotto, stanza per stanza.", concept: true },
-  { slug: "nottea", nome: "NÒTTEA", tipo: "Sito + spot · profumi", riga: "Un profumo che nasce di notte.", concept: true },
-  { slug: "ordito", nome: "ORDITO", tipo: "Sito + spot · abbigliamento", riga: "La giacca si scompone e mostra come è fatta.", concept: true },
+export const prodotti: Prodotto[] = [
+  {
+    id: "hub",
+    nome: "Gestionale HUB",
+    lato: "Dentro",
+    perChi: "Per aziende, laboratori, negozi e studi.",
+    risolve: "Lavori, ordini e clienti sotto controllo, dal telefono.",
+    da: HUB_DA,
+    unita: "/mese",
+    href: "/hub",
+    linkLabel: "Scopri l'HUB",
+    sezione: "Gestionale HUB",
+  },
+  {
+    id: "siti",
+    nome: "Siti web",
+    lato: "Fuori",
+    perChi: "Per chi vuole farsi scegliere da chi lo cerca.",
+    risolve: "Sito vetrina o premium, anche con le prenotazioni.",
+    da: prezzoMinimo(sito.voci),
+    href: "/servizi#sito",
+    linkLabel: "Vedi i siti",
+    sezione: "Siti",
+  },
+  {
+    id: "video",
+    nome: "Video e spot",
+    lato: "Fuori",
+    perChi: "Per brand, prodotti, immobili e strutture.",
+    risolve: "Spot per brand e prodotti, video tour per immobili e strutture.",
+    da: prezzoMinimo(spot.voci),
+    href: "/servizi#spot",
+    linkLabel: "Vedi video e spot",
+    sezione: "Video e spot",
+  },
+  {
+    id: "su-misura",
+    nome: "Sviluppi su misura",
+    lato: "Dentro",
+    perChi: "Per chi ha un lavoro che nessun programma copre.",
+    risolve: "Software pensato per il tuo tipo di attività.",
+    da: null,
+    href: null,
+    linkLabel: "Parliamone",
+    sezione: "Sviluppi su misura",
+  },
 ];
 
-/* ── Sezione 2 · Lo riconosci? ────────────────────────────────────────────────── */
-
-export const riconosci = [
-  { t: "«È pronto il mio ordine?»", d: "E tu non lo sai. Devi chiedere a tre persone." },
-  { t: "Il foglio giusto è sul bancone.", d: "O in furgone. O era quello di ieri." },
-  { t: "Lo sai solo tu.", d: "Quindi se manchi un giorno, qualcosa si ferma." },
-];
-
-/* ── Sezione 3 · Prima e dopo: le tre coppie sotto e dentro la lente ──────────── */
+/* ── 4 · HUB in breve: le tre coppie della lente e i tre tasti ────────────────── */
 
 export const coppie = [
   { prima: "«Chi lo sta facendo, quello?»", dopo: "Ordine Bianchi · Marco · In corso" },
@@ -83,40 +144,73 @@ export const coppie = [
   { prima: "3 chiamate perse", dopo: "Cliente Ferri · richiamato · Fatto" },
 ];
 
-/* ── Sezione 4 · Tre tasti ────────────────────────────────────────────────────── */
-
 export const tasti = [
-  { nome: "Inizio", frase: "«Ho cominciato.»", d: "Tu lo vedi subito, senza telefonare.", stato: "In corso", tono: "neutro" },
-  { nome: "Fatto", frase: "«Finito.»", d: "Il lavoro passa a chi viene dopo, da solo.", stato: "Fatto", tono: "ok" },
-  { nome: "Problema", frase: "«Qui c'è un intoppo.»", d: "Lo sai adesso, non a fine giornata.", stato: "Problema · manca il materiale", tono: "ko" },
+  { nome: "Inizio", d: "«Ho cominciato.» Tu lo vedi subito.", stato: "In corso", tono: "neutro" },
+  { nome: "Fatto", d: "«Finito.» Passa a chi viene dopo.", stato: "Fatto", tono: "ok" },
+  { nome: "Problema", d: "«C'è un intoppo.» Lo sai adesso.", stato: "Problema · manca il materiale", tono: "ko" },
 ] as const;
 
-/* ── Sezione 5 · Per te che decidi ────────────────────────────────────────────── */
+/* ── 5 · Lavori: quattro, i migliori (un gestionale, un sito, due spot) ───────── */
 
-export const perTe = [
-  { t: "Tutti i lavori in una schermata.", d: "Cosa è in corso, cosa è fermo, cosa è in ritardo." },
-  { t: "Chi fa cosa,", d: "oggi e questa settimana." },
-  { t: "I problemi in cima,", d: "prima che diventino ritardi." },
+export type LavoroHome = {
+  slug: string;
+  nome: string;
+  tipo: string;
+  riga: string;
+  /** Brand o attività inventati da LIMITLESS: sulla scheda compare sempre «Concept». */
+  concept: boolean;
+  /** Descrizione del video per chi non lo vede. */
+  alt: string;
+};
+
+/** I file stanno in public/media/home/<slug>.mp4 (muto) e <slug>.jpg. Tutti i video sono senza audio. */
+export const lavoriHome: LavoroHome[] = [
+  {
+    slug: "hub-il-foglio",
+    nome: "HUB · «Il foglio»",
+    tipo: "Gestionale",
+    riga: "Dal foglio sul bancone alla schermata.",
+    concept: false,
+    alt: "La scheda di un ordine nel gestionale HUB, con le fasi di lavoro che si completano una dopo l'altra",
+  },
+  {
+    slug: "nottea",
+    nome: "NÒTTEA",
+    tipo: "Sito web",
+    riga: "Un profumo che nasce di notte.",
+    concept: true,
+    alt: "Il sito di un profumo di lusso: una boccetta ambrata su fondo nero con le note che compaiono intorno",
+  },
+  {
+    slug: "scarico-titanio",
+    nome: "Scarico titanio",
+    tipo: "Spot",
+    riga: "Uno scarico, ripreso come merita.",
+    concept: true,
+    alt: "Spot di uno scarico da moto in titanio e carbonio, ripreso da vicino con luci di taglio",
+  },
+  {
+    slug: "ombralta",
+    nome: "Tenuta Ombralta",
+    tipo: "Spot",
+    riga: "Il regalo di Natale di una cantina.",
+    concept: true,
+    alt: "Spot di una cantina: botti in penombra, grappoli e un calice di vino rosso",
+  },
 ];
 
-/* ── Sezione 7 · Come si parte ────────────────────────────────────────────────── */
+/* ── 6 · Come si parte ────────────────────────────────────────────────────────── */
 
 export const passi = [
-  { t: "Dieci minuti di demo.", d: "Su WhatsApp o in chiamata. Lo vedi funzionare con esempi della tua attività." },
-  {
-    t: "Trenta giorni di prova, a 300 €.",
-    d: "Lo usate davvero, con i vostri lavori. Se continui, i 300 € li scaliamo dai canoni. Se smetti, non devi altro e ti diamo i tuoi dati in Excel.",
-  },
-  {
-    t: "Lo adattiamo a te.",
-    d: "Nomi, fasi, funzioni, logo: come lavorate voi. Quando serve una modifica la chiedi a una persona, non a un call center.",
-  },
+  { t: "Un messaggio, o una demo di 10 minuti.", d: "Ci racconti cosa fai e cosa non gira. Per l'HUB ti facciamo vedere come funziona, in chat o in chiamata." },
+  { t: "Una proposta su misura.", d: "Ti diciamo cosa faremmo, in quanto tempo e a che prezzo. Niente pacchetti standard: parte da come lavori tu." },
+  { t: "Si parte.", d: "Confermi e cominciamo. Parli sempre con chi fa il lavoro." },
 ];
 
-/* ── Sezione 9 · Domande ──────────────────────────────────────────────────────── */
+/* ── Domande sull'HUB (mostrate su /hub) ──────────────────────────────────────── */
 
 /** Le risposte ancora [DA COMPLETARE] non vengono mostrate finché Riccardo non dà il dato vero. */
-export const domandeHome = [
+export const domandeHub = [
   { q: "Devo cambiare il programma delle fatture?", a: "No. Resta il tuo. Noi mettiamo in ordine il lavoro, non la contabilità." },
   { q: "I miei non sono pratici di computer.", a: "Tre tasti: Inizio, Fatto, Problema. Chi sa usare WhatsApp sa usare questo." },
   { q: "Va bene per la mia attività?", a: "Aziende, laboratori, negozi, e-commerce, studi, attività di servizi. Lo adattiamo a come lavori tu." },
@@ -125,11 +219,10 @@ export const domandeHome = [
   { q: "Si paga per ogni persona che lo usa?", a: "No. Il prezzo è fisso, fino al numero di utenti del tuo pacchetto." },
   { q: "Quanto ci vuole per partire?", a: "[DA COMPLETARE: tempi veri di attivazione]" },
   { q: "Dove stanno i miei dati?", a: "[DA COMPLETARE: frase verificata su server in Europa e copie di sicurezza]" },
-  { q: "Fate anche solo un sito o un video?", a: "Sì. Scrivici cosa ti serve e ti diciamo prezzo e tempi." },
   { q: "Con chi parlo?", a: "Con Riccardo, direttamente. Hai il suo numero." },
 ];
 
-/* ── Sezione 10 · Quiz ────────────────────────────────────────────────────────── */
+/* ── 7 · Quiz ─────────────────────────────────────────────────────────────────── */
 
 /** Punti: prima risposta 0, seconda 1, terza 2. */
 export const quizDomande: { q: string; r: [string, string, string] }[] = [
@@ -142,46 +235,39 @@ export const quizDomande: { q: string; r: [string, string, string] }[] = [
   { q: "A fine mese sai quanti lavori avete chiuso e quanti sono fermi?", r: ["Sì, con i numeri.", "A occhio.", "No."] },
 ];
 
-/** Ultima domanda, senza punti: serve a proporre il pacchetto. */
+/** Ultima domanda, senza punti: finisce nel messaggio WhatsApp, così sappiamo quanto è grande l'attività. */
 export const quizPersone = {
   q: "In quanti lavorate, te compreso?",
   r: [
-    { label: "Fino a 5", pacchetto: "Start", numero: "fino a 5" },
-    { label: "Da 6 a 10", pacchetto: "Base", numero: "da 6 a 10" },
-    { label: "Da 11 a 25", pacchetto: "Pro", numero: "da 11 a 25" },
-    { label: "Da 26 a 50", pacchetto: "Crescita", numero: "da 26 a 50" },
-    { label: "Più di 50", pacchetto: "Su misura", numero: "più di 50" },
+    { label: "Fino a 5", numero: "fino a 5" },
+    { label: "Da 6 a 10", numero: "da 6 a 10" },
+    { label: "Da 11 a 25", numero: "da 11 a 25" },
+    { label: "Da 26 a 50", numero: "da 26 a 50" },
+    { label: "Più di 50", numero: "più di 50" },
   ],
 };
 
-export type QuizRisultato = { titolo: string; testo: string; demo: boolean; prova: boolean };
+export type QuizRisultato = { titolo: string; testo: string; passo: string };
 
 export function quizRisultato(punti: number): QuizRisultato {
   if (punti <= 4)
     return {
       titolo: "Ordine vero.",
-      testo: "Sei messo meglio di quasi tutti. Il lavoro si trova, e non dipende solo da te. Qui il passo utile è un altro: farti vedere fuori come lavori dentro.",
-      demo: false,
-      prova: false,
+      testo: "Sei messo meglio di quasi tutti. Il lavoro si trova, e non dipende solo da te.",
+      passo: "Qui il passo utile è un altro: farti vedere fuori come lavori dentro. Sito, video e spot.",
     };
   if (punti <= 9)
     return {
       titolo: "Regge. Ma regge su di te.",
-      testo:
-        "Il lavoro esce, però passa quasi tutto da te: domande, telefonate, controlli. Finché ci sei funziona. Il primo passo è togliere dalla tua testa i lavori in corso e metterli dove li vedono tutti.",
-      demo: true,
-      prova: false,
+      testo: "Il lavoro esce, però passa quasi tutto da te: domande, telefonate, controlli. Finché ci sei funziona.",
+      passo: "Il primo passo è togliere dalla tua testa i lavori in corso e metterli dove li vedono tutti.",
     };
   return {
     titolo: "Il lavoro vive nella tua testa.",
-    testo:
-      "Lavorate tanto, ma ogni risposta costa un giro di telefonate, e i problemi arrivano tardi. Non serve lavorare di più: serve un posto solo dove ogni lavoro ha un nome, una persona e uno stato. Si comincia da lì.",
-    demo: true,
-    prova: true,
+    testo: "Lavorate tanto, ma ogni risposta costa un giro di telefonate, e i problemi arrivano tardi.",
+    passo: "Non serve lavorare di più: serve un posto solo dove ogni lavoro ha un nome, una persona e uno stato.",
   };
 }
 
-export const quizDemoLink = (titolo: string, numero: string) =>
-  waLink(`Ciao, ho fatto il quiz sul sito: risultato «${titolo}». In azienda siamo ${numero}. Vorrei vedere la demo di 10 minuti.`);
-
-export const QUIZ_WHATSAPP = waLink("Ciao LIMITLESS! Ho visto il sito e vorrei parlare della mia attività.");
+export const quizLink = (titolo: string, numero: string) =>
+  waLink(`Ciao, vengo dal quiz del sito: mi è uscito «${titolo}». In azienda siamo ${numero}. Vorrei sapere di più.`);

@@ -1,18 +1,17 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight, MessageCircle, RotateCcw } from "lucide-react";
+import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { azienda } from "@/data/azienda";
-import { QUIZ_WHATSAPP, quizDemoLink, quizDomande, quizPersone, quizRisultato } from "@/data/home";
-import { HUB_PROVA_PREZZO } from "@/data/hub";
+import { quizDomande, quizLink, quizPersone, quizRisultato } from "@/data/home";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
 const TOT = quizDomande.length + 1;
 
 /**
- * Quiz «Quanto caos c'è da te?»: 7 domande a punti (0, 1, 2) più una sul numero di persone, che propone il pacchetto.
+ * Quiz «Quanto caos c'è da te?»: 7 domande a punti (0, 1, 2) più una sul numero di persone, che finisce nel messaggio.
  * Il risultato si vede subito, senza lasciare dati. Niente viene salvato o inviato: il messaggio WhatsApp lo manda l'utente.
  */
 export function Quiz() {
@@ -44,8 +43,8 @@ export function Quiz() {
     <div ref={boxRef} tabIndex={-1} className="border border-line-strong bg-bg p-5 outline-none md:p-10" aria-live="polite">
       {passo === -1 && (
         <div className="grid gap-5">
-          <h3 className="max-w-[16ch] text-title">Quanto caos c&apos;è nella tua attività?</h3>
-          <p className="max-w-[48ch] text-fg-muted">Rispondi d&apos;istinto, pensando a una settimana normale. Non ci sono risposte giuste.</p>
+          <h3 className="max-w-[16ch] text-title">Rispondi d&apos;istinto.</h3>
+          <p className="max-w-[48ch] text-fg-muted">Pensa a una settimana normale. Non ci sono risposte giuste, e non ti chiediamo l&apos;email.</p>
           <button
             type="button"
             className="btn btn-accent w-full sm:w-auto sm:justify-self-start"
@@ -112,43 +111,15 @@ export function Quiz() {
           <p className="mono text-accent-text">Il tuo risultato</p>
           <h3 className="max-w-[14ch] text-title">{ris.titolo}</h3>
           <p className="max-w-[56ch] text-lead text-fg-muted">{ris.testo}</p>
-          {ris.demo && (
-            <p className="max-w-[56ch]">
-              Per voi andrebbe bene il pacchetto <strong>{persone.pacchetto}</strong>.
-              {ris.prova && ` Si prova 30 giorni a ${HUB_PROVA_PREZZO} €, scalati se continui.`}
-            </p>
-          )}
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            {ris.demo ? (
-              <a
-                href={quizDemoLink(ris.titolo, persone.numero)}
-                target="_blank"
-                rel="noopener"
-                className="btn btn-accent"
-                onClick={() => {
-                  track("demo_hub_click", { posizione: "quiz" });
-                  track("whatsapp_click", { posizione: "quiz" });
-                }}
-              >
-                <MessageCircle size={18} aria-hidden />
-                <span>Prenota la demo di 10 minuti</span>
-                <span className="sr-only"> (si apre WhatsApp)</span>
-              </a>
-            ) : (
-              <>
-                <Link href="/lavori" className="btn btn-accent">
-                  <span>Guarda i nostri lavori</span>
-                  <ArrowRight size={17} aria-hidden />
-                </Link>
-                <a href={QUIZ_WHATSAPP} target="_blank" rel="noopener" className="btn btn-ghost" onClick={() => track("whatsapp_click", { posizione: "quiz" })}>
-                  <MessageCircle size={18} aria-hidden />
-                  <span>Scrivici su WhatsApp</span>
-                  <span className="sr-only"> (si apre WhatsApp)</span>
-                </a>
-              </>
-            )}
-          </div>
-          <div className="mt-2 flex flex-wrap gap-x-6 gap-y-2 text-sm text-fg-muted">
+          <p className="max-w-[56ch]">{ris.passo}</p>
+          <WhatsAppButton
+            sezione="Quiz"
+            posizione="quiz"
+            href={quizLink(ris.titolo, persone.numero)}
+            label="Parliamone su WhatsApp"
+            className="w-full sm:w-auto sm:justify-self-start"
+          />
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-fg-muted">
             <button
               type="button"
               className="link-line inline-flex min-h-11 items-center gap-2 hover:text-fg"

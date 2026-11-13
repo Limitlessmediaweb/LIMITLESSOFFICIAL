@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { coppie, cose } from "@/data/home";
+import { cose } from "@/data/home";
+import { cn } from "@/lib/cn";
 import { Messy, Tidy } from "./Cose";
 import { clamp, lerp, smooth, tilt, tiltAuto, viewLoop } from "./fisica";
 
@@ -20,9 +21,9 @@ const POSTI: [number, number, number][] = [
 /**
  * Prima e dopo: sotto c'è la giornata di oggi, dentro la lente la stessa giornata in ordine.
  * La lente segue il mouse, il dito (trascinandola) o l'inclinazione del telefono; scorrendo si allarga e prende tutto.
- * Senza JS o con «riduci movimento» si vede l'elenco in ordine, e sotto le tre coppie prima → dopo.
+ * Senza JS o con «riduci movimento» si vede l'elenco in ordine.
  */
-export function Lente() {
+export function LenteBox({ className }: { className?: string }) {
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -145,47 +146,24 @@ export function Lente() {
   }, []);
 
   return (
-    <section id="prima-dopo" aria-labelledby="lente-title" className="wrap scroll-mt-16 py-24 md:py-36">
-      <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end lg:gap-16">
-        <div>
-          <p className="mono text-accent-text">Prima e dopo</p>
-          <h2 id="lente-title" className="mt-4 max-w-[12ch] text-title">
-            Stessa giornata. Vista in ordine.
-          </h2>
-        </div>
-        <p className="max-w-[46ch] text-lead text-fg-muted">
-          Passa la lente. Sotto c&apos;è oggi, dentro c&apos;è come diventa. Sono le cose di sempre: ognuna con un nome, una persona e uno stato.
-        </p>
-      </div>
-
-      <div ref={boxRef} className="lente-box mt-10">
-        <div className="lente-layer lente-caos" aria-hidden>
-          {cose.slice(0, POSTI.length).map((c, i) => (
-            <div key={c.t} style={{ position: "absolute", left: `${POSTI[i][0]}%`, top: `${POSTI[i][1]}%`, rotate: `${POSTI[i][2]}deg` }}>
-              <Messy c={c} className="max-md:scale-[0.82]" />
-            </div>
-          ))}
-        </div>
-        <div className="lente-wrap">
-          <ol className="lente-layer lente-ordine" aria-label="La stessa giornata, in ordine">
-            {cose.map((c, i) => (
-              <li key={c.t} className={i > 5 ? "max-md:hidden" : undefined}>
-                <Tidy c={c} n={i + 1} />
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div className="lente-rim" aria-hidden />
-      </div>
-
-      <ul className="mt-8 grid gap-4 md:grid-cols-3">
-        {coppie.map((c) => (
-          <li key={c.dopo} className="border-l-2 border-accent pl-4">
-            <p className="text-fg-muted line-through decoration-rec/70">{c.prima}</p>
-            <p className="mt-1 font-semibold">{c.dopo}</p>
-          </li>
+    <div ref={boxRef} className={cn("lente-box", className)}>
+      <div className="lente-layer lente-caos" aria-hidden>
+        {cose.slice(0, POSTI.length).map((c, i) => (
+          <div key={c.t} style={{ position: "absolute", left: `${POSTI[i][0]}%`, top: `${POSTI[i][1]}%`, rotate: `${POSTI[i][2]}deg` }}>
+            <Messy c={c} className="max-md:scale-[0.82]" />
+          </div>
         ))}
-      </ul>
-    </section>
+      </div>
+      <div className="lente-wrap">
+        <ol className="lente-layer lente-ordine" aria-label="La stessa giornata, in ordine">
+          {cose.map((c, i) => (
+            <li key={c.t} className={i > 5 ? "max-md:hidden" : undefined}>
+              <Tidy c={c} n={i + 1} />
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div className="lente-rim" aria-hidden />
+    </div>
   );
 }

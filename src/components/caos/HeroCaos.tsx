@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, MessageCircle } from "lucide-react";
-import { cose, lavoriHome, QUIZ_WHATSAPP } from "@/data/home";
-import { HUB_DA, HUB_PROVA_PREZZO } from "@/data/hub";
-import { track } from "@/lib/analytics";
+import { ArrowDown } from "lucide-react";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { cose } from "@/data/home";
 import { useHydrated } from "@/lib/hooks";
 import { Messy, Tidy } from "./Cose";
 import { clamp, lerp, rng, smooth, stageProgress, tilt, tiltAuto, tiltEnable, tiltNeedsTap, viewLoop } from "./fisica";
@@ -38,9 +37,9 @@ type Body = {
 };
 
 /**
- * Hero della home: il disordine di ogni giorno ha un peso vero (fogli, post-it, messaggi, chiamate)
- * e scorrendo ogni cosa va al suo posto. Senza JS o con «riduci movimento» si vede subito la versione in ordine.
- * Telefono: meno fogli, niente ombre, nessun video nell'hero.
+ * Hero della home: il motto, e accanto l'immagine del «dentro»: il disordine di ogni giorno (fogli, post-it, messaggi)
+ * che scorrendo va al suo posto. Senza JS o con «riduci movimento» si vede subito la versione in ordine.
+ * Telefono: meno fogli e niente ombre.
  */
 export function HeroCaos() {
   const stageRef = useRef<HTMLElement>(null);
@@ -460,44 +459,22 @@ export function HeroCaos() {
       <div ref={pinRef} className="caos-pin">
         <div className="wrap caos-grid">
           <div className="caos-copy">
-            <p className="mono text-fg-muted">LIMITLESS · gestionale su misura, siti, video</p>
-            <h1 id="hero-title" aria-label="Dal caos all'ordine." className="caos-h1">
-              <span aria-hidden>
-                Dal{" "}
-                <span className="whitespace-nowrap">
-                  {[..."caos"].map((ch, i) => (
-                    <span key={i} className="caos-ch">
-                      {ch}
-                    </span>
-                  ))}
-                </span>
-                <br />
-                <span className="caos-ord">all&apos;ordine.</span>
-              </span>
+            <p className="mono text-fg-muted">LIMITLESS · gestionale, software su misura, siti, video</p>
+            <h1 id="hero-title" className="caos-h1">
+              <span className="caos-ord">Lavorare meglio.</span> <span className="caos-due">Farsi vedere meglio.</span>
             </h1>
-            <p className="max-w-[34ch] text-lead text-fg-muted">
-              Mettiamo <strong className="font-semibold text-fg">in ordine il lavoro</strong> della tua attività. Poi la facciamo crescere.
+            <p className="max-w-[40ch] text-lead text-fg-muted">
+              <strong className="font-semibold text-fg">Dentro</strong> mettiamo ordine nel lavoro. <strong className="font-semibold text-fg">Fuori</strong> facciamo vedere la
+              tua attività come merita.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a href="#quiz" className="btn btn-accent" onClick={() => track("quiz_click", { posizione: "hero" })}>
-                <span>Quanto caos c&apos;è da te? Fai il quiz</span>
-                <ArrowDown size={17} aria-hidden />
-              </a>
-              <a
-                href={QUIZ_WHATSAPP}
-                target="_blank"
-                rel="noopener"
-                className="btn btn-ghost hidden lg:inline-flex"
-                onClick={() => track("whatsapp_click", { posizione: "hero" })}
-              >
-                <MessageCircle size={18} aria-hidden />
-                <span>Scrivici su WhatsApp</span>
-                <span className="sr-only"> (si apre WhatsApp)</span>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+              {/* su telefono il pulsante è la barra fissa in basso: qui non si ripete */}
+              <WhatsAppButton sezione="iniziale (in alto)" posizione="hero" className="max-lg:hidden" />
+              <a href="#prodotti" className="link-line inline-flex min-h-11 items-center gap-2 self-start font-semibold sm:self-auto">
+                Vedi cosa facciamo
+                <ArrowDown size={16} aria-hidden />
               </a>
             </div>
-            <p className="text-sm text-fg-muted">
-              Da {HUB_DA} €/mese · prova di 30 giorni a {HUB_PROVA_PREZZO} €<span className="max-sm:hidden">, scalati se continui</span>.
-            </p>
           </div>
 
           <div className="caos-board">
@@ -525,28 +502,16 @@ export function HeroCaos() {
               </span>{" "}
               Oggi · tutto al suo posto
             </p>
-            <ol className="caos-rows" aria-label="La giornata, in ordine">
+            <ol className="caos-rows" aria-label="La giornata di lavoro, in ordine">
               {cose.slice(0, RIGHE).map((c, i) => (
                 <li key={c.t}>
                   <Tidy c={c} n={i + 1} />
                 </li>
               ))}
             </ol>
-            <p className="caos-lab mono flex justify-between gap-4">
-              <span>Lavori 01–07</span>
+            <p className="caos-lab mono flex justify-end">
               <span className="caos-more" aria-hidden />
             </p>
-            <ul className="caos-strip" aria-label="I nostri lavori">
-              {lavoriHome.map((l, i) => (
-                <li key={l.slug} data-video={`/media/home/${l.slug}-s.mp4`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={`/media/home/${l.slug}-s.jpg`} alt={`Lavoro ${String(i + 1).padStart(2, "0")}: ${l.nome}`} width={180} height={320} decoding="async" />
-                  <span className="tag" aria-hidden>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
@@ -557,14 +522,7 @@ export function HeroCaos() {
               <Messy c={c} />
             </div>
           ))}
-          {lavoriHome.map((l) => (
-            <div key={l.slug} className="it it-clip" data-kind="clip">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/media/home/${l.slug}-s.jpg`} alt="" width={180} height={320} decoding="async" draggable={false} />
-            </div>
-          ))}
         </div>
-
       </div>
     </section>
   );

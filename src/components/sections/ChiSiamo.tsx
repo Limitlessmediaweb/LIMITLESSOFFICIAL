@@ -21,7 +21,7 @@ export function ChiSiamo() {
           <p className="mt-6 text-lead text-fg-muted">
             <T>
               {
-                "LIMITLESS è uno studio giovane e nuovo. Usiamo le tecnologie più recenti, AI e sviluppo su misura, per dare alle attività locali una presenza online da grande brand, a prezzi da attività locale. [DA COMPLETARE: con Riccardo]"
+                "LIMITLESS è uno studio giovane e nuovo. Usiamo le tecnologie più recenti e lo sviluppo su misura per dare alle attività locali una presenza online da grande brand, a prezzi da attività locale. [DA COMPLETARE: con Riccardo]"
               }
             </T>
           </p>

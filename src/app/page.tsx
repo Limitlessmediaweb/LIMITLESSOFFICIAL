@@ -1,54 +1,33 @@
 import type { Metadata } from "next";
 import "./caos.css";
+import { HashScroll } from "@/components/caos/HashScroll";
 import { HeroCaos } from "@/components/caos/HeroCaos";
-import { Lente } from "@/components/caos/Lente";
-import { TreTasti } from "@/components/caos/TreTasti";
-import { LavoriNastro } from "@/components/caos/LavoriNastro";
-import { ComeSiParte, PerTe, Prezzi, QuizFinale, Riconosci } from "@/components/caos/SezioniHome";
-import { FaqList } from "@/components/sections/Faq";
-import { JsonLd } from "@/components/ui/JsonLd";
-import { domandeHome } from "@/data/home";
-import { clean } from "@/lib/placeholder";
+import { ComeSiParte, Contatti, DueLati, HubBreve, Lavori, Prodotti, QuizSezione } from "@/components/caos/SezioniHome";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "LIMITLESS | Dal caos all'ordine: gestionale su misura",
+  title: "LIMITLESS | Lavorare meglio. Farsi vedere meglio.",
   description:
-    "Mettiamo in ordine il lavoro della tua attività con LIMITLESS HUB, il gestionale su misura da 190 €/mese. Poi la facciamo crescere con sito e video. Fai il quiz.",
+    "Dentro mettiamo ordine nel lavoro, con il gestionale HUB e software su misura. Fuori facciamo vedere la tua attività come merita, con siti, video e spot.",
   path: "/",
 });
 
 /**
- * Home «Dal caos all'ordine» in 10 sezioni:
- * 1 hero (caos fisico) · 2 lo riconosci? · 3 prima e dopo (lente) · 4 tre tasti · 5 per te che decidi ·
- * 6 lavori 01–07 · 7 come si parte · 8 prezzi · 9 domande · 10 quiz e contatto.
+ * Home in 8 sezioni: 1 hero (il motto) · 2 due lati dello stesso lavoro · 3 prodotti · 4 HUB in breve ·
+ * 5 lavori · 6 come si parte · 7 quiz · 8 contatti. Piani, prezzi e domande dell'HUB stanno su /hub.
  */
 export default function Home() {
-  // le domande con la risposta ancora da completare non si mostrano
-  const domande = domandeHome.filter((f) => clean(f.a));
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: domande.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return (
     <>
+      <HashScroll />
       <HeroCaos />
-      <Riconosci />
-      <Lente />
-      <TreTasti />
-      <PerTe />
-      <LavoriNastro />
+      <DueLati />
+      <Prodotti />
+      <HubBreve />
+      <Lavori />
       <ComeSiParte />
-      <Prezzi />
-      <FaqList items={domande} title="Le domande che ci fanno tutti." />
-      <QuizFinale />
-      <JsonLd data={faqJsonLd} />
+      <QuizSezione />
+      <Contatti />
     </>
   );
 }

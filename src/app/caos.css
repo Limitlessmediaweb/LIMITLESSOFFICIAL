@@ -180,10 +180,19 @@
 .caos-copy .btn {
   width: 100%;
 }
+@media (min-width: 640px) {
+  .caos-copy .btn {
+    width: auto;
+  }
+}
 .caos-h1 {
-  font-size: clamp(3.3rem, 1rem + 11.5vw, 10.5rem);
-  line-height: 0.86;
+  font-size: min(9.3vw, 4.6rem);
+  line-height: 0.9;
   text-transform: uppercase;
+}
+.caos-h1 > span {
+  display: block;
+  white-space: nowrap;
 }
 .caos-ch {
   display: inline-block;
@@ -303,7 +312,7 @@ html:not(.js) .caos-ord {
     width: auto;
   }
   .caos-h1 {
-    font-size: clamp(4rem, 8.6vw, 10.5rem);
+    font-size: clamp(2.6rem, 4.5vw, 6rem);
   }
   .caos-board {
     justify-content: center;
@@ -323,11 +332,6 @@ html:not(.js) .caos-ord {
     aspect-ratio: 9 / 16;
   }
 }
-@media (max-width: 1023.98px) and (max-height: 720px) {
-  .caos-rows > li:nth-child(n + 3) {
-    display: none;
-  }
-}
 @media (min-width: 1024px) and (max-height: 820px) {
   .caos-rows > li:nth-child(n + 6) {
     display: none;
@@ -338,7 +342,7 @@ html:not(.js) .caos-ord {
    L'elenco ordinato è nascosto finché lo script non prende il controllo (niente lampo di «ordine» all'avvio). */
 @media (prefers-reduced-motion: no-preference) {
   html.js .caos-stage {
-    height: 300svh;
+    height: 230svh;
   }
   html.js .caos-pin {
     position: sticky;
@@ -410,7 +414,7 @@ html:not(.js) .caos-ord {
 .lente-box {
   position: relative;
   overflow: hidden;
-  height: min(72svh, 560px);
+  height: min(62svh, 460px);
   border: 1px solid var(--line-strong);
   background: var(--bg-sunken);
   isolation: isolate;
@@ -511,12 +515,13 @@ html:not(.js) .caos-ord {
   }
 }
 
-/* ── Tre tasti: sezione fissata a passi ── */
+/* ── Tre tasti: dimostrazione che si può toccare ── */
 .tasti-panel {
   border: 1px solid var(--line-strong);
   background: var(--bg-raised);
 }
 .tasto {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -527,58 +532,18 @@ html:not(.js) .caos-ord {
   transition:
     background-color 0.3s,
     color 0.3s,
-    border-color 0.3s,
-    transform 0.3s var(--ease-out-expo);
+    border-color 0.3s;
 }
 .tasto[data-on="true"] {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--accent-ink);
-  transform: scale(1.03);
 }
 .tasto[data-on="true"][data-tono="ko"] {
   background: var(--rec);
   border-color: var(--rec);
   color: #fff;
 }
-.tasti-step {
-  transition: opacity 0.4s;
-}
-@media (prefers-reduced-motion: no-preference) {
-  html.js .tasti-stage {
-    height: 260svh;
-  }
-  html.js .tasti-pin {
-    position: sticky;
-    top: 0;
-    min-height: 100svh;
-  }
-  html.js .tasti-step[data-on="false"] {
-    opacity: 0.28;
-  }
-  @media (max-width: 1023.98px) {
-    html.js .tasti-step[data-on="false"] {
-      display: none;
-    }
-    html.js .tasti-step {
-      min-height: 5.5rem;
-    }
-  }
-}
-
-/* ── Lavori: una scheda alla volta a fuoco ── */
-.lavoro-card {
-  transition:
-    opacity 0.4s,
-    border-color 0.4s;
-}
-html.js .lavoro-card[data-fuoco="false"] {
-  opacity: 0.55;
-}
-.lavoro-card[data-fuoco="true"] {
-  border-color: var(--accent);
-}
-
 /* Telefono: niente grana in sovrimpressione e niente sfocature dietro header e barra
    (costano fotogrammi sopra le animazioni) */
 @media (pointer: coarse) {

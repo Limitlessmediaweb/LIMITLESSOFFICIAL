@@ -11,7 +11,7 @@ const PASSI = [
     d: "15 minuti su WhatsApp o in chiamata. Capiamo cosa serve alla tua attività e ti diamo un prezzo chiaro.",
   },
   { t: "Ti mostriamo i lavori", d: "Guardi spot, siti e walk tour già fatti e scegli la direzione. Prezzi di listino, chiari da subito." },
-  { t: "Confermi con un acconto", d: "Il 50% per partire, il resto alla consegna. Fattura con partita IVA in regime forfettario. Nessun costo nascosto." },
+  { t: "Confermi con un acconto", d: "Il 50% per partire, il resto alla consegna. Nessun costo nascosto." },
   {
     t: "Consegna in pochi giorni",
     d: "Spot e walk tour in 72 ore, sito Easy in 7-10 giorni, Premium in 2-3 settimane. Due revisioni incluse.",
