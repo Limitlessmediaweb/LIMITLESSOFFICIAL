@@ -64,7 +64,6 @@ export default function HubPage() {
     offers: {
       "@type": "AggregateOffer",
       lowPrice: HUB_DA,
-      highPrice: Math.max(...hubPacchetti.map((p) => p.prezzo)),
       priceCurrency: "EUR",
       offerCount: hubPacchetti.length + 1,
     },
@@ -184,7 +183,7 @@ export default function HubPage() {
             <span className="font-display text-5xl font-extrabold">{euro(HUB_DA)}</span>
             <span className="ml-1 text-fg-muted">/mese</span>
           </p>
-          <p className="mt-4 max-w-[56ch] text-lead text-fg-muted">Un canone fisso al mese, senza costi per utente. La configurazione la facciamo noi, partendo da come lavori oggi, anche dai tuoi file Excel.</p>
+          <p className="mt-4 max-w-[56ch] text-lead text-fg-muted">Il canone dipende dal pacchetto e da cosa ti serve: te lo diciamo dopo la demo, senza costi per utente. La configurazione la facciamo noi, partendo da come lavori oggi, anche dai tuoi file Excel.</p>
 
           <div className="mt-12 grid gap-px border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
             {hubPacchetti.map((p) => {
@@ -197,11 +196,7 @@ export default function HubPage() {
                     </h3>
                     {consigliato && <span className="bg-accent px-2 py-1 text-xs font-bold uppercase tracking-wide text-accent-ink">Il più scelto</span>}
                   </div>
-                  <p className="mt-6">
-                    <span className="font-display text-4xl font-extrabold">{euro(p.prezzo)}</span>
-                    <span className="ml-1 text-fg-muted">/mese</span>
-                  </p>
-                  <p className="mono mt-3 text-fg-muted">{p.limiti}</p>
+                  <p className="mono mt-6 text-fg-muted">{p.limiti}</p>
                   <p className="mt-4 text-fg-muted">{p.perChi}</p>
                   <ul className="mt-6 grid gap-3 border-t border-line pt-6">
                     {p.include.map((x) => (

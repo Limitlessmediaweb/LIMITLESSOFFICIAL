@@ -9,6 +9,8 @@ import { waLink } from "@/data/azienda";
  * Dal 31/10 (listino confermato da Riccardo): Start 190, Base 290, Pro 490, Crescita 790 €/mese,
  * prova di 30 giorni a 300 € scalati dal canone, poi minimo 3 mesi, poi mese per mese con disdetta 7 giorni prima.
  * Mai «primo mese senza vincoli» né «prova gratuita».
+ * Dal 13/11: sul sito i pacchetti si mostrano con cosa includono, SENZA il prezzo singolo; l'unica cifra dei canoni è «da 190 €/mese».
+ * I prezzi qui sotto restano per uso interno (kit di vendita, preventivi).
  */
 
 export const HUB_MESSAGGIO_DEMO = "Ciao! Vorrei prenotare una demo di 10 minuti di LIMITLESS HUB per la mia attività.";

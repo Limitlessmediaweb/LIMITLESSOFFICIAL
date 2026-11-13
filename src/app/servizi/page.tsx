@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { T } from "@/components/ui/T";
 import { BadgeConsulenza, ConsulenzaButton } from "@/components/ui/ConsulenzaButton";
 import { NotaPrezzo, Prezzo, VociPrezzo } from "@/components/ui/Prezzo";
-import { mensili, REGOLE, servizi, type Voce } from "@/data/servizi";
+import { mensili, prezzoMinimo, REGOLE, servizi, SITO_MANUTENZIONE_DA, type Voce } from "@/data/servizi";
 import { HUB_DA, HUB_DEMO_COME, HUB_PROVA } from "@/data/hub";
 import { DemoHubButton } from "@/components/ui/DemoHubButton";
 import Link from "next/link";
@@ -21,11 +21,11 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = pageMetadata({
   title: "Servizi e prezzi | LIMITLESS",
   description:
-    "LIMITLESS HUB da 190 €/mese. Spot 99 € fino al 30/11, walk tour da 190 €, siti da 490 €, Mese Brand da 390 €/mese. Listino chiaro. Consulenza gratuita.",
+    "Gestionale HUB da 190 €/mese, spot da 99 €, walk tour da 190 €, siti da 490 €. Ogni proposta si adatta alla tua attività. Consulenza e preventivo gratuiti.",
   path: "/servizi",
 });
 
-/** Offerta schema.org per una riga del listino. */
+/** Offerta schema.org di un servizio: solo il prezzo di partenza. */
 function offerta(servizio: string, v: Voce) {
   const nome = v.nome === servizio ? servizio : `${servizio}: ${v.nome}`;
   const priceSpecification = v.mese
@@ -33,9 +33,9 @@ function offerta(servizio: string, v: Voce) {
         "@type": "UnitPriceSpecification",
         priceCurrency: "EUR",
         unitText: "mese",
-        ...(v.fino ? { minPrice: v.prezzo, maxPrice: v.fino } : { price: v.prezzo }),
+        minPrice: v.prezzo,
       }
-    : { "@type": "PriceSpecification", priceCurrency: "EUR", price: v.prezzo };
+    : { "@type": "PriceSpecification", priceCurrency: "EUR", minPrice: v.prezzo };
   return {
     "@type": "Offer",
     itemOffered: { "@type": "Service", name: nome, provider: { "@id": `${SITE_URL}/#organization` } },
@@ -50,8 +50,8 @@ export default function ServiziPage() {
     name: "Servizi LIMITLESS",
     url: `${SITE_URL}/servizi`,
     itemListElement: [
-      ...servizi.flatMap((s) => s.voci.map((v) => offerta(s.nome, v))),
-      ...mensili.flatMap((m) => m.voci.map((v) => offerta(m.nome, v))),
+      ...servizi.map((s) => offerta(s.nome, { nome: s.nome, prezzo: prezzoMinimo(s.voci) })),
+      ...mensili.map((m) => offerta(m.nome, { nome: m.nome, prezzo: prezzoMinimo(m.voci), mese: true })),
       offerta("LIMITLESS HUB", { nome: "Da", prezzo: HUB_DA, mese: true }),
     ],
   };
@@ -63,8 +63,8 @@ export default function ServiziPage() {
           Servizi e prezzi
         </SplitReveal>
         <p className="mt-6 max-w-[52ch] text-lead text-fg-muted">
-          LIMITLESS HUB, il gestionale su misura per la tua attività. E poi spot, walk tour, siti e servizi mensili, con i prezzi di listino. Fino al 30/11 lo
-          spot di Natale per chi produce costa 99 €. Si comincia con una consulenza gratuita di 15 minuti.
+          Il gestionale HUB, poi spot, walk tour, siti e servizi mensili. Per ognuno trovi il prezzo di partenza: quello preciso dipende da cosa ti serve.
+          Si comincia con una consulenza gratuita di 15 minuti.
         </p>
         <NotaPrezzo className="mt-5 max-w-[60ch] text-base" />
         <BadgeConsulenza className="mt-6" />
@@ -89,7 +89,7 @@ export default function ServiziPage() {
               Il gestionale su misura per la tua attività.
             </h2>
             <p className="mt-5 max-w-[50ch] text-lead text-fg-muted">
-              Lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. Pacchetti Base, Pro e Crescita, più il Su misura a preventivo.
+              Lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. Quattro pacchetti, più il Su misura a preventivo.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <DemoHubButton posizione="servizi_hub" className="w-full sm:w-auto" />
@@ -214,7 +214,7 @@ export default function ServiziPage() {
           ))}
           <li className="flex gap-3">
             <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-accent-text" />
-            <span>Manutenzione del sito da 19 €/mese</span>
+            <span>Manutenzione del sito da {SITO_MANUTENZIONE_DA} €/mese</span>
           </li>
         </ul>
       </section>

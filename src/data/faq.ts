@@ -1,11 +1,11 @@
-import { SITO_DA, SITO_MANUTENZIONE_DA, SITO_PREMIUM, SPOT_LANCIO, SPOT_LANCIO_FINE, SPOT_LISTINO } from "./servizi";
+import { SITO_DA, SITO_MANUTENZIONE_DA, SPOT_LANCIO } from "./servizi";
 
 export type Faq = { q: string; a: string };
 
 export const faq: Faq[] = [
   {
     q: "Cos'è LIMITLESS HUB?",
-    a: "È il gestionale su misura per qualsiasi attività: lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. I pacchetti sono Start 190, Base 290, Pro 490 e Crescita 790 €/mese. Si comincia con una prova di 30 giorni a 300 €, scalati dal canone se continui; poi minimo 3 mesi e disdetta con 7 giorni di preavviso. La demo dura 10 minuti, su WhatsApp o in chiamata.",
+    a: "È il gestionale su misura per qualsiasi attività: lavori, ordini e clienti in un posto solo, fase per fase, da telefono, tablet o PC. Si parte da 190 €/mese, con una prova di 30 giorni. La demo dura 10 minuti, su WhatsApp o in chiamata.",
   },
   {
     q: "La consulenza è davvero gratuita?",
@@ -13,11 +13,11 @@ export const faq: Faq[] = [
   },
   {
     q: "Quanto costano spot, walk tour e sito?",
-    a: `Uno spot di 20-30 secondi costa ${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}, poi ${SPOT_LISTINO} €. Un walk tour 190 € (appartamento), 300 € (struttura fino a 5 ambienti) o 590 € (tour completo). Un sito da ${SITO_DA} € (Easy) o ${SITO_PREMIUM} € (Premium).`,
+    a: `Uno spot da ${SPOT_LANCIO} €, un walk tour da 190 €, un sito da ${SITO_DA} €. Il prezzo preciso dipende da cosa ti serve: te lo diciamo nel preventivo, prima di partire.`,
   },
   {
     q: "Avete servizi mensili?",
-    a: "Sì. Mese Brand a 390 €/mese (1 spot + 8 contenuti + calendario) e Mese Brand Completo a 590 €/mese (2 spot + 12 contenuti + pubblicazione + report). Ai primi 3 clienti mensili: −30% per 3 mesi in cambio del caso studio. Scheda Google + recensioni: 59-99 €/mese.",
+    a: "Sì. Contenuti per i social ogni mese (Mese Brand, da 390 €/mese) e la cura della scheda Google con le recensioni (da 59 €/mese). Cosa comprendono lo decidiamo insieme.",
   },
   {
     q: "In quanto tempo è pronto?",

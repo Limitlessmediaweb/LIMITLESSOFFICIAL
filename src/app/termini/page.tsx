@@ -38,7 +38,7 @@ export default function TerminiPage() {
 
       <h2>4. Preventivi e prezzi</h2>
       <p>
-        I prezzi indicati sul sito sono quelli del listino in vigore. Cosa è incluso e i tempi sono definiti nel preventivo che ti mandiamo dopo la
+        I prezzi indicati sul sito sono prezzi di partenza («da»): il prezzo preciso dipende da cosa serve. Prezzo, cosa è incluso e i tempi sono definiti nel preventivo che ti mandiamo dopo la
         consulenza gratuita e diventano validi solo dopo la tua conferma scritta e il pagamento dell&apos;acconto del 50%; il saldo si paga alla
         consegna. Ogni lavoro comprende 2 revisioni. La manutenzione del sito parte da 19 €/mese e si definisce nel preventivo.
       </p>

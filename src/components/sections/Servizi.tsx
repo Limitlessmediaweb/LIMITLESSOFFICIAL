@@ -16,7 +16,7 @@ export function Servizi() {
       <SplitReveal id="servizi-title" className="max-w-[16ch] text-display">
         Tre modi per farti scegliere.
       </SplitReveal>
-      <p className="mt-6 max-w-[50ch] text-lead text-fg-muted">Prezzi chiari, di listino. Fino al 30/11 lo spot di Natale per chi produce costa 99 €.</p>
+      <p className="mt-6 max-w-[50ch] text-lead text-fg-muted">Per ogni servizio trovi il prezzo di partenza: quello preciso dipende da cosa ti serve.</p>
       <NotaPrezzo className="mt-5 max-w-[60ch] text-base" />
       <BadgeConsulenza className="mt-6" />
 
@@ -37,7 +37,7 @@ export function Servizi() {
             <p className="mt-3 text-fg-muted">{m.ottieni}</p>
             <Prezzo voci={m.voci} className="mt-auto pt-6 text-4xl md:text-5xl" />
             <Link href={`/servizi#${m.id}`} className="mt-6 inline-flex items-center gap-2 self-start font-semibold text-accent-text link-line">
-              Vedi il listino
+              Vedi i servizi
               <ArrowRight size={16} aria-hidden />
               <span className="sr-only"> di {m.nome}</span>
             </Link>

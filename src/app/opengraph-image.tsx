@@ -5,5 +5,5 @@ export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export default function Image() {
-  return ogImage({ title: "Il gestionale su misura per la tua attività.", kicker: "LIMITLESS HUB · da 190 €/mese", image: "/media/hub/titolare.jpg", imageWide: true });
+  return ogImage({ title: "Lavorare meglio. Farsi vedere meglio.", kicker: "LIMITLESS · gestionale, siti, video", image: "/media/hub/titolare.jpg", imageWide: true });
 }

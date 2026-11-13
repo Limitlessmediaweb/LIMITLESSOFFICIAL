@@ -1,6 +1,8 @@
 /**
- * Servizi e prezzi: listino 2026 del 25/10. È l'unica fonte dei prezzi del sito
- * (pagine, FAQ, termini, JSON-LD): nessun prezzo o servizio fuori da qui.
+ * Servizi e prezzi di partenza. È l'unica fonte dei prezzi del sito (pagine, FAQ, termini, JSON-LD).
+ * Dal 13/11 (decisione di Riccardo) sul sito NON si mostra il listino: per ogni servizio c'è solo «da»
+ * il prezzo più basso delle sue voci, mai un prezzo fisso. Il listino completo resta interno
+ * (_CONTROLLO/LISTINO-E-REGOLE.md) e il prezzo preciso sta nel preventivo.
  */
 
 /** Una riga del listino. */
@@ -55,11 +57,11 @@ export const SPOT_LANCIO = 99;
 export const SPOT_LANCIO_FINE = "30/11";
 
 /**
- * Siti (confermato da Riccardo il 13/11): si parte da 490 €, manutenzione da 19 €/mese.
- * Il sito Easy è il prezzo d'ingresso. Il Premium resta a 990 € (listino del 25/10) finché Riccardo non dice altro.
+ * Siti (confermato da Riccardo il 13/11): si parte da 490 €, Premium da 750 € (dipende da cosa c'è dentro),
+ * manutenzione da 19 €/mese.
  */
 export const SITO_DA = 490;
-export const SITO_PREMIUM = 990;
+export const SITO_PREMIUM_DA = 750;
 export const SITO_MANUTENZIONE_DA = 19;
 
 /** Regole uguali per tutti i lavori. */
@@ -68,7 +70,7 @@ export const REGOLE = [
   "2 revisioni incluse",
 ];
 
-export const NOTA_PREZZO = "Prezzi di listino. Acconto del 50% per partire, 2 revisioni incluse.";
+export const NOTA_PREZZO = "Prezzi di partenza: quello preciso dipende da cosa ti serve e te lo diciamo nel preventivo. Acconto del 50% per partire, 2 revisioni incluse.";
 
 export const servizi: Servizio[] = [
   {
@@ -88,8 +90,6 @@ export const servizi: Servizio[] = [
         nome: "Spot 20-30 secondi",
         dettaglio: "Verticale 9:16, anche in versione natalizia",
         prezzo: SPOT_LANCIO,
-        listino: SPOT_LISTINO,
-        nota: `fino al ${SPOT_LANCIO_FINE}, poi ${SPOT_LISTINO} €`,
       },
     ],
     video: { kind: "spot", slug: "saetta" },
@@ -98,11 +98,11 @@ export const servizi: Servizio[] = [
     faq: [
       {
         q: "Quanto costa uno spot?",
-        a: `${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}, poi ${SPOT_LISTINO} € di listino. Lo spot dura 20-30 secondi e comprende 2 revisioni.`,
+        a: `Da ${SPOT_LANCIO} €. Lo spot dura 20-30 secondi e comprende 2 revisioni: il prezzo preciso dipende da cosa serve e te lo diciamo nel preventivo.`,
       },
       {
         q: "Fate anche lo spot di Natale?",
-        a: `Sì, a ${SPOT_LANCIO} € fino al ${SPOT_LANCIO_FINE}: è pensato per chi produce e vende, come cantine, birrifici, moto e artigiani.`,
+        a: `Sì, da ${SPOT_LANCIO} €: è pensato per chi produce e vende, come cantine, birrifici, moto e artigiani.`,
       },
       {
         q: "Serve girare un video?",
@@ -141,7 +141,7 @@ export const servizi: Servizio[] = [
       },
       {
         q: "Va bene per un'agenzia immobiliare con tanti immobili?",
-        a: "Sì. Ogni immobile segue il listino: 190 € un appartamento, 300 € una struttura fino a 5 ambienti, 590 € il tour completo.",
+        a: "Sì. Si parte da 190 € per un appartamento; per strutture più grandi e tour completi il prezzo dipende dal numero di ambienti.",
       },
     ],
   },
@@ -159,7 +159,7 @@ export const servizi: Servizio[] = [
     ],
     voci: [
       { nome: "Sito Easy", dettaglio: "Pensato per il telefono, con WhatsApp, chiamata, mappa e testi per Google", prezzo: SITO_DA },
-      { nome: "Sito Premium", dettaglio: "Su misura, con animazioni, più pagine e grafica curata in ogni dettaglio", prezzo: SITO_PREMIUM },
+      { nome: "Sito Premium", dettaglio: "Su misura, con animazioni, più pagine e grafica curata in ogni dettaglio", prezzo: SITO_PREMIUM_DA },
     ],
     video: { kind: "siti", slug: "nottea-desktop" },
     tempi: "Sito Easy in 7-10 giorni, Premium in 2-3 settimane",
@@ -167,7 +167,7 @@ export const servizi: Servizio[] = [
     faq: [
       {
         q: "Che differenza c'è tra Easy e Premium?",
-        a: `Easy (da ${SITO_DA} €) è il sito pensato per il telefono, con WhatsApp, chiamata, mappa e testi per Google. Premium (${SITO_PREMIUM} €) è su misura, con animazioni, più pagine e una grafica curata in ogni dettaglio.`,
+        a: `Easy (da ${SITO_DA} €) è il sito pensato per il telefono, con WhatsApp, chiamata, mappa e testi per Google. Premium (da ${SITO_PREMIUM_DA} €) è su misura, con animazioni, più pagine e una grafica curata in ogni dettaglio: il prezzo dipende da cosa ci mettiamo dentro.`,
       },
       {
         q: "Ci sono costi mensili?",
