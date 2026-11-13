@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { azienda } from "@/data/azienda";
 import { coppie, lati, passi, prodotti } from "@/data/home";
 import { HUB_DA } from "@/data/hub";
+import { PORTFOLIO_URL } from "@/data/nav";
 import { cn } from "@/lib/cn";
 import { LavoriGriglia } from "./LavoriNastro";
 import { LenteBox } from "./Lente";
@@ -151,10 +152,17 @@ export function Lavori() {
         <div className="mt-8">
           <LavoriGriglia />
         </div>
-        <Link href="/lavori" className="btn btn-ghost mt-8 w-full sm:w-auto">
-          <span>Tutti i lavori</span>
-          <ArrowRight size={17} aria-hidden />
-        </Link>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+          <Link href="/lavori" className="btn btn-ghost w-full sm:w-auto">
+            <span>Tutti i lavori</span>
+            <ArrowRight size={17} aria-hidden />
+          </Link>
+          <a href={PORTFOLIO_URL} target="_blank" rel="noopener" className="link-line inline-flex min-h-11 items-center gap-2 self-start font-semibold sm:self-auto">
+            <span>Portfolio completo</span>
+            <ArrowUpRight size={17} aria-hidden />
+            <span className="sr-only"> (si apre in una nuova scheda)</span>
+          </a>
+        </div>
       </div>
     </section>
   );

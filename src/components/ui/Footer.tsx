@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { azienda, rigaLegale, telHref } from "@/data/azienda";
-import { NAV, PAGINE } from "@/data/nav";
+import { NAV, PAGINE, PORTFOLIO_URL } from "@/data/nav";
 import { Logo } from "./Logo";
 import { SocialIcons } from "./Social";
 import { WhatsAppButton } from "./WhatsAppButton";
@@ -29,6 +29,11 @@ export function Footer() {
                 <Link href={n.href} className="link-line">{n.label}</Link>
               </li>
             ))}
+            <li>
+              <a href={PORTFOLIO_URL} target="_blank" rel="noopener" className="link-line">
+                Portfolio completo<span className="sr-only"> (si apre in una nuova scheda)</span>
+              </a>
+            </li>
           </ul>
         </div>
 
