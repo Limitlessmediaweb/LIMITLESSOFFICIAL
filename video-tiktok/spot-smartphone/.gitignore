@@ -1,0 +1,6 @@
+node_modules/
+stock/*.mp4
+stock/frames/
+render/
+out/*.mp4
+3d/assets/*.hdr

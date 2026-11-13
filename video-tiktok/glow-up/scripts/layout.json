@@ -1,0 +1,30 @@
+{
+  "_note": "Posizioni in px sul fotogramma 1080x1920. Safe zone TikTok: testi tra y 150 e 1540 e x < 940.",
+  "safeTop": 150,
+  "safeBottom": 1540,
+  "safeRight": 940,
+  "textTop": 236,
+  "phone": { "x": 279, "y": 470, "w": 522, "h": 900 },
+  "phoneB": 18,
+  "labelY": 1414,
+  "grid": [
+    { "x": 20, "y": 470, "w": 284, "h": 489 },
+    { "x": 328, "y": 470, "w": 284, "h": 489 },
+    { "x": 636, "y": 470, "w": 284, "h": 489 },
+    { "x": 174, "y": 983, "w": 284, "h": 489 },
+    { "x": 482, "y": 983, "w": 284, "h": 489 }
+  ],
+  "gridB": 10,
+  "laptop": { "x": 74, "y": 470, "w": 932, "h": 594 },
+  "laptopB": 16,
+  "small": { "x": 580, "y": 900, "w": 352, "h": 604 },
+  "smallB": 14,
+  "finaleFrames": 75,
+  "sites": [
+    { "id": "nottea", "name": "NÒTTEA", "sector": "profumi" },
+    { "id": "ordito", "name": "ORDITO", "sector": "abbigliamento" },
+    { "id": "osteria", "name": "Osteria del Borgo", "sector": "ristorante" },
+    { "id": "volta", "name": "VOLTA", "sector": "elettricista" },
+    { "id": "flusso", "name": "FLUSSO", "sector": "idraulico" }
+  ]
+}
