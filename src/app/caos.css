@@ -276,11 +276,12 @@ html:not(.js) .caos-ord {
   border: 1px solid var(--line);
   color: var(--fg-muted);
 }
+/* invito secondario: non deve sembrare il pulsante principale (quello è WhatsApp) */
 .caos-hint.tap {
   pointer-events: auto;
-  color: var(--accent-ink);
-  background: var(--accent);
-  border-color: var(--accent);
+  color: var(--fg);
+  background: rgb(from var(--bg) r g b / 0.9);
+  border-color: var(--line-strong);
   min-height: 2.75rem;
 }
 .fps-counter {

@@ -6,9 +6,9 @@ import { ComeSiParte, Contatti, DueLati, HubBreve, Lavori, Prodotti, QuizSezione
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "LIMITLESS | Lavorare meglio. Farsi vedere meglio.",
+  title: "LIMITLESS – Gestionali, siti web e video per aziende | Pavia",
   description:
-    "Dentro mettiamo ordine nel lavoro, con il gestionale HUB e software su misura. Fuori facciamo vedere la tua attività come merita, con siti, video e spot.",
+    "Gestionali su misura, siti web, video e spot per aziende di Pavia, Lodi, Piacenza e Milano sud. Consulenza gratuita su WhatsApp al 350 070 4573.",
   path: "/",
 });
 

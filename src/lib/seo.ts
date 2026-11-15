@@ -82,11 +82,24 @@ export function organizationJsonLd() {
         url: SITE_URL,
         image: `${SITE_URL}/opengraph-image`,
         description:
-          "Lavorare meglio. Farsi vedere meglio. Dentro mettiamo ordine nel lavoro, con il gestionale HUB e software su misura. Fuori facciamo vedere l'attività come merita, con siti web, video e spot. Consulenza e preventivo gratuiti.",
+          "Gestionali su misura (HUB), siti web, video e spot per aziende e attività di Pavia, Lodi, Piacenza e Milano sud; online in tutta Italia. Consulenza e preventivo gratuiti.",
         telephone,
         email: azienda.email,
         address,
-        areaServed: { "@type": "Country", name: azienda.areaServed },
+        areaServed: [
+          ...azienda.zoneServite.map((name) => ({ "@type": "AdministrativeArea", name })),
+          { "@type": "Country", name: azienda.areaServed },
+        ],
+        knowsAbout: ["Gestionale su misura", "Realizzazione siti web", "Video aziendali", "Spot pubblicitari", "Video tour immobiliari"],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Servizi",
+          itemListElement: ["Gestionale HUB", "Siti web", "Video e spot", "Software su misura"].map((name) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name },
+          })),
+        },
+        contactPoint: { "@type": "ContactPoint", telephone, contactType: "customer service", availableLanguage: "Italian" },
         priceRange: "€",
         parentOrganization: { "@id": `${SITE_URL}/#organization` },
         sameAs,

@@ -27,9 +27,9 @@ const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tig
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "LIMITLESS | Lavorare meglio. Farsi vedere meglio.", template: "%s | LIMITLESS" },
+  title: { default: "LIMITLESS – Gestionali, siti web e video per aziende | Pavia", template: "%s | LIMITLESS" },
   description:
-    "Dentro mettiamo ordine nel lavoro, con il gestionale HUB e software su misura. Fuori facciamo vedere la tua attività come merita, con siti, video e spot.",
+    "Gestionali su misura, siti web, video e spot per aziende di Pavia, Lodi, Piacenza e Milano sud. Consulenza gratuita su WhatsApp al 350 070 4573.",
   applicationName: "LIMITLESS",
   robots: ALLOW_INDEXING ? { index: true, follow: true } : { index: false, follow: false },
   formatDetection: { telephone: false },

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { sitoSpot } from "@/data/progetti";
+import { settori } from "@/data/settori";
 import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -16,5 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...statiche.map((s) => ({ url: `${SITE_URL}${s.path === "/" ? "" : s.path}`, lastModified: now, changeFrequency: s.freq, priority: s.priority })),
     ...sitoSpot.map((p) => ({ url: `${SITE_URL}/lavori/${p.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 })),
+    // pagine servizio + settore: entrano solo quando Riccardo le approva (pubblica: true)
+    ...settori.filter((s) => s.pubblica).map((s) => ({ url: `${SITE_URL}/settori/${s.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 })),
   ];
 }

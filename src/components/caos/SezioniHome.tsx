@@ -12,6 +12,9 @@ import { LenteBox } from "./Lente";
 import { Quiz } from "./Quiz";
 import { TreTasti } from "./TreTasti";
 
+/** Lavoro in evidenza in home (concept: sito dimostrativo). */
+const QUOTAZERO = { url: "https://quotazero-demo.vercel.app" };
+
 const euro = (n: number) => `${n.toLocaleString("it-IT")} €`;
 
 /** 2 · Due lati dello stesso lavoro: dentro (ordine) e fuori (farsi vedere). */
@@ -149,7 +152,39 @@ export function Lavori() {
         <p className="mt-4 max-w-[60ch] text-fg-muted">
           I lavori segnati <span className="tag-concept mx-0.5 align-middle">Concept</span> sono progetti nostri per attività inventate: mostrano cosa sappiamo fare.
         </p>
-        <div className="mt-8">
+        <a
+          href={QUOTAZERO.url}
+          target="_blank"
+          rel="noopener"
+          className="group mt-8 grid overflow-hidden border border-line-strong bg-bg md:grid-cols-[1.4fr_1fr]"
+        >
+          <div className="relative aspect-[16/10] overflow-hidden bg-bg-sunken md:aspect-auto md:min-h-[320px]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/media/home/quotazero.jpg"
+              alt="Il sito di Meccanica Quotazero: un mandrino in 3D su fondo scuro con il titolo «Ogni pezzo, al suo posto.»"
+              width={1200}
+              height={750}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <span className="tag-concept absolute right-2 top-2 border-[#f2f0ea]/50 bg-black/70 !text-[#f2f0ea]">Concept</span>
+          </div>
+          <div className="flex flex-col justify-center gap-3 p-5 md:p-8">
+            <p className="mono text-accent-text">In evidenza · Sito web per l&apos;industria</p>
+            <h3 className="text-[clamp(1.8rem,1rem+2.4vw,3rem)] leading-[0.95]">Meccanica Quotazero</h3>
+            <p className="max-w-[42ch] text-fg-muted">
+              Un&apos;officina di precisione raccontata pezzo per pezzo: scorri e il mandrino si smonta, ogni componente con la sua quota.
+            </p>
+            <span className="link-line mt-2 inline-flex min-h-11 items-center gap-2 self-start font-semibold">
+              Apri il sito
+              <ArrowUpRight size={17} aria-hidden />
+              <span className="sr-only"> (si apre in una nuova scheda)</span>
+            </span>
+          </div>
+        </a>
+        <div className="mt-5">
           <LavoriGriglia />
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">

@@ -26,6 +26,8 @@ export const azienda = {
 
   zona: "Disponibile online in tutta Italia",
   areaServed: "Italia",
+  /** Zone servite di persona (SEO locale, JSON-LD). Online si lavora in tutta Italia. */
+  zoneServite: ["Pavia", "Provincia di Pavia", "Lodi", "Provincia di Lodi", "Piacenza", "Provincia di Piacenza", "Milano sud"],
   orari: "[DA COMPLETARE: orari di risposta]",
 } as const;
 
