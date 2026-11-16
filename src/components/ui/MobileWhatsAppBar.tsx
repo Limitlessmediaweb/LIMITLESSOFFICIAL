@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
+import { waImpianti } from "@/data/impianti";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { WhatsAppButton } from "./WhatsAppButton";
 
@@ -10,6 +12,8 @@ import { WhatsAppButton } from "./WhatsAppButton";
  */
 export function MobileWhatsAppBar() {
   const ref = useRef<HTMLElement>(null);
+  // sulla pagina del planning per impianti il messaggio è quello della pagina
+  const impianti = usePathname() === "/impianti";
   useGSAP(() => {
     const el = ref.current!;
     let hidden = false;
@@ -33,7 +37,7 @@ export function MobileWhatsAppBar() {
       aria-label="Contatto rapido"
       className="fixed inset-x-0 bottom-0 z-[75] border-t border-line bg-bg/85 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur lg:hidden"
     >
-      <WhatsAppButton sezione="barra in basso" posizione="barra_mobile" className="w-full" />
+      <WhatsAppButton sezione="barra in basso" posizione={impianti ? "impianti_barra" : "barra_mobile"} href={impianti ? waImpianti : undefined} className="w-full" />
     </aside>
   );
 }
