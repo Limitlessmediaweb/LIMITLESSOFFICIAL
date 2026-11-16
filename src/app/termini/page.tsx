@@ -32,9 +32,6 @@ export default function TerminiPage() {
         &ldquo;Concept&rdquo; (per esempio NÒTTEA, ORDITO, Osteria del Borgo, VOLTA, FLUSSO) sono brand e attività inventati da LIMITLESS a scopo
         dimostrativo: non sono clienti reali. Qualsiasi somiglianza con attività esistenti è casuale.
       </p>
-      <p>
-        Alcuni contenuti sono realizzati anche con strumenti di intelligenza artificiale generativa e poi rielaborati da noi.
-      </p>
 
       <h2>4. Preventivi e prezzi</h2>
       <p>

@@ -190,13 +190,13 @@
   }
 }
 .caos-h1 {
-  font-size: min(9.3vw, 4.6rem);
-  line-height: 0.9;
+  font-size: min(8.6vw, 4.2rem);
+  line-height: 0.92;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 .caos-h1 > span {
   display: block;
-  white-space: nowrap;
 }
 .caos-ch {
   display: inline-block;
@@ -215,6 +215,13 @@ html:not(.js) .caos-ord {
   justify-content: flex-end;
   gap: 0.5rem;
   min-width: 0;
+}
+/* telefono: l'elenco in ordine sta subito sotto il testo, non in fondo allo schermo */
+@media (max-width: 1023.98px) {
+  .caos-board {
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+  }
 }
 .caos-lab {
   color: var(--fg-muted);
@@ -317,7 +324,7 @@ html:not(.js) .caos-ord {
     width: auto;
   }
   .caos-h1 {
-    font-size: clamp(2.6rem, 4.5vw, 6rem);
+    font-size: clamp(2.4rem, 3.7vw, 5.2rem);
   }
   .caos-board {
     justify-content: center;
@@ -404,6 +411,7 @@ html:not(.js) .caos-ord {
     top: 0;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     gap: 6px;
     pointer-events: none;
     opacity: 1;

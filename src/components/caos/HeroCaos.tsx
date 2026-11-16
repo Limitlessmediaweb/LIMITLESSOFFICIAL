@@ -104,7 +104,13 @@ export function HeroCaos() {
       H = pin.clientHeight;
       floor = H;
       const mobile = isMobile();
-      const ms = mobile ? 0.74 : 1.08;
+      // telefono: i fogli crescono con lo spazio libero tra il testo e la barra WhatsApp (niente buco sui telefoni alti)
+      let ms = 1.08;
+      if (mobile) {
+        const copyB = q<HTMLElement>(".caos-copy").getBoundingClientRect().bottom - pr.top;
+        const fondo = bar ? Math.min(H, bar.getBoundingClientRect().top - pr.top) : H;
+        ms = clamp((0.74 * (fondo - copyB - 90)) / 230, 0.74, 1.15);
+      }
       const mr = more.getBoundingClientRect();
       // prima tutte le letture, poi tutte le scritture: una sola passata di layout
       const misure = bodies.map((b) => ({ tr: b.target?.getBoundingClientRect(), w: b.el.offsetWidth, h: b.el.offsetHeight }));
@@ -380,7 +386,7 @@ export function HeroCaos() {
       if (isO !== ordered) {
         ordered = isO;
         pin.classList.toggle("is-order", isO);
-        stato.textContent = isO ? "Adesso: ordine" : "Adesso: caos";
+        stato.textContent = isO ? "Tutto al suo posto" : "Ordini, chiamate, post-it: ti suona familiare?";
         hints.style.visibility = isO ? "hidden" : "visible";
         setVideos(isO);
       }
@@ -465,13 +471,13 @@ export function HeroCaos() {
       <div ref={pinRef} className="caos-pin">
         <div className="wrap caos-grid">
           <div className="caos-copy">
-            <p className="mono text-fg-muted">LIMITLESS · gestionale, software su misura, siti, video</p>
+            <p className="mono text-fg-muted">Lavorare meglio. Farsi vedere meglio.</p>
             <h1 id="hero-title" className="caos-h1">
-              <span className="caos-ord">Lavorare meglio.</span> <span className="caos-due">Farsi vedere meglio.</span>
+              <span className="caos-ord">Gestionali, siti e video</span> <span className="caos-due">per le aziende di Pavia e dintorni.</span>
             </h1>
             <p className="max-w-[40ch] text-lead text-fg-muted">
               <strong className="font-semibold text-fg">Dentro</strong> mettiamo ordine nel lavoro. <strong className="font-semibold text-fg">Fuori</strong> facciamo vedere la
-              tua attività come merita.
+              tua attività come merita. Demo gratuita di 10 minuti su WhatsApp.
             </p>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
               {/* su telefono il pulsante è la barra fissa in basso: qui non si ripete */}
@@ -486,9 +492,9 @@ export function HeroCaos() {
           <div className="caos-board">
           <div className="caos-hints">
             <span className="caos-hint">
-              <span className="caos-stato">Adesso: caos</span>
+              <span className="caos-stato">Ordini, chiamate, post-it: ti suona familiare?</span>
             </span>
-            <span className="caos-hint">Prova a spostarli. Poi scorri ↓</span>
+            <span className="caos-hint">Scorri ↓</span>
             {needsTap && (
               <button
                 type="button"
@@ -498,7 +504,7 @@ export function HeroCaos() {
                   setTapDone(true);
                 }}
               >
-                Attiva il movimento
+                Muovili col telefono
               </button>
             )}
           </div>
