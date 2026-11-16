@@ -58,7 +58,7 @@ export const settori: Settore[] = [
       concept: false,
     },
     prezzo: { da: HUB_DA, unita: "/mese", nota: "pacchetti in base al numero di persone, senza costi per utente" },
-    zona: "Lavoriamo di persona tra Pavia, Lodi, Piacenza e Milano sud: veniamo in azienda per la demo e per la partenza.",
+    zona: "Lavoriamo di persona tra Pavia, Lodi, Piacenza e Milano sud: veniamo in azienda per la demo e per la partenza. Fuori zona facciamo tutto online, in tutta Italia.",
     faq: [
       { q: "Funziona anche se i tecnici non sono pratici di computer?", a: "Sì: dal telefono vedono solo i loro interventi e chiudono il rapportino con pochi tocchi. Alla partenza lo proviamo insieme a loro." },
       { q: "Posso tenere i dati che ho già su Excel?", a: "Sì, li importiamo noi: clienti, impianti e scadenze ripartono da lì." },

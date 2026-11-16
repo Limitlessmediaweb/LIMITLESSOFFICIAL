@@ -6,9 +6,9 @@ import { ComeSiParte, Contatti, DueLati, HubBreve, Lavori, Prodotti, QuizSezione
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "LIMITLESS – Gestionali, siti web e video per aziende | Pavia",
+  title: "LIMITLESS – Gestionali, siti web e video per aziende | Pavia e tutta Italia",
   description:
-    "Gestionali su misura, siti web, video e spot per aziende di Pavia, Lodi, Piacenza e Milano sud. Consulenza gratuita su WhatsApp al 350 070 4573.",
+    "Gestionali su misura, siti web, video e spot per aziende in tutta Italia. Di persona a Pavia, Lodi, Piacenza e Milano sud. Consulenza gratuita su WhatsApp al 350 070 4573.",
   path: "/",
 });
 

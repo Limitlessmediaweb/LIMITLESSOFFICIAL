@@ -473,11 +473,11 @@ export function HeroCaos() {
           <div className="caos-copy">
             <p className="mono text-fg-muted">Lavorare meglio. Farsi vedere meglio.</p>
             <h1 id="hero-title" className="caos-h1">
-              <span className="caos-ord">Gestionali, siti e video</span> <span className="caos-due">per le aziende di Pavia e dintorni.</span>
+              <span className="caos-ord">Gestionali, siti e video</span> <span className="caos-due">per le aziende di tutta Italia.</span>
             </h1>
             <p className="max-w-[40ch] text-lead text-fg-muted">
               <strong className="font-semibold text-fg">Dentro</strong> mettiamo ordine nel lavoro. <strong className="font-semibold text-fg">Fuori</strong> facciamo vedere la
-              tua attività come merita. Demo gratuita di 10 minuti su WhatsApp.
+              tua attività come merita. Demo gratuita di 10 minuti su WhatsApp.<span className="caos-zone"> Di persona tra Pavia, Lodi, Piacenza e Milano sud; online ovunque.</span>
             </p>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
               {/* su telefono il pulsante è la barra fissa in basso: qui non si ripete */}

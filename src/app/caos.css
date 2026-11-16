@@ -572,3 +572,8 @@ html:not(.js) .caos-ord {
     backdrop-filter: none;
   }
 }
+
+/* telefoni bassi (es. iPhone SE): la riga zone non entra senza coprire i foglietti */
+@media (max-width: 1023.98px) and (max-height: 700px) {
+  .caos-zone { display: none; }
+}
