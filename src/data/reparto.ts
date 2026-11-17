@@ -6,7 +6,7 @@ import { azienda } from "@/data/azienda";
  * Con ?azienda=Nome il nome entra nel titolo, sulla targhetta della teca e nel messaggio WhatsApp.
  */
 
-export const REPARTO_TITLE = "Hub Reparto – il gestionale su misura per aziende conto terzi | LIMITLESS, Pavia";
+export const REPARTO_TITLE = "Hub Reparto – gestionale conto terzi a Pavia | LIMITLESS";
 export const REPARTO_DESCRIPTION =
   "Commesse, ore e terzisti in una schermata. Hub Reparto è il gestionale su misura per le aziende conto terzi di Pavia, Lodi e Piacenza.";
 

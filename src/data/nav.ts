@@ -6,6 +6,7 @@ export const NAV = [
   { href: "/#prodotti", label: "Prodotti" },
   { href: "/#lavori", label: "Lavori" },
   { href: "/hub", label: "HUB" },
+  { href: "/reparto", label: "Hub Reparto" },
   { href: "/#come-si-parte", label: "Come si parte" },
   { href: "/#contatti", label: "Contatti" },
 ];
