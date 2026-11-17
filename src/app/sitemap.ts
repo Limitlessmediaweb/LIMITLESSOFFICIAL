@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/servizi", priority: 0.9, freq: "monthly" },
     { path: "/hub", priority: 0.8, freq: "monthly" },
     { path: "/impianti", priority: 0.8, freq: "monthly" },
+    { path: "/reparto", priority: 0.8, freq: "monthly" },
     { path: "/contatti", priority: 0.7, freq: "yearly" },
     { path: "/privacy", priority: 0.2, freq: "yearly" },
     { path: "/termini", priority: 0.2, freq: "yearly" },
