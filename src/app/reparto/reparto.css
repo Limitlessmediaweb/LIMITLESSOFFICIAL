@@ -637,8 +637,21 @@ button.rv-lab:hover {
   height: min(100%, 40rem);
   transition: opacity 0.6s var(--rv-ease);
 }
+/* con l'invito a schermo il planning resta solo a destra, in trasparenza: a sinistra c'è il testo */
 .rv-b[data-cta] .rv-planning-in {
-  opacity: 0.11;
+  opacity: 0.16;
+}
+.rv-planning-in {
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 100%);
+}
+.rv-b[data-cta] .rv-planning-in {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 44%, #000 72%);
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 44%, #000 72%);
+}
+.rv[data-statico] .rv-planning-in {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 .rv-cta {
   position: absolute;
@@ -799,6 +812,12 @@ button.rv-lab:hover {
     grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: 6px;
     height: 100%;
+  }
+  /* su telefono il testo occupa tutta la larghezza: il planning dietro quasi sparisce */
+  .rv-b[data-cta] .rv-planning-in {
+    opacity: 0.06;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
   .rv-planning .rv-st {
     min-height: 0;

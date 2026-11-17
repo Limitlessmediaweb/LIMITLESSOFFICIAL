@@ -934,8 +934,10 @@ export function creaScena(opts: { tier: Tier; nome: string; fontDisplay: string;
       for (let i = 0; i < CONFINI.length; i++) target = mixShot(target, S[i + 1], smooth(CONFINI[i] - 0.055, CONFINI[i] + 0.055, pA));
     } else {
       const inizio = shot(0, 0.6, 0, -0.34, 0.58, 4.4, stretto ? 1 : 0.7, stretto ? 0.6 : 0.82, 0, stretto ? 0.04 : 0.02);
-      const alto = shot(0, 0, 0, 0, 1.47, 3.9, 1, 1, 0, 0);
-      const dentro = shot(0, 0, 0, 0, 1.47, stretto ? 1.5 : 2.2, 1, 1, 0, 0);
+      // su schermo stretto il reparto si gira di un quarto: il lato lungo va in verticale e riempie il telefono
+      const giro = stretto && vw < vh ? -Math.PI / 2 : 0;
+      const alto = shot(0, 0, 0, giro, 1.47, giro ? 2.75 : 3.9, 1, 1, 0, giro ? 0.03 : 0);
+      const dentro = shot(0, 0, 0, giro, 1.47, giro ? 1.9 : stretto ? 1.5 : 2.2, 1, 1, 0, 0);
       target = mixShot(mixShot(inizio, alto, easeInOut(range(0.12, 0.5, pB))), dentro, easeInOut(range(0.45, 0.8, pB)));
     }
     focusK += ((focus ? 1 : 0) - focusK) * (1 - Math.exp(-Math.min(dtRaw, 1) * 4.5));
