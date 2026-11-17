@@ -56,8 +56,8 @@ export const impiantiRisultati = [
 ] as const;
 
 export const impiantiScadenzario = {
-  titolo: "In più: lo scadenzario delle caldaie",
-  testo: "Le manutenzioni in scadenza in un elenco, con il promemoria automatico al cliente quando si avvicina il controllo.",
+  titolo: "Su richiesta: lo scadenzario delle caldaie",
+  testo: "Se vi serve, lo aggiungiamo: le manutenzioni in scadenza in un elenco, con il promemoria al cliente quando si avvicina il controllo.",
 };
 
 export const impiantiSuMisura = [
