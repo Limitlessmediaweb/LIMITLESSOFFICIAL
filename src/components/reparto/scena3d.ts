@@ -30,6 +30,8 @@ export type InfoFrame = {
   giornoDopo: boolean;
   ritardo: boolean;
   camionFuori: boolean;
+  /** 0..1: quanto si vedono i nomi delle postazioni nella vista dall'alto della chiusura */
+  pianta: number;
 };
 export type Scena = {
   canvas: HTMLCanvasElement;
@@ -37,6 +39,8 @@ export type Scena = {
   setA(p: number): void;
   setB(q: number): void;
   setStage(s: "a" | "b"): void;
+  /** Schermo stretto: fascia libera (0..1 dell'altezza) tra il testo e i pannelli in basso. La teca ci sta dentro. */
+  setArea(top: number, bottom: number): void;
   setPointer(x: number, y: number): void;
   setFocus(id: PostazioneId | null): void;
   setFermo(on: boolean): void;
@@ -99,11 +103,11 @@ const SHOTS_LARGO: Shot[] = [
   shot(0, 0.4, 0, 0, 0.92, 3.95, 0.56, 0.84, 0.2, 0.03),
 ];
 const SHOTS_STRETTO: Shot[] = [
-  shot(0, 0.72, 0, -0.62, 0.36, 4.2, 0.98, 0.5, 0, 0.14),
+  shot(0, 0.72, 0, -0.62, 0.36, 4.3, 0.98, 0.5, 0, 0.14),
   shot(0, 0.7, 0, -0.42, 0.5, 4.1, 0.98, 0.5, 0, 0.14),
-  shot(0, 0.45, 0, -0.16, 0.82, 3.9, 1, 0.52, 0, 0.13),
+  shot(0, 0.45, 0, -0.16, 0.82, 3.6, 1, 0.52, 0, 0.13),
   shot(5.95, 0.25, 0, 0.1, 0.6, 3.75, 1, 0.5, 0, 0.13),
-  shot(0, 0.4, 0, 0, 0.98, 3.85, 1, 0.5, 0, 0.12),
+  shot(0, 0.4, 0, 0, 0.98, 3.55, 1, 0.5, 0, 0.12),
 ];
 /** Confini delle scene sull'avanzamento 0..1 della prima parte. */
 export const CONFINI = [0.15, 0.35, 0.55, 0.77] as const;
@@ -560,7 +564,23 @@ export function creaScena(opts: { tier: Tier; nome: string; fontDisplay: string;
     envMapIntensity: 0.5,
     depthWrite: false,
   });
-  let matVetro: THREE.MeshPhysicalMaterial = tier === "alto" ? matVetroVero : matVetroFinto;
+  // telefoni: niente rifrazione (costa un passaggio in più). Il vetro è fatto solo dei suoi riflessi, sommati alla scena:
+  // trasparente di fronte, più lucido di taglio, come una lastra vera. Niente velo grigio sulle facce.
+  const matVetroLeggero = new THREE.MeshPhysicalMaterial({
+    color: 0x000000,
+    roughness: 0.03,
+    metalness: 0,
+    transparent: true,
+    opacity: 1,
+    envMap: envRT.texture,
+    envMapIntensity: 0.9,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+  });
+  const vetroA = tier === "alto" ? matVetroVero : matVetroLeggero;
+  const vetroB = tier === "alto" ? matVetroFinto : matVetroLeggero;
+  const kRiflesso = tier === "alto" ? 0.085 : 0.13;
+  let matVetro: THREE.MeshPhysicalMaterial = vetroA;
   const lastre: THREE.Mesh[] = [];
   const lastra = (w: number, h: number, d: number, x: number, y: number, z: number, parent: THREE.Object3D = teca) => {
     const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), matVetro);
@@ -610,7 +630,7 @@ export function creaScena(opts: { tier: Tier; nome: string; fontDisplay: string;
     c.fillRect(0, 0, 256, 256);
   });
   texRiflesso.wrapS = texRiflesso.wrapT = THREE.RepeatWrapping;
-  const matRiflesso = new THREE.MeshBasicMaterial({ map: texRiflesso, transparent: true, opacity: 0.085, depthWrite: false, blending: THREE.AdditiveBlending });
+  const matRiflesso = new THREE.MeshBasicMaterial({ map: texRiflesso, transparent: true, opacity: kRiflesso, depthWrite: false, blending: THREE.AdditiveBlending });
   const rifF = new THREE.Mesh(new THREE.PlaneGeometry(W, H), matRiflesso);
   rifF.position.set(0, H / 2, gz + 0.02);
   rifF.renderOrder = 7;
@@ -860,6 +880,8 @@ export function creaScena(opts: { tier: Tier; nome: string; fontDisplay: string;
   let vw = 1;
   let vh = 1;
   let stretto = false;
+  let areaTop = -1;
+  let areaBot = -1;
   let pA = 0;
   let pB = 0;
   let stage: "a" | "b" = "a";
@@ -936,9 +958,13 @@ export function creaScena(opts: { tier: Tier; nome: string; fontDisplay: string;
       const inizio = shot(0, 0.6, 0, -0.34, 0.58, 4.4, stretto ? 1 : 0.7, stretto ? 0.6 : 0.82, 0, stretto ? 0.04 : 0.02);
       // su schermo stretto il reparto si gira di un quarto: il lato lungo va in verticale e riempie il telefono
       const giro = stretto && vw < vh ? -Math.PI / 2 : 0;
-      const alto = shot(0, 0, 0, giro, 1.47, giro ? 2.75 : 3.9, 1, 1, 0, giro ? 0.03 : 0);
+      const alto = shot(0, 0, 0, giro, 1.47, giro ? 3.0 : 3.9, 1, 1, 0, giro ? 0.045 : 0);
       const dentro = shot(0, 0, 0, giro, 1.47, giro ? 1.9 : stretto ? 1.5 : 2.2, 1, 1, 0, 0);
       target = mixShot(mixShot(inizio, alto, easeInOut(range(0.12, 0.5, pB))), dentro, easeInOut(range(0.45, 0.8, pB)));
+    }
+    // schermo stretto: la teca si mette al centro della fascia libera tra il testo e i pannelli, grande quanto ci sta
+    if (stage === "a" && stretto && areaBot > areaTop) {
+      target = { ...target, oy: (areaTop + areaBot) / 2 - 0.5, fv: (areaBot - areaTop) / 0.7 };
     }
     focusK += ((focus ? 1 : 0) - focusK) * (1 - Math.exp(-Math.min(dtRaw, 1) * 4.5));
     if (focusK > 0.002) {
@@ -995,14 +1021,14 @@ export function creaScena(opts: { tier: Tier; nome: string; fontDisplay: string;
 
     /* --- etichette e steli --- */
     const etich = stage === "a" ? smooth(CONFINI[1] - 0.06, CONFINI[1] - 0.02, pA) : 0;
-    const stelo = etich * (1 - focusK) * (stage === "a" ? 1 - (smooth(CONFINI[2] - 0.04, CONFINI[2] + 0.01, pA) - smooth(CONFINI[3] - 0.05, CONFINI[3], pA)) : 1);
+    // mentre si guarda il terzista le etichette del reparto si fanno da parte, e tornano solo a camera rientrata
+    const fuori = stage === "a" ? smooth(CONFINI[2] - 0.04, CONFINI[2] + 0.01, pA) - smooth(CONFINI[3] + 0.005, CONFINI[3] + 0.05, pA) : 0;
+    const stelo = etich * (1 - focusK) * (1 - fuori);
     steli.forEach((s, i) => {
       s.visible = stelo > 0.01;
       s.scale.y = Math.max(0.001, stelo);
       s.position.y = POS[ORDINE[i]].h + 0.08 + 0.18 * stelo;
     });
-    // mentre si guarda il terzista le etichette del reparto si fanno da parte
-    const fuori = stage === "a" ? smooth(CONFINI[2] - 0.04, CONFINI[2] + 0.01, pA) - smooth(CONFINI[3] - 0.05, CONFINI[3], pA) : 0;
     ORDINE.forEach((id, i) => {
       const L = labels[id];
       proietta(POS[id].x, POS[id].h + 0.5, POS[id].z, L);
@@ -1057,12 +1083,16 @@ export function creaScena(opts: { tier: Tier; nome: string; fontDisplay: string;
     teca.visible = apre < 0.995;
     if (stage === "b") {
       matVetroFinto.opacity = 0.085 * (1 - apre);
+      matVetroLeggero.opacity = 1 - apre;
       matSpigolo.opacity = 0.42 * (1 - apre);
-      matRiflesso.opacity = 0.085 * (1 - apre);
+      matRiflesso.opacity = kRiflesso * (1 - apre);
     }
+    // dall'alto la luce batte dritta sui piani delle macchine: si abbassa l'esposizione perché non brucino
+    const pianta = stage === "b" ? smooth(0.3, 0.46, pB) * (1 - smooth(0.6, 0.68, pB)) : 0;
+    renderer.toneMappingExposure = 1.22 - (stage === "b" ? 0.34 * smooth(0.15, 0.5, pB) : 0);
 
     renderer.render(scene, camera);
-    opts.onFrame({ w: vw, h: vh, labels, postazioni: stati, giornoDopo: notte > 0.5 || tardi > 0.01, ritardo: tardi > 0.6, camionFuori: guida > 0.9 });
+    opts.onFrame({ w: vw, h: vh, labels, postazioni: stati, giornoDopo: notte > 0.5 || tardi > 0.01, ritardo: tardi > 0.6, camionFuori: guida > 0.9, pianta });
 
     /* --- regolatore: se il telefono fatica, si abbassa la risoluzione --- */
     conta++;
@@ -1117,16 +1147,21 @@ export function creaScena(opts: { tier: Tier; nome: string; fontDisplay: string;
       stage = s;
       cur = null;
       // nella chiusura il vetro deve poter svanire: si usa quello leggero su tutti i dispositivi
-      const m = s === "b" ? matVetroFinto : tier === "alto" ? matVetroVero : matVetroFinto;
+      const m = s === "b" ? vetroB : vetroA;
       if (m !== matVetro) {
         matVetro = m;
         lastre.forEach((l) => (l.material = m));
       }
       if (s === "a") {
         matVetroFinto.opacity = 0.085;
+        matVetroLeggero.opacity = 1;
         matSpigolo.opacity = 0.42;
-        matRiflesso.opacity = 0.085;
+        matRiflesso.opacity = kRiflesso;
       }
+    },
+    setArea(top, bottom) {
+      areaTop = top;
+      areaBot = bottom;
     },
     setPointer(x, y) {
       px = x;

@@ -50,6 +50,7 @@ export function Esperienza() {
   const hostA = useRef<HTMLDivElement>(null);
   const hostB = useRef<HTMLDivElement>(null);
   const labs = useRef<Record<string, HTMLElement | null>>({});
+  const labsB = useRef<Record<string, HTMLElement | null>>({});
   const cache = useRef<Record<string, string>>({});
   const scena = useRef<Scena | null>(null);
   const info = useRef<InfoFrame | null>(null);
@@ -94,17 +95,88 @@ export function Esperienza() {
     const tier: Tier = (nav.deviceMemory && nav.deviceMemory <= 3) || nav.connection?.saveData ? "basso" : coarse || window.innerWidth < 1024 ? "medio" : "alto";
     el.dataset.tier = tier;
 
+    const stretto = window.matchMedia("(max-width: 899.98px), (max-aspect-ratio: 21/20)");
+    const dims: Record<string, { w: number; h: number }> = {};
+    const offs: Record<string, number> = {};
+    let giri = 0;
+    type Messa = { id: string; x: number; y: number; w: number; h: number };
+    /**
+     * Mette le etichette sopra le macchine senza farle accavallare: restano dentro lo schermo,
+     * e quando due si toccano quella più in alto sale sopra l'altra.
+     */
+    const disponi = (i: InfoFrame, nodi: Record<string, HTMLElement | null>, pre: string, visDi: (id: string) => number, toccabili: boolean) => {
+      const att: (Messa & { vis: number })[] = [];
+      for (const id in i.labels) {
+        const n = nodi[id];
+        if (!n) continue;
+        const k = pre + id;
+        const vis = visDi(id);
+        if (vis <= 0.01) {
+          if (n.style.visibility !== "hidden") {
+            n.style.opacity = "0";
+            n.style.visibility = "hidden";
+            n.style.pointerEvents = "none";
+          }
+          delete offs[k];
+          continue;
+        }
+        if (!dims[k] || giri % 20 === 0) dims[k] = { w: n.offsetWidth, h: n.offsetHeight };
+        const d = dims[k];
+        const L = i.labels[id];
+        const fuoriSchermo = L.x < -d.w || L.x > i.w + d.w;
+        att.push({ id, x: fuoriSchermo ? L.x : Math.min(i.w - d.w / 2 - 6, Math.max(d.w / 2 + 6, L.x)), y: L.y, w: d.w, h: d.h, vis });
+      }
+      att.sort((a, b) => b.y - a.y);
+      const messe: Messa[] = [];
+      for (const a of att) {
+        const k = pre + a.id;
+        const libera = a.id === "est" || a.id === "camion";
+        let y = a.y;
+        if (!libera)
+          for (let g = 0; g < 4; g++) {
+            // si controlla con 2 px di margine e si sposta di 6: chi è già stato alzato non spinge a catena il vicino
+            const urto = messe.find((m) => Math.abs(m.x - a.x) < (m.w + a.w) / 2 + 2 && y > m.y - m.h - 2 && y - a.h < m.y + 2);
+            if (!urto) break;
+            y = urto.y - urto.h - 6;
+          }
+        const dy = y - a.y;
+        const o = offs[k] ?? dy;
+        offs[k] = o + (dy - o) * 0.16;
+        a.y += offs[k];
+        if (!libera) messe.push(a);
+        const n = nodi[a.id]!;
+        n.style.transform = `translate3d(${a.x.toFixed(1)}px,${a.y.toFixed(1)}px,0) translate(-50%,-100%)`;
+        n.style.opacity = a.vis.toFixed(3);
+        n.style.visibility = "visible";
+        n.style.pointerEvents = toccabili && a.vis > 0.6 ? "auto" : "none";
+      }
+    };
+    /** Schermo stretto: dice alla scena quanto spazio c'è tra il testo e i pannelli in basso. */
+    const misura = (i: InfoFrame) => {
+      if (!stretto.matches) {
+        s?.setArea(-1, -1);
+        return;
+      }
+      const n = sceneIdx.current;
+      const cap = el.querySelector<HTMLElement>(`.rv-cap[data-n="${n}"]`);
+      const testo = cap?.querySelector<HTMLElement>(".rv-cap-testo");
+      if (!cap || !testo) return;
+      const fineTesto = testo.offsetTop + testo.offsetHeight;
+      // dalla scena 2 in poi sopra la teca servono anche due dita per le etichette
+      const top = fineTesto + (n === 5 ? 70 : n >= 2 ? 34 : 10);
+      let bottom = i.h - 14;
+      const w = cap.querySelector<HTMLElement>(".rv-widget:not(.rv-pannello)");
+      if (w && getComputedStyle(w).visibility !== "hidden") bottom = w.offsetTop - 12;
+      s?.setArea(top / i.h, Math.max(top + 110, bottom) / i.h);
+      el.style.setProperty("--rv-testo", `${fineTesto}px`);
+    };
+
     const onFrame = (i: InfoFrame) => {
       info.current = i;
-      for (const id in i.labels) {
-        const n = labs.current[id];
-        if (!n) continue;
-        const L = i.labels[id];
-        n.style.transform = `translate3d(${L.x.toFixed(1)}px,${L.y.toFixed(1)}px,0) translate(-50%,-100%)`;
-        n.style.opacity = L.vis.toFixed(3);
-        n.style.visibility = L.vis > 0.01 ? "visible" : "hidden";
-        n.style.pointerEvents = L.vis > 0.6 ? "auto" : "none";
-      }
+      if (giri % 10 === 0) misura(i);
+      disponi(i, labs.current, "a", (id) => i.labels[id].vis, true);
+      disponi(i, labsB.current, "b", () => i.pianta, false);
+      giri++;
       for (const p of i.postazioni) {
         const k = `${p.code}|${p.pct}|${p.over}|${p.libera}`;
         if (cache.current[p.id] === k) continue;
@@ -115,6 +187,8 @@ export function Esperienza() {
         (n.querySelector("[data-code]") as HTMLElement).textContent = p.libera ? "Libera" : p.code;
         (n.querySelector("[data-pct]") as HTMLElement).textContent = p.libera ? "" : p.id === "pronto" ? "pronta" : p.over ? `+${Math.round((p.real / p.prev - 1) * 100)}% ore` : `${p.pct}%`;
         (n.querySelector("[data-cli]") as HTMLElement).textContent = p.cliente;
+        const nb = labsB.current[p.id]?.querySelector("[data-code]");
+        if (nb) nb.textContent = p.libera ? "Libera" : p.code;
       }
       el.toggleAttribute("data-giorno-dopo", i.giornoDopo);
       el.toggleAttribute("data-ritardo", i.ritardo);
@@ -520,6 +594,25 @@ export function Esperienza() {
       <section ref={stageB} className="rv-b" aria-labelledby="rv-cta-title">
         <div className="rv-pin">
           <div ref={hostB} className="rv-host" />
+          {/* nella vista dall'alto ogni postazione ha il suo nome: è la pianta che poi diventa il planning */}
+          <div className="rv-labels rv-labels-b" aria-hidden>
+            {POSTAZIONI.map((p) => (
+              <div
+                key={p.id}
+                className="rv-lab"
+                ref={(n) => {
+                  labsB.current[p.id] = n;
+                }}
+              >
+                <span className="rv-lab-fase">{p.breve}</span>
+                <span className="rv-lab-riga">
+                  <span className="rv-lab-code" data-code>
+                    {STATICHE.find((s) => s.id === p.id)!.code}
+                  </span>
+                </span>
+              </div>
+            ))}
+          </div>
           <Planning attivo={stageB} />
           <div className="rv-cta">
             <p className="mono text-accent-text">Il tuo reparto, sul tuo schermo</p>
