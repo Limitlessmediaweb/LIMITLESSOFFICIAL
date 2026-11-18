@@ -777,10 +777,10 @@ button.rv-lab:hover {
     display: none;
   }
   /* nel gioco su telefono l'etichetta è solo il nome del cliente, su una riga: tre in fila ci stanno senza coprire il testo */
-  .rv[data-scene="5"] .rv-lab:not([data-stato="libera"]) .rv-lab-riga {
+  .rv[data-scene="5"] .rv-a .rv-lab:not([data-stato="libera"]) .rv-lab-riga {
     display: none;
   }
-  .rv[data-scene="5"] .rv-lab {
+  .rv[data-scene="5"] .rv-a .rv-lab {
     min-width: 0;
     padding: 0.3rem 0.45rem;
   }
